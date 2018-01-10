@@ -33,7 +33,7 @@ function loadFestivalMap() {
 //The empty map variable ('festivalMap') was created above. The line below creates the map, assigning it to this variable. The line below also loads the map into the div with the id 'festival-map' (see code within the 'body' tags below), and applies the 'festivalMapOptions' (above) to configure this map.
 festivalMap = new google.maps.Map(document.getElementById("festival-map"), festivalMapOptions);
 if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          navigator.geolocation.watchPosition(function(position) {
           	var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
