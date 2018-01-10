@@ -128,16 +128,20 @@ markerUppsala = new google.maps.Marker({
 
 
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(callback) {
-            showPosition(callback)
-        }, function(error) {
-            console.log(error)
-        });
-    }
-}
+function getLocationUpdate(){
+            if(navigator.geolocation){
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:10000};
+               geoLoc = navigator.geolocation;
+               watchID = geoLoc.watchPosition(showPosition, errorHandler, options);
+            }
+            
+            else{
+               alert("Sorry, browser does not support geolocation!");
+            }
+         }
 function showPosition(position) {
+    console.log("hej");
     markerPositionSELF = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
     markerSELF = new google.maps.Marker({
         position: markerPositionSELF,
@@ -146,5 +150,18 @@ function showPosition(position) {
         icon: 'pins/pink_MarkerA.png'
 });
 }
-getLocation();
+
+function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            }
+            
+            else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
+
+
+setInterval(getLocationUpdate(), 10000); 
+
 
