@@ -147,11 +147,18 @@ markerKatrineholm = new google.maps.Marker({
    
 });
 
+
+// marker onclick
+
 let clueContainer = document.getElementById("clue");
+let button = document.getElementById("b");
 google.maps.event.addListener(markerKatrineholm, 'click', function(){
 	clueContainer.style.display = "block";
 });
 
+clueContainer.addEventListener('click', function() {
+	clueContainer.style.display = "none";
+});
 
 
 var markerEskilstuna = new google.maps.LatLng(59.371249, 16.509805);
@@ -203,9 +210,7 @@ function showPosition(position) {
 }
 getLocation();
 
-function closeClue() {
-	clueContainer.style.display = "none";
-}
+
 
 </script>
 
@@ -216,7 +221,7 @@ function closeClue() {
     <div id="clue">
     	<h1>Ledtråd</h1>
     	<p>text text texttexttext text texttexttext text texttext text text texttexttext text texttext text text texttexttext text texttexttext text text texttexttext text texttext</p>
-    	<button type="button" onclick="closeClue()">Stäng</button>
+    	<button type="button" id="b">Stäng</button>
     </div>
 </body>
 </html>
