@@ -58,7 +58,7 @@ function loadMapMarkers (){
 
 
 //Setting the position of the Glastonbury map marker.
-var markerPositionGlastonbury = new google.maps.LatLng(59.313627, 18.110746);
+var markerPositionGlastonbury = new google.maps.LatLng(59.246070, 17.823122);
 
 
 //Creating the Glastonbury map marker.
@@ -67,11 +67,11 @@ markerGlastonbury = new google.maps.Marker({
 	  position: markerPositionGlastonbury,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'första ledtråd',
+      title: 'Norsborg Getaway',
       icon: 'pins/blue_MarkerB.png'
 });
 
-var markerKatrineholm = new google.maps.LatLng(59.314560, 18.112852);
+var markerKatrineholm = new google.maps.LatLng(59.313384, 18.110068);
 
 
 //Creating the Glastonbury map marker.
@@ -80,7 +80,7 @@ markerKatrineholm = new google.maps.Marker({
 	  position: markerKatrineholm,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'andra ledtråd',
+      title: 'Katrineholm Hellgate',
       icon: 'pins/red_MarkerC.png',
 
 });
@@ -99,7 +99,7 @@ clueContainer.addEventListener('click', function() {
 });
 
 
-var markerEskilstuna = new google.maps.LatLng(59.314910, 18.115277);
+var markerEskilstuna = new google.maps.LatLng(59.371249, 16.509805);
 
 
 //Creating the Glastonbury map marker.
@@ -108,11 +108,11 @@ markerEskilstuna = new google.maps.Marker({
 	  position: markerEskilstuna,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'tredje ledtråden',
+      title: 'E-tuna',
       icon: 'pins/green_MarkerD.png'
 });
 
-var markerUppsala = new google.maps.LatLng(59.313387, 18.116409);
+var markerUppsala = new google.maps.LatLng(59.858564, 17.638927);
 
 
 //Creating the Glastonbury map marker.
@@ -147,3 +147,4 @@ function showPosition(position) {
 });
 }
 getLocation();
+
