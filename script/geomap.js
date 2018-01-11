@@ -130,7 +130,7 @@ markerUppsala = new google.maps.Marker({
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(callback) {
+        navigator.geolocation.watchPosition(function(callback) {
             showPosition(callback)
         }, function(error) {
             console.log(error)
