@@ -39,7 +39,48 @@ if (navigator.geolocation) {
               lng: position.coords.longitude
             };
 				festivalMap.setCenter(pos);
-				console.log(pos);
+        var pos2 = position.coords;           
+            var dm = getDistanceFromLatLonInKm(pos2.latitude, pos2.longitude, 59.313627, 18.110746);
+            var dm2 = getDistanceFromLatLonInKm(pos2.latitude, pos2.longitude, 59.314560, 18.112852);
+            var dm3 = getDistanceFromLatLonInKm(pos2.latitude, pos2.longitude, 59.314910, 18.115277);
+            var dm4 = getDistanceFromLatLonInKm(pos2.latitude, pos2.longitude, 59.313387, 18.116409);
+
+            var min = [dm, dm2, dm3, dm4];
+
+            Array.min = function( array ){
+                return Math.min.apply( Math, array );
+            };
+            var minimum = Array.min(min);
+            var i = min.indexOf(Math.min(...min));
+
+
+            console.log(min);
+            console.log(i);
+            console.log(minimum);
+
+  
+            let clueContainer = document.getElementById("clue");
+
+
+            if(pos2.accuracy >= minimum && i === 0) {
+              console.log("hello");
+              console.log();
+              google.maps.event.addListener(markerGlastonbury, 'click', function(){
+                clueContainer.style.display = "block";
+              });
+            } else if(pos2.accuracy >= minimum && i === 1) {
+              google.maps.event.addListener(markerKatrineholm, 'click', function(){
+                clueContainer.style.display = "block";
+              });
+            } else if(pos2.accuracy >= minimum && i === 2) {
+              google.maps.event.addListener(markerEskilstuna, 'click', function(){
+                clueContainer.style.display = "block";
+              });
+            } else if(pos2.accuracy >= minimum && i === 3) {
+              google.maps.event.addListener(markerUppsala, 'click', function(){
+                clueContainer.style.display = "block";
+              });
+            }
 			});
 		}
 
@@ -48,7 +89,10 @@ if (navigator.geolocation) {
 loadMapMarkers();
 
 }
-
+var markerPositionGlastonbury = new google.maps.LatLng(59.313627, 18.110746);
+var markerKatrineholm = new google.maps.LatLng(59.314560, 18.112852);
+var markerEskilstuna = new google.maps.LatLng(59.314910, 18.115277);
+var markerUppsala = new google.maps.LatLng(59.313387, 18.116409);
 
 
 //Function that loads the map markers.
@@ -58,7 +102,7 @@ function loadMapMarkers (){
 
 
 //Setting the position of the Glastonbury map marker.
-var markerPositionGlastonbury = new google.maps.LatLng(59.313627, 18.110746);
+
 
 
 //Creating the Glastonbury map marker.
@@ -71,7 +115,7 @@ markerGlastonbury = new google.maps.Marker({
       icon: 'pins/blue_MarkerB.png'
 });
 
-var markerKatrineholm = new google.maps.LatLng(59.314560, 18.112852);
+
 
 
 //Creating the Glastonbury map marker.
@@ -88,18 +132,6 @@ markerKatrineholm = new google.maps.Marker({
 
 // marker onclick
 
-let clueContainer = document.getElementById("clue");
-let button = document.getElementById("b");
-google.maps.event.addListener(markerKatrineholm, 'click', function(){
-	clueContainer.style.display = "block";
-});
-
-clueContainer.addEventListener('click', function() {
-	clueContainer.style.display = "none";
-});
-
-
-var markerEskilstuna = new google.maps.LatLng(59.314910, 18.115277);
 
 
 //Creating the Glastonbury map marker.
@@ -112,7 +144,7 @@ markerEskilstuna = new google.maps.Marker({
       icon: 'pins/green_MarkerD.png'
 });
 
-var markerUppsala = new google.maps.LatLng(59.313387, 18.116409);
+
 
 
 //Creating the Glastonbury map marker.
@@ -147,3 +179,21 @@ function showPosition(position) {
 });
 }
 getLocation();
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371000; // Radius of the earth in m
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in m
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
