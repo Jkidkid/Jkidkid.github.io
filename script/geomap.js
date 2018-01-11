@@ -58,7 +58,7 @@ function loadMapMarkers (){
 
 
 //Setting the position of the Glastonbury map marker.
-var markerPositionGlastonbury = new google.maps.LatLng(59.246070, 17.823122);
+var markerPositionGlastonbury = new google.maps.LatLng(59.313627, 18.110746);
 
 
 //Creating the Glastonbury map marker.
@@ -67,11 +67,11 @@ markerGlastonbury = new google.maps.Marker({
 	  position: markerPositionGlastonbury,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'Norsborg Getaway',
+      title: 'första ledtråd',
       icon: 'pins/blue_MarkerB.png'
 });
 
-var markerKatrineholm = new google.maps.LatLng(59.313384, 18.110068);
+var markerKatrineholm = new google.maps.LatLng(59.314560, 18.112852);
 
 
 //Creating the Glastonbury map marker.
@@ -80,7 +80,7 @@ markerKatrineholm = new google.maps.Marker({
 	  position: markerKatrineholm,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'Katrineholm Hellgate',
+      title: 'andra ledtråd',
       icon: 'pins/red_MarkerC.png',
 
 });
@@ -99,7 +99,7 @@ clueContainer.addEventListener('click', function() {
 });
 
 
-var markerEskilstuna = new google.maps.LatLng(59.371249, 16.509805);
+var markerEskilstuna = new google.maps.LatLng(59.314910, 18.115277);
 
 
 //Creating the Glastonbury map marker.
@@ -108,11 +108,11 @@ markerEskilstuna = new google.maps.Marker({
 	  position: markerEskilstuna,
 	  //adds the marker to the map.
       map: festivalMap,
-      title: 'E-tuna',
+      title: 'tredje ledtråden',
       icon: 'pins/green_MarkerD.png'
 });
 
-var markerUppsala = new google.maps.LatLng(59.858564, 17.638927);
+var markerUppsala = new google.maps.LatLng(59.313387, 18.116409);
 
 
 //Creating the Glastonbury map marker.
@@ -128,20 +128,16 @@ markerUppsala = new google.maps.Marker({
 
 
 
-function getLocationUpdate(){
-            if(navigator.geolocation){
-               // timeout at 60000 milliseconds (60 seconds)
-               var options = {timeout:10000};
-               geoLoc = navigator.geolocation;
-               watchID = geoLoc.watchPosition(showPosition, errorHandler, options);
-            }
-            
-            else{
-               alert("Sorry, browser does not support geolocation!");
-            }
-         }
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(callback) {
+            showPosition(callback)
+        }, function(error) {
+            console.log(error)
+        });
+    }
+}
 function showPosition(position) {
-    console.log("hej");
     markerPositionSELF = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
     markerSELF = new google.maps.Marker({
         position: markerPositionSELF,
@@ -150,18 +146,4 @@ function showPosition(position) {
         icon: 'pins/pink_MarkerA.png'
 });
 }
-
-function errorHandler(err) {
-            if(err.code == 1) {
-               alert("Error: Access is denied!");
-            }
-            
-            else if( err.code == 2) {
-               alert("Error: Position is unavailable!");
-            }
-         }
-
-
-setInterval(getLocationUpdate(), 10000); 
-
-
+getLocation();
