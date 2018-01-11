@@ -60,7 +60,7 @@ if (navigator.geolocation) {
 
   
             let clueContainer = document.getElementById("clue");
-
+            let button = document.getElementById("b");
 
             if(pos2.accuracy >= minimum && i === 0) {
               console.log("hello");
@@ -81,6 +81,9 @@ if (navigator.geolocation) {
                 clueContainer.style.display = "block";
               });
             }
+            button.addEventListener('click', function() {
+                clueContainer.style.display = "none";
+              });
 			});
 		}
 
