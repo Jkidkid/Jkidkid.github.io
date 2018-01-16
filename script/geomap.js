@@ -6,30 +6,37 @@ let clueMarkers = [
 	{ title: 'clue3', coords: { lat: 59.313387, lng: 18.116409 }, icon: 'pins/orange_MarkerE.png' }
 ];
 
-let clues = document.getElementById('clue'),
+let clues = document.getElementById('modal'),
     button = document.getElementById('b'),
 		watchId;
 
 function initMap() {
 		var options = {
+			enableHighAccuracy: true,
 			zoom: 16,
 			center: {lat: 59.334591, lng: 18.063240}
 		}
 		var map = new google.maps.Map(document.getElementById('map'), options);
+		let yourMarker = new google.maps.Marker(
+				{
+					title: 'You',
+					content: '<h2>YOU</<h2>'
+				});
 
     for(var i = 0, x = clueMarkers.length; i < x; i++) {
 			addMarker(clueMarkers[i]);
 		}
 		if (navigator.geolocation) {
-					watchId =	navigator.geolocation.watchPosition(function(position) {
-							var pos = {
-								lat: position.coords.latitude,
-								lng: position.coords.longitude
-						};
-						addMarker({coords: pos});
-						map.setCenter(pos);
-						});
+					watchId =	navigator.geolocation.watchPosition(showPosition);
 				}
+
+	function showPosition(position){
+			myLatLong = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+				yourMarker.setPosition(myLatLong);
+				map.setCenter(myLatLong);
+				yourMarker.setMap(map);
+	}
 
 	function addMarker (props) {
 			var marker = new google.maps.Marker({
@@ -39,20 +46,14 @@ function initMap() {
 			});
 			if(props.clickable){
 				google.maps.event.addListener(marker, 'click', function() {
-								clues.style.display = "block";
+								clues.style.display = "flex";
 						});
 				button.addEventListener('click', function() {
 										clues.style.display = "none";
 									});
-			}
-			var infoWindow = new google.maps.InfoWindow({
-				content: props.title,
-			});
-			marker.addListener('click', function(){
-				infoWindow.open(map, marker);
-			});
-
 		}
+	}
 }
 
-initMap();
+// count the distance between player and clueMarkers
+// distanceToNest = google.maps.geometry.spherical.computeDistanceBetween(myLatLong, nestLatLng);

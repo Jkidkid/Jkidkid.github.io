@@ -11,7 +11,7 @@ body {
 
 /*Adapt the following styling depending on where you want to put your map. If you want a 'full screen' map, then set the width and height to 100 percent and remove the margins.*/
 #map {
-  height: 100%;
+  height: 95%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -30,13 +30,36 @@ body {
   color: #ffffff;
   display: inline;
 }
-
-#clue {
+#modal{
+  display: none;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: purple;
   position: absolute;
   top: 0;
-  display: none;
-  opacity: 0.9;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#progbar {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, lime , yellow);
+}
+
+#clue {
+  display: flex;
+  width: 400px;
+  height: 400px;
+  background-color: purple;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#clue p {
+  text-align: center;
 }
