@@ -1,3 +1,60 @@
+// Array with markers
+let clueMarkers = [
+	{ title: 'crime scene', coords: { lat: 59.313627, lng: 18.110746 }, icon: 'pins/blue_MarkerB.png' },
+	{ title: 'clue1', coords: { lat: 59.314560, lng: 18.112852 }, icon: 'pins/red_MarkerC.png' },
+	{ title: 'clue2', coords: { lat: 59.314910, lng: 18.115277 }, icon: 'pins/green_MarkerD.png' },
+	{ title: 'clue3', coords: { lat: 59.313387, lng: 18.116409 }, icon: 'pins/orange_MarkerE.png' }
+];
+
+let map, infoWindow, watchId;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('game_map'), {
+    center: {lat: 59.313480, lng: 18.110645},
+    zoom: 16
+  });
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    watchId = navigator.geolocation.watchPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+
+
+
+initMap();
+
+for(let i = 0; i < 5; i++ ){
+	var dm[i] = i;
+
+}
+
+
+
+/*
+
+
 //Create the variables that will be used within the map configuration options.
 //The latitude and longitude of the center of the map.
 //The degree to which the map is zoomed in. This can range from 0 (least zoomed) to 21 and above (most zoomed).
@@ -123,6 +180,7 @@ markerUppsala = new google.maps.Marker({
       map: festivalMap,
       title: 'Uppsala wonderful',
       icon: 'pins/orange_MarkerE.png'
+			59.313387, 18.116409
 });
 }
 
@@ -130,7 +188,7 @@ markerUppsala = new google.maps.Marker({
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(callback) {
+        navigator.geolocation.watchPosition(function(callback) {
             showPosition(callback)
         }, function(error) {
             console.log(error)
@@ -147,3 +205,4 @@ function showPosition(position) {
 });
 }
 getLocation();
+*/
