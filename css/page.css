@@ -5,7 +5,7 @@ body{
 }
 header{
     height: 100vh;
-    background:url('../img/crimeScene.jpg');
+    background:url('../img/crimeScene.jpeg');
     background-size: cover;
 
 }
@@ -40,5 +40,5 @@ section{
 }
 
 table tr:nth-child(odd){
-    background-color: #2f8c45;
+    background-color: #1c5a1c;
 }
