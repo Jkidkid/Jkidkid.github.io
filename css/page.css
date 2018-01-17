@@ -5,7 +5,7 @@ body{
 }
 header{
     height: 100vh;
-    background:url('file:///C:/Users/e/Desktop/citrus2/Jkidkid.github.io/img/homepage.jpg');
+    background:url('../img/homepage.jpg');
     background-size: cover;
 
 }
