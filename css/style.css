@@ -31,7 +31,7 @@ body {
   display: inline;
 }
 #modal{
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -52,14 +52,28 @@ body {
 
 #clue {
   display: flex;
-  width: 400px;
-  height: 400px;
-  background-color: purple;
-  justify-content: center;
+  width: 95%;
+  height: 85%;
+  background-color: #ccff66;
   align-items: center;
   flex-direction: column;
 }
 
+#clue img {
+  height: 37%;
+  width: 90%;
+}
+#clue h2 {
+  margin: 0.4em 0;
+}
+
 #clue p {
+  height: 38%;
+  width: 88%;
   text-align: center;
+  overflow: scroll;
+  margin: 0.5em 0;
+}
+#b {
+  margin-bottom: 0.4em;
 }
