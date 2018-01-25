@@ -1,18 +1,46 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body{
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Lustria', serif;
 }
+
+h1, h2, h3, h4, h5, h6, tr{
+  font-family: 'Oswald', sans-serif;
+}
+
+h1{
+    font-size: 12em;
+    color: lime;
+    margin-top: 100px;
+}
+
+h2{
+  font-size: 5em;
+  margin: 0 0 20px 0;
+}
+
+h3{
+  color: white;
+  font-size: 2em;
+}
+
+p{
+  font-size: 1.1em;
+}
+a{
+  color: lime;
+}
+a:hover{
+  color: #00C851;
+  text-decoration: none;
+}
+tr {
+  font-size: 1.5em;
+}
+
 header{
     height: 100vh;
-    background:url('../img/homepage.jpg');
+    background:url('../img/crimeScene.jpeg');
     background-size: cover;
-
-}
-
-
-header h1{
-    font-size: 84px;
 }
 
 section{
@@ -41,4 +69,32 @@ section{
 
 table tr:nth-child(odd){
     background-color: #1c5a1c;
+}
+
+.footer{
+  height: 400px;
+
+}
+/* Font Awesome icons */
+.fa{
+  font-size: 50px;
+  margin: -1% 2%;
+}
+
+.register-form{
+  width: 50%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 993px) {
+    .img-fluid{
+      width: 80%;
+
+    }
+    h1{
+        font-size: 6em;
+        color: lime;
+        margin-top: 50px;
+    }
+
 }
