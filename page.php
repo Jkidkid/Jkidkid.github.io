@@ -1,3 +1,9 @@
+<?php
+require_once('classes/Login.php');
+
+$login = new Login();
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +20,7 @@
 
   </head>
   <body>
-      <!-- Citrus Games-->
+      <!-- -->
         <header class="container-fluid" id="home">
             <div class="row">
                 <div class="col-md-6 col-6">
@@ -23,7 +29,7 @@
                 <div class="col-md-6 col-6">
                     <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal" data-target="#exampleModal">Logga in</button>
                     <!-- modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div data-backdrop="static" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -33,17 +39,17 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form method="POST">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username">
+                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username" require>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                                        <input type="password" class="form-control" placeholder="Lösenord" name="password" require>
                                     </div>
-                                 </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-success" name="login">Logga in</button>
+                              <button type="submit" class="btn btn-success" name="login" data-dismiss="modal">Logga in</button>
+                              </form>
                             </div>
                           </div>
                         </div>
@@ -178,5 +184,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
+
+ 
   </body>
 </html>
