@@ -23,39 +23,26 @@ $login = new Login();
       <!-- -->
         <header class="container-fluid" id="home">
             <div class="row">
-                <div class="col-md-6 col-6">
+                <div class="col-md-6">
                     <img src="img/logo.png" alt="">
                 </div>
-                <div class="col-md-6 col-6">
-                    <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal"  data-target="#exampleModal">Logga in</button>
-                    <!-- modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Inloggning</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" class="needs-validation" novalidate>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Lösenord" name="password" required>
-                                    </div>
-                                    <div style="color: red;"><?php echo $login->error_msg; ?></div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-success" name="login">Logga in</button>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                <div class="col-md-6">
+                  <form method="POST">
+                  <div class="row pull-right">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Användarnamn" name="username">
+                      <div style="color: red;"><?php echo $login->error_msg; ?></div>
+                    </div>
+                    <div class="col">
+                      <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                    </div>
+                    <div class="col">
+                      <button type="submit" class="btn btn-success" name="login">Logga in</button>
+                    </div>
                 </div>
+                </form>
+                </div>
+              
             </div>
             <div class="row">
                 <div class="col-sm-12 text-center">

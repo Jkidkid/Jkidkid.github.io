@@ -18,7 +18,7 @@ class Login {
         $password = $_POST['password'];
         
         if(empty($username) || empty($password)){
-            $this->error_msg = "Du måste ange ett användarnamn och ett lösenord";
+            $this->error_msg = "Tomma fält";
         }else{
             // Skapa databas connection
             $this->db_connection = new mysqli("localhost", "root", "", "logi");
@@ -39,7 +39,7 @@ class Login {
                     // Log in the user here
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['uid'] = $row['uid'];
-                    header('Location: profile.php');
+                    header('Location: user.html');
                     exit();
                 }
             }
