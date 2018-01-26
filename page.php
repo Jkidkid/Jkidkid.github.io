@@ -1,3 +1,9 @@
+<?php
+require_once('classes/Login.php');
+
+$login = new Login();
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -33,17 +39,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Lösenord" name="password">
-                                    </div>
-                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-success" name="login">Logga in</button>
+                                
                             </div>
                           </div>
                         </div>
@@ -178,5 +174,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
+
+ 
   </body>
 </html>
