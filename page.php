@@ -23,6 +23,7 @@ $login = new Login();
       <!-- -->
         <header class="container-fluid" id="home">
             <div class="row">
+<<<<<<< HEAD
                 <div class="col-md-6">
                     <img src="img/logo.png" alt="">
                 </div>
@@ -43,6 +44,40 @@ $login = new Login();
                 </form>
                 </div>
               
+=======
+                <div class="col-md-6 col-6">
+                    <img src="img/logo.png" alt="">
+                </div>
+                <div class="col-md-6 col-6">
+                    <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal" data-target="#exampleModal">Logga in</button>
+                    <!-- modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Inloggning</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                                    </div>
+                                 </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-success" name="login">Logga in</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+>>>>>>> a0b1c968c3aa00bc03de68be2ff0a6c91b15f319
             </div>
             <div class="row">
                 <div class="col-sm-12 text-center">
@@ -172,7 +207,10 @@ $login = new Login();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
+<<<<<<< HEAD
 
  
+=======
+>>>>>>> a0b1c968c3aa00bc03de68be2ff0a6c91b15f319
   </body>
 </html>

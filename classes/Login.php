@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 class Login {
@@ -8,10 +9,21 @@ class Login {
     function __construct(){
         if(isset($_POST['login'])){
             $this->login();
+=======
+
+class Login {
+    private $db_connection = null;
+
+
+    function __construct(){
+        if(isset($_GET['login'])){
+            echo "hej";
+>>>>>>> a0b1c968c3aa00bc03de68be2ff0a6c91b15f319
         }
     }
 
     function login(){
+<<<<<<< HEAD
 
         // att göra: php-injektion möjlig atm
         $username = $_POST['username'];
@@ -44,6 +56,9 @@ class Login {
                 }
             }
         }
+=======
+        
+>>>>>>> a0b1c968c3aa00bc03de68be2ff0a6c91b15f319
     }
 }
 
