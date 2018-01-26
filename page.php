@@ -1,3 +1,9 @@
+<?php
+require_once('classes/Login.php');
+
+$login = new Login();
+
+?>
 
 <!DOCTYPE html>
 <html>
