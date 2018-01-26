@@ -27,7 +27,7 @@ $login = new Login();
                     <img src="img/logo.png" alt="">
                 </div>
                 <div class="col-md-6 col-6">
-                    <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal" data-target="#exampleModal">Logga in</button>
+                    <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal"  data-target="#exampleModal">Logga in</button>
                     <!-- modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -39,7 +39,18 @@ $login = new Login();
                               </button>
                             </div>
                             <div class="modal-body">
-                                
+                                <form method="POST" class="needs-validation" novalidate>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Användarnamn" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Lösenord" name="password" required>
+                                    </div>
+                                    <div style="color: red;"><?php echo $login->error_msg; ?></div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-success" name="login">Logga in</button>
+                              </form>
                             </div>
                           </div>
                         </div>
