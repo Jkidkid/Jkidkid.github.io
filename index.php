@@ -130,17 +130,17 @@ $login = new Login();
             <div class="row h-100 vertical-center">
               <div class="col-md-12 text-center">
                 <h2>Bli medlem!</h2>
-                <form class="register-form">
+                <form class="register-form" action="signup.php" method="POST">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Användarnamn">
+                    <input type="text" class="form-control" name="uid" placeholder="Användarnamn">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Lösenord">
+                    <input type="password" class="form-control" name="pwd" placeholder="Lösenord">
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
                   </div>
-                  <button type="submit" class="btn btn-success">Bli medlem!</button>
+                  <button type="submit" class="btn btn-success" name="submit">Bli medlem!</button>
                 </form>
               </div>
             </div>
@@ -185,6 +185,6 @@ $login = new Login();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
 
- 
+
   </body>
 </html>
