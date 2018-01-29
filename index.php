@@ -1,3 +1,12 @@
+<<<<<<< HEAD:page.html
+=======
+<?php
+require_once('classes/Login.php');
+
+$login = new Login();
+
+?>
+>>>>>>> login-backend:index.php
 
 <!DOCTYPE html>
 <html>
@@ -17,9 +26,10 @@
       <!-- Citrus Games-->
         <header class="container-fluid" id="home">
             <div class="row">
-                <div class="col-md-6 col-6">
+                <div class="col-md-6">
                     <img src="img/logo.png" alt="">
                 </div>
+<<<<<<< HEAD:page.html
                 <div class="col-md-6 col-6">
                     <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal" data-target="#exampleModal">Logga in</button>
                     <!-- modal -->
@@ -48,7 +58,25 @@
                           </div>
                         </div>
                       </div>
+=======
+                <div class="col-md-6">
+                  <form method="POST">
+                  <div class="row pull-right">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Användarnamn" name="username">
+                      <div style="color: red;"><?php echo $login->error_msg; ?></div>
+                    </div>
+                    <div class="col">
+                      <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                    </div>
+                    <div class="col">
+                      <button type="submit" class="btn btn-success" name="login">Logga in</button>
+                    </div>
+>>>>>>> login-backend:index.php
                 </div>
+                </form>
+                </div>
+
             </div>
             <div class="row">
                 <div class="col-sm-12 text-center">
@@ -178,5 +206,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
+
+
   </body>
 </html>
