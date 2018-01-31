@@ -1,3 +1,10 @@
+<?php
+require_once('classes/Login.php');
+
+$login = new Login();
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,33 +27,22 @@
                     <img src="img/logo.png" alt="">
                 </div>
                 <div class="col-md-6 col-6">
-                    <button type="button" class="btn btn-success float-right justify-content-xs-center" data-toggle="modal" data-target="#exampleModal">Logga in</button>
-                    <!-- modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Inloggning</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Användarnamn">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Lösenord">
-                                    </div>
-                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-success">Logga in</button>
-                            </div>
-                          </div>
-                        </div>
+                  
+                    <form method="POST">
+                    <div class="row pull-right">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Användarnamn" name="username">
+                        <div style="color: red;"><?php echo $login->error_msg; ?></div>
                       </div>
+                      <div class="col">
+                        <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                      </div>
+                      <div class="col">
+                        <button type="submit" class="btn btn-success" name="login">Logga in</button>
+                      </div>
+                  </div>
+                  </form>
+                   </div>
                 </div>
             </div>
             <div class="row">
@@ -123,17 +119,17 @@
             <div class="row h-100 vertical-center">
               <div class="col-md-12 text-center">
                 <h2>Bli medlem!</h2>
-                <form class="register-form">
+                <form class="register-form" action="signup.php" method="POST">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Användarnamn">
+                    <input type="text" class="form-control" name="uid" placeholder="Användarnamn">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Lösenord">
+                    <input type="password" class="form-control" name="pwd" placeholder="Lösenord">
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
                   </div>
-                  <button type="submit" class="btn btn-success">Bli medlem!</button>
+                  <button type="submit" class="btn btn-success" name="submit">Bli medlem!</button>
                 </form>
               </div>
             </div>
@@ -177,5 +173,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script/page.js"></script>
+
+
   </body>
 </html>
