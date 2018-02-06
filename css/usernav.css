@@ -6,6 +6,29 @@ a {
   text-decoration: none;
   color: black;
 }
+p {
+  margin: 3px;
+  width: auto;
+}
+
+.groupScore {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 80%;
+  background-color: lightgrey;
+  text-align: center;
+  padding: 10px;
+}
+.groupScore-list {
+  display: block;
+  font-size: 1em;
+}
+.groupScore-list p:nth-child(odd) {
+  background-color: white;
+}
+
+
 
 .nav {
   display: flex;
@@ -34,6 +57,9 @@ button:focus {
 
 
 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 90vh;
   background-color: grey;
 }
