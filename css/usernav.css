@@ -1,6 +1,10 @@
 body {
+  font-family: 'Lustria', serif;
   margin: 0;
   padding: 0;
+}
+h1, h2, h3, h4, h5, h6, tr{
+  font-family: 'Oswald', sans-serif;
 }
 a {
   text-decoration: none;
@@ -31,9 +35,40 @@ nav button {
 button:focus {
   border-bottom: 2px solid red;
 }
-
-
+.instructions p, li {
+  font-size: 1.2em;
+}
 .content {
   height: 90vh;
   background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.start{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.instructions{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grplist{
+  margin: 2% 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 2%;
+  border: 1px solid black;
+}
+.btn {
+  width: 100%;
+  border: 0;
+  background-color: green;
+  height: 15%;
+  align-self: flex-end;
 }
