@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: localhost
--- Tid vid skapande: 08 feb 2018 kl 10:20
+-- Tid vid skapande: 08 feb 2018 kl 10:33
 -- Serverversion: 10.1.28-MariaDB
 -- PHP-version: 7.1.11
 
