@@ -1,7 +1,7 @@
 <?php
-require_once('classes/CreateGroup.php');
+require_once('classes/InviteGroupMember.php');
 
-$group = new CreateGroup();
+$invite = new InviteGroupMember();
 ?>
 
 <!DOCTYPE html>
@@ -45,26 +45,17 @@ $group = new CreateGroup();
           <h4>Skicka gruppinbjudan</h4>
           
           <div id="search-container">
-            <form>
-              <input type="text" name="" id="search-input" placeholder="Sök spelare">
-              <button id="search-button">Sök</button>
-            </form>
+            <form method="POST">
+              <input type="text" name="search-word" id="search-input" placeholder="Sök spelare">
+              <button type="submit" id="search-button" value="hej" name="search">Sök</button>
+            
           </div>
           <div id="search-list">
           <table id="search-list-table">
-  <tr>
-    <td>Elin</td>
-    <td class="right-td"><button class="send-invite">Skicka</button></td>
-  </tr>
-  <tr>
-    <td>Simon</td>
-    <td class="right-td"><button class="send-invite">Skicka</button></td>
-  </tr>
-  <tr>
-    <td>Micke</td>
-    <td class="right-td"><button class="send-invite">Skicka</button></td>
-  </tr>
-</table>
+          <?php echo $invite->msg; ?>
+            <?php $invite->get_search_result(); ?>
+            </form>
+          </table>
           </div>
        </div>
        </div>

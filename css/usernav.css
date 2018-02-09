@@ -192,6 +192,7 @@ ul {
   background-color: #f5e7e7;
     display: flex;
     flex-grow: 1;
+    overflow-y: scroll;
 }
 
 form {

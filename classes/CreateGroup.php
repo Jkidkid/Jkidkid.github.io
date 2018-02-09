@@ -31,17 +31,28 @@ class CreateGroup{
     
          $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         
-         $sql = "SELECT * FROM groups WHERE userName = 'Elin'";
+         $sql = "SELECT * FROM group_members WHERE userName = 'Elin'";
          $result = $this->db_connection->query($sql);
 
          if($result->num_rows > 0){
             $this->msg = "<div style='color: red;'>Du kan bara vara med i en grupp åt gången</div>";
          }else {
-            $sql = "INSERT INTO groups (groupName, userName, userRank) VALUES ('".$group_name."', '".$logged_in_user_username."', 'Admin')";
+            $sql = "INSERT INTO groups (groupName) VALUES ('".$group_name."')";
             $result = $this->db_connection->query($sql);
-            echo $result;
+
+            
+   
          if($result){
-             $this->msg = "<div style='color: green;'>Din grupp har nu skapats</div>";
+             
+            $sql = "SELECT * FROM groups WHERE groupName = '".$group_name."'";
+            $result = $this->db_connection->query($sql);
+            $row = $result->fetch_assoc();
+
+            $group_id = $row['groupID'];
+
+            $sql = "INSERT INTO group_members (userName, userRank, groupID) VALUES ('Elin', 'Admin', '".$group_id."')";
+            $result = $this->db_connection->query($sql);
+            $this->msg = "<div style='color: green;'>Din grupp har nu skapats</div>";
          }else{
             $this->msg = "<div style='color: red;'>Något gick fel Försök igen.</div>";
          }
