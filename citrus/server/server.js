@@ -1,21 +1,57 @@
-const http = require('http');
-const express = require('express');
-const app = express();
-const clientPath = `${__dirname}/../client`;
-
-
-console.log(`Serving static from ${clientPath}`);
-
-app.use(express.static(clientPath));
-
-const server = http.createServer(app);
+var express = require("express");
+var mysql   = require("mysql");
+var bodyParser  = require("body-parser");
+var md5 = require('MD5');
+var rest = require("./REST.js");
+var cors = require('cors');
+var app  = express();
 
 
 
-server.on('error', (err) => {
-  console.error('Server error:', err);
-});
+function REST(){
+    var self = this;
+    self.connectMysql();
+};
 
-server.listen(8080, () => {
-  console.log('RPS started on port 8080');
-});
+REST.prototype.connectMysql = function() {
+    var self = this;
+    var pool      =    mysql.createPool({
+        connectionLimit : 100,
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'citrus',
+        debug    :  false
+    });
+    pool.getConnection(function(err,connection){
+        if(err) {
+          self.stop(err);
+        } else {
+          self.configureExpress(connection);
+        }
+    });
+}
+
+REST.prototype.configureExpress = function(connection) {
+      var self = this;
+      app.use(bodyParser.urlencoded({ extended: true }));
+      app.use(bodyParser.json());
+      var router = express.Router();
+      app.use("/api", router);
+      var rest_router = new rest(router,connection,md5);
+      app.use(cors());
+      self.startServer();
+}
+
+REST.prototype.startServer = function() {
+      app.listen(3000,function(){
+          console.log("Server started on port 3000...");
+      });
+}
+
+REST.prototype.stop = function(err) {
+    console.log("ISSUE WITH MYSQL n" + err);
+    process.exit(1);
+}
+
+new REST();
