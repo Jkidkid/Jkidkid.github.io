@@ -108,3 +108,111 @@ input{
   padding-left: 7px;
   border: 1px solid grey;
 }
+
+/* css för my-groups.php */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px; 
+}
+
+/* css för group.php */
+
+#group-info{
+  background-color:#e46b6b;
+  width: 100%;
+  display: flex;
+  height: 40vh;
+  margin-bottom: 2px;
+  overflow: hidden;
+  flex-direction: column;
+  box-sizing: border-box;
+    padding: 9px;
+}
+
+#search-users-container{
+  background-color:white;
+  width: 100%;
+  display: flex;
+  height: 40vh;
+  flex-direction: column;
+  margin-top: 2px;
+  box-sizing: border-box;
+    padding: 9px;
+}
+
+#holder-group{
+  width: 89%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#group-table{
+  width: 100%;
+}
+
+.right-td{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#search-container{
+  display: flex;
+  justify-content: center;
+}
+
+#search-input{
+  padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    border-radius: 4px;
+    width: 82%;
+    border: 1px solid #7f6f6f;
+}
+
+#search-button{
+  background-color: #d84141;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#search-list{
+  background-color: #f5e7e7;
+    display: flex;
+    flex-grow: 1;
+}
+
+form {
+  width: 100%;
+}
+
+h4{
+  margin: 0;
+  align-self: center;
+}
+
+#search-list-table{
+  width: 100%;
+}
+
+#search-list-table tr:nth-child(odd){
+  background-color: #eae0e0;
+}
+
+.send-invite{
+  background-color: #35c835;
+    border-radius: 4px;
+    border: 1px solid #279027;
+}

@@ -7,23 +7,50 @@ class CreateGroup{
     public $username = array();
     public $user_id = array();
     public $checked_users = array();
-    public $error_msg;
+    public $msg; // error och success msg
 
     function __construct(){
-        if(isset($_POST['search'])){
-            $this->search();
-        }
-        else if(isset($_POST['create-group'])){
-            $this->save_checked_users();
-            if(empty($_POST['group-name'])){
-                $this->error_msg = "Du måste ge gruppen ett namn";
-            }
+        if(isset($_POST['create-group'])){
+            $this->create_group();
         }
     }
 
     // Denna funktion ska bort sen när vi kopplat in riktiga users i scriptet
-    function getUserId(){
-        return 5;
+    function get_username(){
+        return "Elin";
+    }
+
+    function create_group(){
+        $group_name = $_POST['group-name'];
+
+        $logged_in_user_username = $this->get_username();
+
+        if(empty($group_name)){
+            $this->msg = "<div style='color: red;'>Du måste ge gruppen ett namn</div>";
+        }else{
+    
+         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        
+         $sql = "SELECT * FROM groups WHERE userName = 'Elin'";
+         $result = $this->db_connection->query($sql);
+
+         if($result->num_rows > 0){
+            $this->msg = "<div style='color: red;'>Du kan bara vara med i en grupp åt gången</div>";
+         }else {
+            $sql = "INSERT INTO groups (groupName, userName, userRank) VALUES ('".$group_name."', '".$logged_in_user_username."', 'Admin')";
+            $result = $this->db_connection->query($sql);
+            echo $result;
+         if($result){
+             $this->msg = "<div style='color: green;'>Din grupp har nu skapats</div>";
+         }else{
+            $this->msg = "<div style='color: red;'>Något gick fel Försök igen.</div>";
+         }
+        
+        }
+         }   
+
+         
+
     }
 
     function search(){
@@ -31,14 +58,13 @@ class CreateGroup{
         $search_string = $_POST['player-search'];
 
         
-         // Skapa databas connection
-         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        
 
          $sql = "SELECT * FROM user WHERE uid LIKE '%$search_string%'";
          $result = $this->db_connection->query($sql);
 
          if($result->num_rows <= 0){
-            $this->error_msg = "Ingen användare hittades";
+            $this->msg = "Ingen användare hittades";
         } else {
 
             // loopa egenom alla matchade resultat i DBn
@@ -60,19 +86,6 @@ class CreateGroup{
             echo '<tr><td>'.$this->username[$i].'</td><td><input type="checkbox" name="player[]" value="'.$this->user_id[$i].'"></td></tr>';
         }
     }
-
-    function save_checked_users(){
-
-        if(empty($_POST['player'])){
-            $this->error_msg = "Du måste bjuda in minst 1 användare till gruppen";
-        }else{
-            foreach($_POST['player'] as $player_id) {
-                array_push($this->checked_users, $player_id);
-            }
-        }
-        
-    }
-    
 }
 
 
