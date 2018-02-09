@@ -18,31 +18,18 @@ $group = new CreateGroup();
   <div>
     <div class="content">
         <nav class="upper-nav">
+          <button><i class="fas fa-users"></i>Mina grupper</button>  
             <button><i class="fas fa-user icon"></i>Gå med i grupp</button>
             <button><i class="fas fa-users"></i>Skapa grupp</button>    
           </nav>
       <div id="content-container">
         <div id="holder">
-        <div id="search-container">
           <form method="POST">
-          <input type="text" placeholder="Sök spelare" id="input-search" name="player-search">
-          <button type="submit" id="search-button" name="search">Sök</button>
+            <input type="text" placeholder="Gruppnamn" id="group-name-input" name="group-name">
+            <div><?php echo $group->error_msg; ?></div>
+            <button type="submit" id="create-group-button" name="create-group">Skapa grupp</button>
+          </form>
         </div>
-
-        <div id="search-result-container">
-         
-            <table>
-              <?php $group->get_search_result(); ?>
-              </table>
-        </div>
-        
-        <input type="text" placeholder="Gruppnamn" id="group-name-input" name="group-name">
-        
-        
-        <div><?php echo $group->error_msg; ?></div>
-        <button type="submit" id="create-group-button" name="create-group">Skapa grupp</button>
-        </form>
-      </div>
       </div>
     </div>
 

@@ -81,7 +81,7 @@ button:focus {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+
 
 }
 
@@ -93,39 +93,6 @@ button:focus {
     border: 1px solid grey;
     background-color: #d526d5;
     color: white;
-}
-
-#input-search{
-  width: 76%;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 7px;
-    border: 1px solid grey;
-}
-
-#search-button{
-  width: 21%;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    border-radius: 4px;
-    border: 1px solid grey;
-    background-color: #d526d5;
-    color: white;
-}
-
-#search-result-container{
-  background-color: #e1dcdc;
-  height: 68%;
-  width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: flex;
-  flex-grow: 1;
-}
-
-
-#search-result-container table{
-  width: 100%;
 }
 
 input{
@@ -140,9 +107,4 @@ input{
   padding-bottom: 7px;
   padding-left: 7px;
   border: 1px solid grey;
-}
-
-#search-container{
-  display: flex;
-  flex-wrap: nowrap;
 }
