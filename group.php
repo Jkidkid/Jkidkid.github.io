@@ -1,7 +1,9 @@
 <?php
 require_once('classes/InviteGroupMember.php');
+require_once('classes/GroupInformation.php');
 
 $invite = new InviteGroupMember();
+$group = new GroupInformation();
 ?>
 
 <!DOCTYPE html>
@@ -25,21 +27,10 @@ $invite = new InviteGroupMember();
       <div id="content-container">
         <div id="holder-group">
        <div id="group-info">
-         <h4>Citrus</h4>
-       <table id="group-table">
-  <tr>
-    <td>Elin</td>
-    <td class="right-td">Admin</td>
-  </tr>
-  <tr>
-    <td>Simon</td>
-    <td class="right-td">medlem</td>
-  </tr>
-  <tr>
-    <td>Micke</td>
-    <td class="right-td">inväntar svar</td>
-  </tr>
-</table>
+         <h4><?php echo $group->group_name; ?></h4>
+        <table id="group-table">
+          <?php $group->output_group_information(); ?>
+        </table>
        </div>
        <div id="search-users-container">
           <h4>Skicka gruppinbjudan</h4>
@@ -52,7 +43,7 @@ $invite = new InviteGroupMember();
           </div>
           <div id="search-list">
           <table id="search-list-table">
-          <?php echo $invite->msg; ?>
+            <?php echo $invite->msg; ?>
             <?php $invite->get_search_result(); ?>
             </form>
           </table>

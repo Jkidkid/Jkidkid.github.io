@@ -55,6 +55,8 @@ class InviteGroupMember{
         $username = $_POST['username'];
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
+        $this->db_connection->set_charset("utf8");
+
         $sql = "SELECT * FROM group_members WHERE userName = '".$username."'";
          $result = $this->db_connection->query($sql);
 
@@ -62,7 +64,7 @@ class InviteGroupMember{
             $this->msg = "<tr><td style='color:red;'>".$username." är tyvärr redan med i en grupp</td></tr>";
          }else {
 
-        $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES (6, '".$username."', 'inväntar svar')";
+        $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES (7, '".$username."', 'inväntar svar')";
         $result = $this->db_connection->query($sql);
 
         if($result){

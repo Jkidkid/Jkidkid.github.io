@@ -130,6 +130,7 @@ ul {
   flex-direction: column;
   box-sizing: border-box;
     padding: 9px;
+    overflow-y:scroll;
 }
 
 #search-users-container{
