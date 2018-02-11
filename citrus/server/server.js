@@ -6,8 +6,6 @@ var rest = require("./REST.js");
 var cors = require('cors');
 var app  = express();
 
-
-
 function REST(){
     var self = this;
     self.connectMysql();

@@ -71,7 +71,7 @@ body {
   height: 38%;
   width: 88%;
   text-align: center;
-  overflow: scroll;
+  overflow-y: scroll;
   margin: 0.5em 0;
 }
 #b {
