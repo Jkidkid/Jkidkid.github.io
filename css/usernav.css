@@ -11,6 +11,31 @@ a {
   color: black;
 }
 
+
+.groupScore {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 80%;
+  background-color: lightgrey;
+  text-align: center;
+  padding: 10px;
+}
+.groupScore-list {
+  display: block;
+  font-size: 1em;
+}
+.groupScore-list p {
+  margin: 3px;
+  width: auto;
+}
+
+.groupScore-list p:nth-child(odd) {
+  background-color: white;
+}
+
+
+
 .nav {
   display: flex;
   width: 100%;
@@ -39,6 +64,9 @@ button:focus {
   font-size: 1.2em;
 }
 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 90vh;
   background-color: grey;
   display: flex;
