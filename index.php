@@ -1,5 +1,5 @@
 <?php
-require_once('classes/Login.php');
+require_once('php/classes/Login.php');
 
 $login = new Login();
 
@@ -13,7 +13,7 @@ $login = new Login();
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="media/css/page.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
 
@@ -24,10 +24,10 @@ $login = new Login();
         <header class="container-fluid" id="home">
             <div class="row">
                 <div class="col-md-6 col-6">
-                    <img src="img/logo.png" alt="">
+                    <img src="media/img/logo.png" alt="">
                 </div>
                 <div class="col-md-6 col-6">
-                  
+
                     <form method="POST">
                     <div class="row pull-right">
                       <div class="col">
@@ -70,7 +70,7 @@ $login = new Login();
                     </div>
                     <div class="img col-md-12 col-lg-6 align-middle">
                       <figure>
-                        <img src="img/img-placeholder.gif" class="img-fluid" alt="-">
+                        <img src="media/img/img-placeholder.gif" class="img-fluid" alt="-">
                       </figure>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ $login = new Login();
             <div class="row h-100 vertical-center">
               <div class="col-md-12 text-center">
                 <h2>Bli medlem!</h2>
-                <form class="register-form" action="signup.php" method="POST">
+                <form class="register-form" action="php/signup.php" method="POST">
                   <div class="form-group">
                     <input type="text" class="form-control" name="uid" placeholder="Användarnamn">
                   </div>
@@ -172,7 +172,7 @@ $login = new Login();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script/page.js"></script>
+    <script src="src/page.js"></script>
 
 
   </body>

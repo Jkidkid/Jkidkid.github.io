@@ -18,14 +18,14 @@ $start = new Start();
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <link rel="stylesheet" href="css/usernav.css">
+  <link rel="stylesheet" href="../media/css/userpage.css">
 </head>
 <body>
   <div>
     <div class="content">
       <div class="profile" id="profile">
         <div class="profile-imgbox">
-          <img src="img/profiltest.jpg" alt="">
+          <img src="../media/img/profiltest.jpg" alt="">
         </div>
         <h2><%= UserName %></h2>
         <h2><%= 9001 %> p</h2>
@@ -57,15 +57,15 @@ $start = new Start();
       </div>
       <div id="group">
         <nav class="upper-nav">
-              <button><i class="fas fa-users"></i>Mina grupper</button>  
+              <button><i class="fas fa-users"></i>Mina grupper</button>
               <button><i class="fas fa-user icon"></i>Inbjudningar</button>
-              <button onclick="showdivv('create-group')"><i class="fas fa-users"></i>Skapa grupp</button>    
+              <button onclick="showdivv('create-group')"><i class="fas fa-users"></i>Skapa grupp</button>
         </nav>
         <div>
         <div class="content-container" id="content-container">
-          
+
           <div id="holder-group">
-            
+
          <div id="group-info">
               <h4><?php echo $group->group_name; ?></h4>
               <table id="group-table">
@@ -92,7 +92,7 @@ $start = new Start();
                 </form>
               </table>
             </div>
-            
+
           </div>
         </div>
 
@@ -116,7 +116,7 @@ $start = new Start();
       <button onclick="showdiv('start')"><i class="fas fa-play"></i>Start</button>
     </nav>
   </div>
-  <script src="script/tabs.js">
+  <script src="../src/tabs.js">
 
   </script>
 </body>
