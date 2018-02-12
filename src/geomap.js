@@ -7,9 +7,9 @@ let clueMarkers = [
 	{
     id: '0',
     clue_lat: 59.313627, clue_lng: 18.110746,
-    icon: 'pins/blue_MarkerB.png',
+    icon: '../media/img/pins/blue_MarkerB.png',
     header: 'Mordplats',
-    imgSrc: 'karlsson.png',
+    imgSrc: '../media/img/karlsson.png',
     info: 'Ett mord har skett i Nacka',
     clickable: false, open: false
   }
@@ -68,7 +68,7 @@ function initMap(myPos) {
 	map = new google.maps.Map(document.getElementById('map'), options);
 	yourMarker = new google.maps.Marker(
 		{
-			title: player[0].uid,
+			title: player.uid,
 			content: 'player',
       map: map,
       position: options.center

@@ -26,7 +26,7 @@ class GroupInformation{
 
         $sql = "SELECT * FROM group_members WHERE groupID = 8 ORDER BY userName ASC";
         $result = $this->db_connection->query($sql);
-        
+
         while($row = $result->fetch_assoc()){
             $username = $row['userName'];
             $user_rank = $row['userRank']; //user rank/status
@@ -37,15 +37,15 @@ class GroupInformation{
     }
 
     function output_group_information(){
-        
+
         $size = sizeof($this->usernames);
 
         for($i = 0; $i<$size; $i++){
-            
+
             echo '<tr><td>'.$this->usernames[$i].'</td><td class="right-td">'.$this->user_ranks[$i].'</td></tr>';
         }
 
-        
+
     }
 
 

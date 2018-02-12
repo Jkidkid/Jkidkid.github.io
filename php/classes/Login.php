@@ -37,7 +37,7 @@ class Login {
                     // Log in the user here
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['uid'] = $row['uid'];
-                    header('Location: userpage.php');
+                    header('Location: php/userpage.php');
                     exit();
                 }
             }

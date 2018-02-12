@@ -9,6 +9,6 @@ class Start{
     }
 
     function start(){
-        header("Location: map.html?userID=5");
+        header("Location: ../src/map.html?userID=5");
     }
 }
