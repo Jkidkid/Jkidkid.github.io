@@ -70,7 +70,7 @@ button:focus {
   background-color: grey;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
+
   align-items: center;
 }
 .profile-imgbox{
@@ -126,16 +126,26 @@ button:focus {
   background-color: green;
   height: 15%;
   align-self: flex-end;
-=======
 }
 
-#content-container{
+.content-container, .create-group{
   height: 80vh;
   width: 100%;
   background-color:darkgrey;
   align-self: flex-end;
   display: flex;
   justify-content: center;
+}
+
+#group{
+  display: none;
+  height: 100%;
+  width: 100%;
+  
+}
+
+#create-group{
+  display: none;
 }
 
 .upper-nav{
@@ -184,7 +194,7 @@ button:focus {
 
 input{
   border-radius: 4px;
-  
+
 }
 
 #group-name-input{
@@ -202,7 +212,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  padding-top: 10px; 
+  padding-top: 10px;
 }
 
 /* css för group.php */
@@ -304,5 +314,4 @@ h4{
   background-color: #35c835;
     border-radius: 4px;
     border: 1px solid #279027;
->>>>>>> skapa-grupp
 }

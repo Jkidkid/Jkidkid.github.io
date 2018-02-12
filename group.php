@@ -19,19 +19,20 @@ $group = new GroupInformation();
 <body>
   <div>
     <div class="content">
+      <div>
         <nav class="upper-nav">
           <button><i class="fas fa-users"></i>Mina grupper</button>  
             <button><i class="fas fa-user icon"></i>Inbjudningar</button>
             <button><i class="fas fa-users"></i>Skapa grupp</button>    
           </nav>
-      <div id="content-container">
+        <div id="content-container">
         <div id="holder-group">
-       <div id="group-info">
-         <h4><?php echo $group->group_name; ?></h4>
-        <table id="group-table">
-          <?php $group->output_group_information(); ?>
-        </table>
-       </div>
+          <div id="group-info">
+            <h4><?php echo $group->group_name; ?></h4>
+            <table id="group-table">
+              <?php $group->output_group_information(); ?>
+            </table>
+          </div>
        <div id="search-users-container">
           <h4>Skicka gruppinbjudan</h4>
           
@@ -50,6 +51,7 @@ $group = new GroupInformation();
           </div>
        </div>
        </div>
+        </div>
       </div>
     </div>
 
