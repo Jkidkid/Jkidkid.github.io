@@ -13,7 +13,7 @@ a {
 
 
 .groupScore {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 60%;
   height: 80%;
@@ -64,9 +64,6 @@ button:focus {
   font-size: 1.2em;
 }
 .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 90vh;
   background-color: grey;
   display: flex;
@@ -86,7 +83,7 @@ button:focus {
 .profile{
   width: 85%;
   height: 85%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -100,7 +97,7 @@ button:focus {
   flex-direction: column;
 }
 .start{
-  display: flex;
+  display: none;
   width: 100%;
   height: 100%;
   align-items: center;
