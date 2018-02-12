@@ -6,10 +6,7 @@ a {
   text-decoration: none;
   color: black;
 }
-p {
-  margin: 3px;
-  width: auto;
-}
+
 
 .groupScore {
   display: flex;
@@ -24,6 +21,11 @@ p {
   display: block;
   font-size: 1em;
 }
+.groupScore-list p {
+  margin: 3px;
+  width: auto;
+}
+
 .groupScore-list p:nth-child(odd) {
   background-color: white;
 }
