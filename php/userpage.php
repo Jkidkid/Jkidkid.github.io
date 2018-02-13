@@ -67,58 +67,50 @@ $start = new Start();
       </div>
       <div id="group">
         <nav class="upper-nav">
-              <button><i class="fas fa-users"></i>Mina grupper</button>
-              <button><i class="fas fa-user icon"></i>Inbjudningar</button>
-              <button onclick="showdivv('create-group')"><i class="fas fa-users"></i>Skapa grupp</button>
+          <button><i class="fas fa-users"></i>Mina grupper</button>
+          <button><i class="fas fa-user icon"></i>Inbjudningar</button>
+          <button onclick="showdivv('create-group')"><i class="fas fa-users"></i>Skapa grupp</button>
         </nav>
-        <div>
-        <div class="content-container" id="content-container">
-
-          <div id="holder-group">
-
-         <div id="group-info">
-              <h4><?php echo $group->group_name; ?></h4>
-              <table id="group-table">
-                <?php $group->output_group_information(); ?>
-              </table>
-          </div>
-
-            <div id="search-users-container">
-              <h4>Skicka gruppinbjudan</h4>
-              <div id="search-container">
+        <div class="group-content">
+          <div class="content-container" id="content-container">
+            <div id="holder-group">
+              <div id="group-info">
+                <h4><?php echo $group->group_name; ?></h4>
+                <table id="group-table">
+                  <?php $group->output_group_information(); ?>
+                </table>
+              </div>
+              <div id="search-users-container">
+                <h4>Skicka gruppinbjudan</h4>
+                <div id="search-container">
                 <form method="POST">
                   <input type="text" name="search-word" id="search-input" placeholder="Sök spelare">
                   <button type="submit" id="search-button" value="hej" name="search">Sök</button>
                 </form>
               </div>
-          </div>
-
-
-            <div id="search-list">
-              <table id="search-list-table">
-                <form method="POST">
-                  <?php echo $invite->msg; ?>
-                  <?php $invite->get_search_result(); ?>
-                </form>
-              </table>
+              </div>
+              <div id="search-list">
+                <table id="search-list-table">
+                  <form method="POST">
+                    <?php echo $invite->msg; ?>
+                    <?php $invite->get_search_result(); ?>
+                  </form>
+                </table>
+              </div>
             </div>
-
+          </div>
+          <div id="create-group">
+            <div id="holder">
+              <form method="POST">
+                <input type="text" placeholder="Gruppnamn" id="group-name-input" name="group-name">
+                <div><?php echo $group->msg; ?></div>
+                <button type="submit" id="create-group-button" name="create-group">Skapa grupp</button>
+              </form>
+            </div>
           </div>
         </div>
-
-        <div id="create-group">
-        <div id="holder">
-          <form method="POST">
-            <input type="text" placeholder="Gruppnamn" id="group-name-input" name="group-name">
-            <div><?php echo $group->msg; ?></div>
-            <button type="submit" id="create-group-button" name="create-group">Skapa grupp</button>
-          </form>
-        </div>
       </div>
-</div>
-
-      </div>
-</div>
+    </div>
     <nav class="nav">
       <button onclick="showdiv('profile')" href="/profile"><i class="fas fa-user icon"></i>Profil</button>
       <button onclick="showdiv('group')"><i class="fas fa-users"></i>Grupper</button>
@@ -127,7 +119,6 @@ $start = new Start();
     </nav>
   </div>
   <script src="../src/tabs.js">
-
   </script>
 </body>
 </html>
