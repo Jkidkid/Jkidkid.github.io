@@ -21,7 +21,7 @@ $group = new GroupInformation();
     <div class="content f-dir">
         <nav class="upper-nav">
             <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
-            <button><i class="fas fa-user icon"></i>Inbjudningar</button>
+            <button onclick="window.location.href = 'invite.php'"><i class="fas fa-user icon"></i>Inbjudningar</button>
             <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
       <div id="content-container">
