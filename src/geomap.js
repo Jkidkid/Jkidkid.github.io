@@ -55,6 +55,23 @@ function getClues () {
   });
 }
 
+// test function for updating db
+function update(id) {
+	fetch(`http://localhost:3000/api/updateEmail/${id}`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
 // Start the game
 function startMap () {
     var myPos = navigator.geolocation.getCurrentPosition(initMap);

@@ -38,6 +38,20 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
   });
 
 
+  // Test function to update db post
+  router.get("/updateEmail/:id",function(req,res){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+        var query = `UPDATE user SET email = "micke@example.se" WHERE id = ${req.params.id}`;
+        var table = ["uid", "user","id",req.params.id];
+        query = mysql.format(query,table);
+        connection.query(query,function(err,rows){
+          if(err) {
+            res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+        } else {
+            res.json(rows);
+        }
+    });
+  });
 
 
 }
