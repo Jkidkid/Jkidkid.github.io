@@ -24,11 +24,21 @@ $group = new GroupInformation();
             <button><i class="fas fa-user icon"></i>Inbjudningar</button>
             <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
-      <div class="invites">
-        <h2>Inbjudningar</h2>
-      </div>
+        <div class="wrapp">
+          <div class="invites">
+            <h2>Inbjudningar</h2>
+            <form class="Iform">
+              <div class="row2">
+                <p>TEAM CITRUS</p>
+              </div>
+              <div class="row">
+                <button class="firstp">Accept</button>
+                <button>DECLINE</button>
+              </div>
+            </form>
+          </div>
+        </div>
     </div>
-
       <nav class="nav">
         <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
         <button><i class="fas fa-users"></i>Grupper</button>
