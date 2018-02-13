@@ -72,6 +72,16 @@ button:focus {
   justify-content: center;
   align-items: center;
 }
+
+.content-create-group {
+  height: 90vh;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .profile-imgbox{
   width: 250px;
   height: 250px;
@@ -135,6 +145,7 @@ button:focus {
   display: flex;
   justify-content: center;
 }
+
 
 
 #group{

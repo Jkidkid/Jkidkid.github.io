@@ -64,7 +64,8 @@ class InviteGroupMember{
             $this->msg = "<tr><td style='color:red;'>".$username." är tyvärr redan med i en grupp</td></tr>";
          }else {
 
-        $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES (8, '".$username."', 'inväntar svar')";
+        $group_id = $_GET['groupID'];
+        $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES ('".$group_id."', '".$username."', 'inväntar svar')";
         $result = $this->db_connection->query($sql);
 
         if($result){

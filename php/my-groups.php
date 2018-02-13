@@ -2,8 +2,10 @@
 session_start();
 require_once('classes/InviteGroupMember.php');
 require_once('classes/GroupInformation.php');
+require_once('classes/MyGroups.php');
 $invite = new InviteGroupMember();
 $group = new GroupInformation();
+$mygroups = new MyGroups();
 ?>
 
 <!DOCTYPE html>
@@ -20,36 +22,16 @@ $group = new GroupInformation();
   <div>
     <div class="content f-dir">
         <nav class="upper-nav">
-            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
-            <button><i class="fas fa-user icon"></i>Inbjudningar</button>
-            <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
+          <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
+          <button><i class="fas fa-user icon"></i>Inbjudningar</button>
+          <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
       <div id="content-container">
-        <div id="holder-group">
-       <div id="group-info">
-         <h4><?php echo $group->group_name; ?></h4>
-        <table id="group-table">
-          <?php $group->output_group_information(); ?>
-        </table>
-       </div>
-       <div id="search-users-container">
-          <h4>Skicka gruppinbjudan</h4>
+        <div>
+          <h3>mina grupper</h3>
 
-          <div id="search-container">
-            <form method="POST">
-              <input type="text" name="search-word" id="search-input" placeholder="Sök spelare">
-              <button type="submit" id="search-button" value="hej" name="search">Sök</button>
-
-          </div>
-          <div id="search-list">
-          <table id="search-list-table">
-            <?php echo $invite->msg; ?>
-            <?php $invite->get_search_result(); ?>
-            </form>
-          </table>
-          </div>
-       </div>
-       </div>
+          <?php $mygroups->my_groups(); echo $mygroups->msg; ?>
+        </div>
       </div>
     </div>
 

@@ -15,15 +15,10 @@ class CreateGroup{
         }
     }
 
-    // Denna funktion ska bort sen när vi kopplat in riktiga users i scriptet
-    function get_username(){
-        return "Elin";
-    }
-
     function create_group(){
         $group_name = $_POST['group-name'];
 
-        $logged_in_user_username = $this->get_username();
+        $logged_in_user_username = $_SESSION['uid'];
 
         if(empty($group_name)){
             $this->msg = "<div style='color: red;'>Du måste ge gruppen ett namn</div>";
@@ -31,7 +26,7 @@ class CreateGroup{
 
          $this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
-         $sql = "SELECT * FROM group_members WHERE userName = 'Elin'";
+         $sql = "SELECT * FROM group_members WHERE userName = '".$logged_in_user_username."'";
          $result = $this->db_connection->query($sql);
 
          if($result->num_rows > 0){
@@ -64,39 +59,6 @@ class CreateGroup{
 
     }
 
-    function search(){
-
-        $search_string = $_POST['player-search'];
-
-
-
-
-         $sql = "SELECT * FROM user WHERE uid LIKE '%$search_string%'";
-         $result = $this->db_connection->query($sql);
-
-         if($result->num_rows <= 0){
-            $this->msg = "Ingen användare hittades";
-        } else {
-
-            // loopa egenom alla matchade resultat i DBn
-            while($row = $result->fetch_assoc()) {
-                $username = $row['uid'];
-                $user_id = $row['id'];
-
-                array_push($this->username, $username);
-                array_push($this->user_id, $user_id);
-              }
-        }
-
-    }
-
-    function get_search_result(){
-        $size = sizeof($this->username);
-
-        for($i = 0; $i<$size; $i++){
-            echo '<tr><td>'.$this->username[$i].'</td><td><input type="checkbox" name="player[]" value="'.$this->user_id[$i].'"></td></tr>';
-        }
-    }
 }
 
 

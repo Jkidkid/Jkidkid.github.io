@@ -16,16 +16,15 @@ class GroupInformation{
 
     function get_group_information(){
 
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
-        $sql = "SELECT * FROM groups WHERE groupID = 8";
-        $result = $this->db_connection->query($sql);
-        $this->db_connection->query("SET NAMES utf8;");
-        $row = $result->fetch_assoc();
+       
+        if(isset($_GET['groupID'])){
+            $group_id = $_GET['groupID'];
+            
+            $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+            $this->db_connection->set_charset("utf8");
 
-        $this->group_name = $row['groupName'];
-
-        $sql = "SELECT * FROM group_members WHERE groupID = 8 ORDER BY userName ASC";
-        $result = $this->db_connection->query($sql);
+            $sql = "SELECT * FROM group_members WHERE groupID = '".$group_id."' ORDER BY userName ASC";
+            $result = $this->db_connection->query($sql);
 
         while($row = $result->fetch_assoc()){
             $username = $row['userName'];
@@ -33,7 +32,7 @@ class GroupInformation{
             array_push($this->usernames, $username);
             array_push($this->user_ranks, $user_rank);
         }
-
+        }
     }
 
     function output_group_information(){

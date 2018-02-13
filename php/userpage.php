@@ -114,7 +114,7 @@ $start = new Start();
     </div>
     <nav class="nav">
       <button onclick="showdiv('profile')" href="/profile"><i class="fas fa-user icon"></i>Profil</button>
-      <button onclick="window.location.href = 'group.php'"><i class="fas fa-users"></i>Grupper</button>
+      <button onclick="window.location.href = 'my-goups.php'"><i class="fas fa-users"></i>Grupper</button>
       <button onclick="showdiv('groupScore')"><i class="fas fa-trophy"></i>Topplista</button>
       <button onclick="showdiv('start')"><i class="fas fa-play"></i>Start</button>
     </nav>
