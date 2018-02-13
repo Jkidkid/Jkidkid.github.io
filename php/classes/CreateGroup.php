@@ -28,9 +28,9 @@ class CreateGroup{
         if(empty($group_name)){
             $this->msg = "<div style='color: red;'>Du måste ge gruppen ett namn</div>";
         }else{
-    
+
          $this->db_connection = new mysqli("localhost", "root", "", "citrus");
-        
+
          $sql = "SELECT * FROM group_members WHERE userName = 'Elin'";
          $result = $this->db_connection->query($sql);
 
@@ -40,27 +40,27 @@ class CreateGroup{
             $sql = "INSERT INTO groups (groupName) VALUES ('".$group_name."')";
             $result = $this->db_connection->query($sql);
 
-            
-   
+
+
          if($result){
-             
+
             $sql = "SELECT * FROM groups WHERE groupName = '".$group_name."'";
             $result = $this->db_connection->query($sql);
             $row = $result->fetch_assoc();
 
             $group_id = $row['groupID'];
-
-            $sql = "INSERT INTO group_members (userName, userRank, groupID) VALUES ('Elin', 'Admin', '".$group_id."')";
+            $username_of_logged_in_user = $_SESSION['uid'];
+            $sql = "INSERT INTO group_members (userName, userRank, groupID) VALUES ('".$username_of_logged_in_user."', 'Admin', '".$group_id."')";
             $result = $this->db_connection->query($sql);
             $this->msg = "<div style='color: green;'>Din grupp har nu skapats</div>";
          }else{
             $this->msg = "<div style='color: red;'>Något gick fel Försök igen.</div>";
          }
-        
-        }
-         }   
 
-         
+        }
+         }
+
+
 
     }
 
@@ -68,8 +68,8 @@ class CreateGroup{
 
         $search_string = $_POST['player-search'];
 
-        
-        
+
+
 
          $sql = "SELECT * FROM user WHERE uid LIKE '%$search_string%'";
          $result = $this->db_connection->query($sql);
@@ -79,13 +79,13 @@ class CreateGroup{
         } else {
 
             // loopa egenom alla matchade resultat i DBn
-            while($row = $result->fetch_assoc()) { 
+            while($row = $result->fetch_assoc()) {
                 $username = $row['uid'];
                 $user_id = $row['id'];
 
                 array_push($this->username, $username);
                 array_push($this->user_id, $user_id);
-              } 
+              }
         }
 
     }

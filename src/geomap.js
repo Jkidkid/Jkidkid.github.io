@@ -70,7 +70,7 @@ function initMap(myPos) {
 	map = new google.maps.Map(document.getElementById('map'), options);
 	yourMarker = new google.maps.Marker(
 		{
-			title: player[0].uid,
+			title: 'player',
 			content: 'player',
       map: map,
       position: options.center

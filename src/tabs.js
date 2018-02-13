@@ -10,8 +10,4 @@ function showdiv(id) {
     start.style.display = "none";
     groupScore.style.display = "none";
     document.getElementById(id).style.display = 'flex';
-
-
-
-
 }
