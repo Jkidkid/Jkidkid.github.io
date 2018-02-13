@@ -23,15 +23,20 @@ class GroupInformation{
             $this->db_connection = new mysqli("localhost", "root", "", "citrus");
             $this->db_connection->set_charset("utf8");
 
+            $sql2 = "SELECT * FROM groups WHERE groupID = '".$group_id."'";
+            $result2 = $this->db_connection->query($sql2);
+            $row2 = $result2->fetch_assoc();
+            $this->group_name = $row2['groupName'];
+
             $sql = "SELECT * FROM group_members WHERE groupID = '".$group_id."' ORDER BY userName ASC";
             $result = $this->db_connection->query($sql);
 
-        while($row = $result->fetch_assoc()){
-            $username = $row['userName'];
-            $user_rank = $row['userRank']; //user rank/status
-            array_push($this->usernames, $username);
-            array_push($this->user_ranks, $user_rank);
-        }
+            while($row = $result->fetch_assoc()){
+                $username = $row['userName'];
+                $user_rank = $row['userRank']; //user rank/status
+                array_push($this->usernames, $username);
+                array_push($this->user_ranks, $user_rank);
+            }
         }
     }
 
