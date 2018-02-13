@@ -16,9 +16,11 @@ let clueMarkers = [
 ];
 
 // Fetch player user-id when game starts
-window.onload = function() {
-  getPlayer(6);
-};
+  window.onload = function(){
+    let params = (new URL(location)).searchParams;
+    let val = params.get('userID');
+    getPlayer(val);
+}
 
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
@@ -68,7 +70,7 @@ function initMap(myPos) {
 	map = new google.maps.Map(document.getElementById('map'), options);
 	yourMarker = new google.maps.Marker(
 		{
-			title: player.uid,
+			title: player[0].uid,
 			content: 'player',
       map: map,
       position: options.center
