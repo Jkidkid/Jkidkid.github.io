@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('classes/InviteGroupMember.php');
 require_once('classes/GroupInformation.php');
 require_once('classes/Start.php');
@@ -113,12 +114,22 @@ $start = new Start();
     </div>
     <nav class="nav">
       <button onclick="showdiv('profile')" href="/profile"><i class="fas fa-user icon"></i>Profil</button>
-      <button onclick="showdiv('group')"><i class="fas fa-users"></i>Grupper</button>
+      <button onclick="window.location.href = 'group.php'"><i class="fas fa-users"></i>Grupper</button>
       <button onclick="showdiv('groupScore')"><i class="fas fa-trophy"></i>Topplista</button>
       <button onclick="showdiv('start')"><i class="fas fa-play"></i>Start</button>
     </nav>
   </div>
-  <script src="../src/tabs.js">
+  <script src="../src/tabs.js"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    let params = (new URL(location)).searchParams;
+    let val = params.get('page');
+    if(val === null){
+      showdiv('profile');
+    } else {
+      showdiv(val);
+    }
+  }
   </script>
 </body>
 </html>

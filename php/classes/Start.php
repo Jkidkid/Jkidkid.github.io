@@ -1,5 +1,4 @@
 <?php
-
 class Start{
 
     function __construct(){
@@ -9,6 +8,7 @@ class Start{
     }
 
     function start(){
-        header("Location: ../src/map.html?userID=5");
+        $logged_in_user_id = $_SESSION['id'];
+        header("Location: ../src/map.html?userID=".$logged_in_user_id);
     }
 }
