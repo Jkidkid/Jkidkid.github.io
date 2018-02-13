@@ -11,7 +11,6 @@ a {
   color: black;
 }
 
-
 .groupScore {
   display: none;
   flex-direction: column;
@@ -346,4 +345,45 @@ h4{
   background-color: #35c835;
     border-radius: 4px;
     border: 1px solid #279027;
+}
+.wrapp{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invites {
+  width: 85%;
+  height: 80%;
+  background-color: #36363a;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.Iform{
+  height: auto;
+  width: 80%;
+}
+.row, .row2{
+  height: 35px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.row2{
+  border-bottom: 1px solid lightgrey;
+}
+button{
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  text-align: center;
+  border: 0;
+}
+.firstp {
+  border-right: 1px solid lightgrey;
 }
