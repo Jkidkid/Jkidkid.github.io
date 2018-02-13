@@ -20,7 +20,7 @@ $group = new GroupInformation();
   <div>
     <div class="content f-dir">
         <nav class="upper-nav">
-            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
+            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
             <button><i class="fas fa-user icon"></i>Inbjudningar</button>
             <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
@@ -39,7 +39,7 @@ $group = new GroupInformation();
             <form method="POST">
               <input type="text" name="search-word" id="search-input" placeholder="Sök spelare">
               <button type="submit" id="search-button" value="hej" name="search">Sök</button>
-
+            
           </div>
           <div id="search-list">
           <table id="search-list-table">

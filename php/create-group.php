@@ -18,7 +18,7 @@ $group = new CreateGroup();
   <div>
     <div class="content-create-group">
         <nav class="upper-nav">
-            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
+            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
             <button><i class="fas fa-user icon"></i>Inbjudningar</button>
             <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
@@ -34,12 +34,10 @@ $group = new CreateGroup();
     </div>
 
       <nav class="nav">
-        <button><i class="fas fa-user icon"></i>Profil</button>
+        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
         <button><i class="fas fa-users"></i>Grupper</button>
-        <button><i class="fas fa-trophy"></i>Topplista</button>
-        <button><i class="fas fa-play"></i>Start</button>
-
-
+        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=groupScore'"><i class="fas fa-trophy"></i>Topplista</button>
+        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=start'"><i class="fas fa-play"></i>Start</button>
       </nav>
 
   </div>

@@ -1,9 +1,7 @@
 <?php
 session_start();
-require_once('classes/InviteGroupMember.php');
-require_once('classes/GroupInformation.php');
-$invite = new InviteGroupMember();
-$group = new GroupInformation();
+require_once('classes/ManageInvites.php');
+$invite = new ManageInvites();
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +25,7 @@ $group = new GroupInformation();
         <div class="wrapp">
           <div class="invites">
             <h2>Inbjudningar</h2>
-            <form class="Iform">
-              <div class="row2">
-                <p>TEAM CITRUS</p>
-              </div>
-              <div class="row">
-                <button class="firstp">Accept</button>
-                <button>DECLINE</button>
-              </div>
-            </form>
+            <?php $invite->invites(); ?>
           </div>
         </div>
     </div>
