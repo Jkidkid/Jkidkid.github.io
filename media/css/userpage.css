@@ -10,7 +10,12 @@ a {
   text-decoration: none;
   color: black;
 }
-
+.invite {
+  width: 85%;
+  height: 80%;
+  background-color: #36363a;
+  display: flex;
+}
 
 .groupScore {
   display: none;
