@@ -11,50 +11,95 @@ a {
   color: black;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: green;
+}
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 6px;
+  text-align: left;
+}
 
 .groupScore {
-  display: none;
-  flex-direction: column;
-  width: 60%;
-  height: 80%;
-  background-color: lightgrey;
+  width: 100%;
+  height: 100%;
   text-align: center;
-  padding: 10px;
 }
 .groupScore-list {
   display: block;
   font-size: 1em;
-}
-.groupScore-list p {
-  margin: 3px;
-  width: auto;
+  padding: 20px;
 }
 
 .groupScore-list p:nth-child(odd) {
-  background-color: white;
+  background-color: #28a745;
+}
+.score-content{
+  height: 90%;
+  width: 100%;
+  justify-content: center;
+  color: white;
+}
+.score-player, .score-group {
+  width: 85%;
+  height: 80%;
+  background-color: #36363a;
+  flex-direction: column;
+}
+.score-player, .groupScore {
+  display: none;
+}
+
+.score-group {
+  display: flex;
+}
+
+.score-player h1 {
+  color: white;
+}
+
+.groupScore-list,
+.score-content,
+.nav,
+nav button,
+.profile-imgbox,
+.content,
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.groupScore-list,
+.groupScore,
+nav button,
+.profile-imgbox {
+  flex-direction: column;
 }
 
 
-
 .nav {
-  display: flex;
   width: 100%;
   height: 10%;
   background-color: grey;
   justify-content: space-between;
-  align-items: center;
   position: fixed;
-
 }
+
 nav button {
   height: 100%;
   width: 24.7%;
   border: 0;
   font-size: 1em;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   box-sizing: border-box;
   background-color: white
 }
@@ -68,29 +113,26 @@ button:focus {
 .content {
   height: 90vh;
   background-color: grey;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
+
 .profile-imgbox{
   width: 250px;
   height: 250px;
   border: 2px solid black;
-  background-color: white;
+  background-color: #36363a;
   border-radius: 2%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
+
 .profile{
   width: 85%;
   height: 85%;
-  display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: #Bf6EE0;
+  background-color: #36363a;
+  color: white;
 }
+
 .profile-imgbox img{
   width: 100%;
   height: 100%;
@@ -104,6 +146,7 @@ button:focus {
   height: 100%;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
 }
 .instructions{
   width: 85%;
@@ -115,15 +158,20 @@ button:focus {
 .grplist{
   margin: 2% 0;
   width: 100%;
+  min-height: 100px;
   background-color: white;
   border-radius: 2%;
   border: 1px solid black;
+}
+.startbtn{
+  width: 100%;
+  height: 10%;
 }
 .btn {
   width: 100%;
   border: 0;
   background-color: green;
-  height: 15%;
+  height: 100%;
   align-self: flex-end;
 }
 
@@ -226,6 +274,8 @@ ul {
   margin: 0;
   padding: 0;
   padding-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 /* css för group.php */
@@ -239,8 +289,8 @@ ul {
   overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-    padding: 9px;
-    overflow-y:scroll;
+  padding: 9px;
+  overflow-y:scroll;
 }
 
 #search-users-container{

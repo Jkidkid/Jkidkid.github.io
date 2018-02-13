@@ -52,17 +52,68 @@ $start = new Start();
             </ul>
           </div>
         </div>
-        <form method="POST">
+        <form method="POST" class="startbtn">
           <button class="btn" type="submit" name="start">START</button>
         </form>
       </div>
       <div class="groupScore" id="groupScore">
-        <h1>Topplista Grupp</h1>
-        <div class="groupScore-list">
-          <p>1. Team Citrus 600p</p>
-          <p>2. Team Citrus 500p</p>
-          <p>3. Team Citrus 400p</p>
-          <p>4. Team Citrus 300p</p>
+        <nav class="upper-nav">
+          <button onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
+          <button onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
+        </nav>
+        <div class="score-content">
+          <div class="score-group" id="score-group">
+            <h1>Topplista lag</h1>
+            <div class="groupScore-list">
+              <table>
+                <thead>
+                <tr>
+                  <th>Placering</th>
+                  <th>Team</th>
+                  <th>Poäng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Team Citrus</td>
+                  <td>500</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Team Grape</td>
+                  <td>200</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="score-player" id="score-player">
+            <h1>Topplista spelare</h1>
+            <div class="groupScore-list">
+              <table>
+                <thead>
+                <tr>
+                  <th>Placering</th>
+                  <th>Spelare</th>
+                  <th>Poäng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Nisse</td>
+                  <td>500</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Karl Johan</td>
+                  <td>200</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
       <div id="group">
