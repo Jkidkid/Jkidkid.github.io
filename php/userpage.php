@@ -33,9 +33,19 @@ $start = new Start();
       <div class="start" id="start">
         <div class="instructions">
           <h2>INSTRUKTIONER</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
+             får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
+             börjar en timer att ticka ner. Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
+             tickat ner till 0 har bevisen förstörts och går ej att ta del av. För att kunna öppna en ledtråd krävs det att en spelare
+             befinner sig inom 20 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
+             befinna sig i närheten.
+             Med hjälp av ledtrådarna ska ni samla in information för att kunna avgöra vem som är mördaren och vilket vapen som har använts.
+             Lagets admin är den enda som kan ange mördare och vapen, och varje lag har 2 chansningar på sig.
+             Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över.
+             Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt på första försöket ger det 100p och andra
+             försöket ger 50p.
+             Leaderboarden kan ni följa i eran spelarlobby och uppdateras frekvent. Lycka till.
+           </p>
           <div class="grplist">
             <ul>
               <li>Du har ingen grupp</li>
