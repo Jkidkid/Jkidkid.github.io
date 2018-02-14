@@ -57,7 +57,9 @@ function getClues () {
 
 // test function for updating db
 function update(id) {
-	fetch(`http://localhost:3000/api/updateEmail/${id}`).then(function(res) {
+	fetch(`http://localhost:3000/api/updateEmail/${id}`, {
+    method: 'PUT'
+  }).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
 				console.log(data);
@@ -69,8 +71,6 @@ function update(id) {
 	   console.log("Fetch failed!", e);
 	});
 }
-
-
 
 // Start the game
 function startMap () {
