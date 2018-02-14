@@ -1,5 +1,8 @@
 var clues = document.getElementById('modal'),
     button = document.getElementById('modal-close-btn'),
+    header = document.getElementById('clue-header'), // modal header text
+	  img = document.getElementById('cluePic'), // clue picture
+	  info = document.getElementById('clueInfo'), // clue info
     myLatLong, distanceBetween, watchId, yourMarker, map, player;
 
 // Crimeplace and startpoint for the team
@@ -14,6 +17,8 @@ let clueMarkers = [
     clickable: false, open: false
   }
 ];
+
+let cluesAvailable = [];
 
 // Fetch player user-id when game starts
   window.onload = function(){
@@ -55,9 +60,27 @@ function getClues () {
   });
 }
 
+function availableClues() {
+  fetch("http://localhost:3000/api/availableClues").then(function(res) {
+    if (res.ok) {
+      res.json().then(function(data) {
+        cluesAvailable = [];
+        data.forEach( (clue) => {
+          cluesAvailable.push(clue.id);
+        });
+          console.log(cluesAvailable);
+      });
+  } else {
+      console.log("Looks like the response wasn't perfect, got status", res.status);
+    }
+  }, function(e) {
+       console.log("Fetch failed!", e);
+  });
+}
+
 // test function for updating db
-function update(id) {
-	fetch(`http://localhost:3000/api/updateEmail/${id}`, {
+function updateClueClickable(id) {
+	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
     method: 'PUT'
   }).then(function(res) {
 		if (res.ok) {
@@ -124,6 +147,9 @@ function initMap(myPos) {
 				if(modalClickable){
 					writeClue(clueMarkers[marker.title]);
 				  clues.style.display = "flex";
+            if(parseInt(marker.title) != 0){
+              updateClueClickable(parseInt(marker.title));
+          }
 				}
       });
   			button.addEventListener('click', function() {
@@ -150,10 +176,26 @@ function initMap(myPos) {
 	}
 	//write out the clues to the modal
 	function writeClue(props){
-	  let header = document.getElementById('clue-header'),
-	  		img = document.getElementById('cluePic'),
-	   		info = document.getElementById('clueInfo');
-	    		header.innerHTML = props.header;
-	    		img.src = props.imgSrc;
-	    		info.innerHTML = props.info;
+	  header.innerHTML = props.header;
+	  img.src = props.imgSrc;
+	  info.innerHTML = props.info;
   };
+
+  let clickClues = cluesAvailable.sort(),
+      count = 0;
+
+
+  function nextClue(arrow){
+    clues.style.display = "flex";
+    clueNumber = clickClues[count];
+
+    if(arrow == 'right'){
+      count++;
+    } else if(arrow == 'left') {
+      count--;
+    }
+    console.log(clueNumber);
+    header.innerHTML = clueMarkers[clueNumber].header;
+    img.src = clueMarkers[clueNumber].imgSrc;
+    info.innerHTML = clueMarkers[clueNumber].info;
+  }

@@ -13,12 +13,15 @@
     <div id="map"></div>
     <div id="modal">
       <div id="clue">
+        <button onclick="nextClue('right')">next clue</button>
         <h2 id="clue-header"></h2>
         <img src="" id="cluePic"></img>
         <p id="clueInfo"></p>
         <button type="button" id="modal-close-btn">Stäng</button>
       </div>
     </div>
+    <button onclick="nextClue()">clues</button>
+
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">
