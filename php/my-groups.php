@@ -36,10 +36,10 @@ $mygroups = new MyGroups();
     </div>
 
       <nav class="nav">
-        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
+        <button onclick="window.location.href = 'userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
         <button><i class="fas fa-users"></i>Grupper</button>
-        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=groupScore'"><i class="fas fa-trophy"></i>Topplista</button>
-        <button onclick="window.location.href = 'http://10.7.2.27/citrus/jkidkid.github.io/php/userpage.php?page=start'"><i class="fas fa-play"></i>Start</button>
+        <button onclick="window.location.href = 'userpage.php?page=groupScore'"><i class="fas fa-trophy"></i>Topplista</button>
+        <button onclick="window.location.href = 'userpage.php?page=start'"><i class="fas fa-play"></i>Start</button>
       </nav>
 
   </div>
