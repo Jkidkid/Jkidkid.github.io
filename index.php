@@ -46,7 +46,7 @@ $login = new Login();
         <div class="container-fluid home" id="home">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h1>Clue| Hunter</h1>
+                    <h1>Clue|Hunter</h1>
                     <h3>Gör som tusentals andra människor, joina oss gratis! <a href="#reg">Bli medlem</a></h3>
                 </div>
             </div>
