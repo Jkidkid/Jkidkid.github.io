@@ -8,7 +8,7 @@ $login = new Login();
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Citrus Games</title>
+    <title>Clue | Hunter</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -21,42 +21,41 @@ $login = new Login();
   </head>
   <body>
       <!-- -->
-        <header class="container-fluid" id="home">
-            <div class="row">
-                <div class="col-md-6 col-6">
-                    <img src="media/img/logo.png" alt="">
-                </div>
-                <div class="col-md-6 col-6">
-
-                    <form method="POST">
-                    <div class="row pull-right">
-                      <div class="col">
+        <header class="light-bg container-fluid navlog">
+          <div class="row navs">
+              <div class="col-md-6 col-sm-12" id="logocenter">
+                  <img src="media/img/logo.png" alt="">
+              </div>
+              <div class="col-md-6 col-sm-12">
+                  <form method="POST" class="hojd">
+                    <div>
+                      <div class="input-group mb-3 formmid">
                         <input type="text" class="form-control" placeholder="Användarnamn" name="username">
-                        <div style="color: red;"><?php echo $login->error_msg; ?></div>
-                      </div>
-                      <div class="col">
                         <input type="password" class="form-control" placeholder="Lösenord" name="password">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-success" name="login">Logga in</button>
+                        </div>
                       </div>
-                      <div class="col">
-                        <button type="submit" class="btn btn-success" name="login">Logga in</button>
-                      </div>
-                  </div>
-                  </form>
-                   </div>
-                </div>
+                      <div style="color: red;"><?php echo $login->error_msg; ?></div>
+                    </div>
+                </form>
+              </div>
             </div>
+          </div>
+        </header>
+        <div class="container-fluid home" id="home">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h1>Citrus Games</h1>
+                    <h1>Clue| Hunter</h1>
                     <h3>Gör som tusentals andra människor, joina oss gratis! <a href="#reg">Bli medlem</a></h3>
                 </div>
             </div>
-        </header>
+        </div>
         <section class="container-fluid text-white dark-bg">
             <div class="container h-100 flex-wrap">
                 <div class="row align-middle vertical-center h-100">
                     <div class="content col-md-12 col-lg-6">
-                        <h2>Clue|Hunter</h2>
+                        <h2>Om</h2>
                         <p>
                           ClueHunter är det nya revolutionerande geolocation-gamet. Bered dig på att uppslukas av hårresande mordgåtor
                           i en närmiljö. I detta spel är det du och ditt utredarteam som samlar in ledtrådar för att få tag på mördaren och hans mordvapen.
