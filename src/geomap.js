@@ -18,14 +18,25 @@ let clueMarkers = [
   }
 ];
 
+// Stores all available clues when a team-member have clicked a clue
 let cluesAvailable = [];
 
+// call availableClues function to fetch available clues every ten seconds
+let clueInterval = setInterval(()=> {
+  availableClues();
+}, 10000);
 // Fetch player user-id when game starts
   window.onload = function(){
     let params = (new URL(location)).searchParams;
     let val = params.get('userID');
     getPlayer(val);
 }
+
+function stopClue(){
+  clearInterval(clueInterval);
+}
+
+
 
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
@@ -184,11 +195,11 @@ function initMap(myPos) {
   // tracking the amount of available clues
   let clueCount = 0;
 
-  
+  // print out the available clues in the modal
   function nextClue(arrow){
     clueLength = (cluesAvailable.length - 1);
     clues.style.display = "flex";
-    console.log(clueLength);
+
     if(arrow == 'left'){
       if(clueCount == 0){
         clueCount = clueLength;
