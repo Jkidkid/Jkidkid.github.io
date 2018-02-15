@@ -1,5 +1,8 @@
 var clues = document.getElementById('modal'),
     button = document.getElementById('modal-close-btn'),
+    header = document.getElementById('clue-header'), // modal header text
+	  img = document.getElementById('cluePic'), // clue picture
+	  info = document.getElementById('clueInfo'), // clue info
     myLatLong, distanceBetween, watchId, yourMarker, map, player;
 
 // Crimeplace and startpoint for the team
@@ -15,12 +18,25 @@ let clueMarkers = [
   }
 ];
 
+// Stores all available clues when a team-member have clicked a clue
+let cluesAvailable = [];
+
+// call availableClues function to fetch available clues every ten seconds
+let clueInterval = setInterval(()=> {
+  availableClues();
+}, 10000);
 // Fetch player user-id when game starts
   window.onload = function(){
     let params = (new URL(location)).searchParams;
     let val = params.get('userID');
     getPlayer(val);
 }
+
+function stopClue(){
+  clearInterval(clueInterval);
+}
+
+
 
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
@@ -55,9 +71,29 @@ function getClues () {
   });
 }
 
+function availableClues() {
+  fetch("http://localhost:3000/api/availableClues").then(function(res) {
+    if (res.ok) {
+      res.json().then(function(data) {
+        cluesAvailable = [];
+        data.forEach( (clue) => {
+          cluesAvailable.push(clue.id);
+        });
+          console.log(cluesAvailable);
+      });
+  } else {
+      console.log("Looks like the response wasn't perfect, got status", res.status);
+    }
+  }, function(e) {
+       console.log("Fetch failed!", e);
+  });
+}
+
 // test function for updating db
-function update(id) {
-	fetch(`http://localhost:3000/api/updateEmail/${id}`).then(function(res) {
+function updateClueClickable(id) {
+	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
+    method: 'PUT'
+  }).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
 				console.log(data);
@@ -69,8 +105,6 @@ function update(id) {
 	   console.log("Fetch failed!", e);
 	});
 }
-
-
 
 // Start the game
 function startMap () {
@@ -124,6 +158,9 @@ function initMap(myPos) {
 				if(modalClickable){
 					writeClue(clueMarkers[marker.title]);
 				  clues.style.display = "flex";
+            if(parseInt(marker.title) != 0){
+              updateClueClickable(parseInt(marker.title));
+          }
 				}
       });
   			button.addEventListener('click', function() {
@@ -150,10 +187,35 @@ function initMap(myPos) {
 	}
 	//write out the clues to the modal
 	function writeClue(props){
-	  let header = document.getElementById('clue-header'),
-	  		img = document.getElementById('cluePic'),
-	   		info = document.getElementById('clueInfo');
-	    		header.innerHTML = props.header;
-	    		img.src = props.imgSrc;
-	    		info.innerHTML = props.info;
+	  header.innerHTML = props.header;
+	  img.src = props.imgSrc;
+	  info.innerHTML = props.info;
   };
+
+  // tracking the amount of available clues
+  let clueCount = 0;
+
+  // print out the available clues in the modal
+  function nextClue(arrow){
+    clueLength = (cluesAvailable.length - 1);
+    clues.style.display = "flex";
+
+    if(arrow == 'left'){
+      if(clueCount == 0){
+        clueCount = clueLength;
+    } else{
+        clueCount--;
+      }
+  } else if(arrow == 'right'){
+      if(clueCount == clueLength){
+        clueCount = 0;
+    } else {
+        clueCount++;
+       }
+    }
+    clueNumber = cluesAvailable[clueCount];
+    numb = parseInt(clueNumber);
+    header.innerHTML = clueMarkers[numb].header;
+    img.src = clueMarkers[numb].imgSrc;
+    info.innerHTML = clueMarkers[numb].info;
+  }
