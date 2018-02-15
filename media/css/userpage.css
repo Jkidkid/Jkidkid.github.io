@@ -101,12 +101,18 @@ nav button {
   font-size: 1em;
   justify-content: center;
   box-sizing: border-box;
-  background-color: white
+  background-color: #36363a;
+  color: #ccc;
 }
 
 button:focus {
   border-bottom: 2px solid red;
 }
+
+.fa-user, .fa-users, .fa-trophy, .fa-play {
+  color: lime;
+}
+
 .instructions p, li {
   font-size: 1.2em;
 }

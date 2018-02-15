@@ -12,6 +12,7 @@ $login = new Login();
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="media/img/citrusgames_icon.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="media/css/page.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -24,7 +25,7 @@ $login = new Login();
         <header class="light-bg container-fluid navlog">
           <div class="row navs">
               <div class="col-md-6 col-sm-12" id="logocenter">
-                  <img src="media/img/logo.png" alt="">
+                  <img src="media/img/citrusgames_icon.png" alt="citrus games logo">
               </div>
               <div class="col-md-6 col-sm-12">
                   <form method="POST" class="hojd">

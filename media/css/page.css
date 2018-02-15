@@ -56,6 +56,10 @@ tr {
   width: auto;
   margin: 1% 0;
 }
+#logocenter img {
+  height: 50px;
+  width: auto;
+}
 .formmid{
   height: 100%;
   display: flex;
@@ -150,7 +154,7 @@ table tr:nth-child(odd){
     width: 80%;
   }
   h1{
-    font-size: 6em;
+    font-size: 5em;
     color: lime;
     margin-top: 50px;
   }
