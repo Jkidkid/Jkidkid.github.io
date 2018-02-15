@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
 }
-h1, h2, h3, h4, h5, h6, tr{
+h1, h2, h3, h4, h5, h6, tr, .btn{
   font-family: 'Oswald', sans-serif;
 }
 a {
@@ -36,7 +36,7 @@ td, th {
 }
 .groupScore-list {
   display: block;
-  font-size: 1em;
+  font-size: 1.4em;
   padding: 20px;
 }
 
@@ -141,7 +141,7 @@ button:focus {
 
 .profile{
   width: 85%;
-  height: 85%;
+  height: 80%;
   justify-content: center;
   flex-direction: column;
   background-color: #36363a;
@@ -165,17 +165,20 @@ button:focus {
 }
 .instructions{
   width: 85%;
+  color: white;
+  margin: 5% 0;
+  padding: 5%;
+  background-color: #36363a;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 .grplist{
   margin: 2% 0;
   width: 100%;
-  min-height: 100px;
-  background-color: white;
-  border-radius: 2%;
+  background-color: #232327;
   border: 1px solid black;
 }
 .startbtn{
@@ -185,9 +188,14 @@ button:focus {
 .btn {
   width: 100%;
   border: 0;
+  color: white;
   background-color: green;
   height: 100%;
   align-self: flex-end;
+  font-size: 2em;
+  letter-spacing: 0.7em;
+  text-align: center;
+  text-indent: 0.7em;
 }
 
 #content-container, .create-group{
@@ -290,7 +298,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  padding-top: 10px;
+  padding: 1% 0;
   display: flex;
   justify-content: center;
 }

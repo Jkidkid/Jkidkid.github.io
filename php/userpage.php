@@ -25,24 +25,25 @@ $start = new Start();
   <div>
     <div class="content">
       <div class="profile" id="profile">
+        <h1>Profil</h1>
         <div class="profile-imgbox">
-          <img src="../media/img/profiltest.jpg" alt="">
+          <img src="../media/img/userAvatar.png" alt="user avatar">
         </div>
         <h2><%= UserName %></h2>
         <h2><%= 9001 %> p</h2>
       </div>
       <div class="start" id="start">
         <div class="instructions">
-          <h2>INSTRUKTIONER</h2>
+          <h1>INSTRUKTIONER</h1>
           <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
              får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
-             börjar en timer att ticka ner. Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
+             börjar en timer att ticka ner. <br><br>Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
              tickat ner till 0 har bevisen förstörts och går ej att ta del av. För att kunna öppna en ledtråd krävs det att en spelare
              befinner sig inom 20 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
-             befinna sig i närheten.
+             befinna sig i närheten.<br /><br />
              Med hjälp av ledtrådarna ska ni samla in information för att kunna avgöra vem som är mördaren och vilket vapen som har använts.
              Lagets admin är den enda som kan ange mördare och vapen, och varje lag har 2 chansningar på sig.
-             Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över.
+             Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över. <br /><br />
              Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt på första försöket ger det 100p och andra
              försöket ger 50p.
              Leaderboarden kan ni följa i eran spelarlobby och uppdateras frekvent. Lycka till.
@@ -69,7 +70,7 @@ $start = new Start();
               <table>
                 <thead>
                 <tr>
-                  <th>Placering</th>
+                  <th>#</th>
                   <th>Team</th>
                   <th>Poäng</th>
                 </tr>
