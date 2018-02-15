@@ -181,21 +181,30 @@ function initMap(myPos) {
 	  info.innerHTML = props.info;
   };
 
-  let clickClues = cluesAvailable.sort(),
-      count = 0;
+  // tracking the amount of available clues
+  let clueCount = 0;
 
-
+  
   function nextClue(arrow){
+    clueLength = (cluesAvailable.length - 1);
     clues.style.display = "flex";
-    clueNumber = clickClues[count];
-
-    if(arrow == 'right'){
-      count++;
-    } else if(arrow == 'left') {
-      count--;
+    console.log(clueLength);
+    if(arrow == 'left'){
+      if(clueCount == 0){
+        clueCount = clueLength;
+    } else{
+        clueCount--;
+      }
+  } else if(arrow == 'right'){
+      if(clueCount == clueLength){
+        clueCount = 0;
+    } else {
+        clueCount++;
+       }
     }
-    console.log(clueNumber);
-    header.innerHTML = clueMarkers[clueNumber].header;
-    img.src = clueMarkers[clueNumber].imgSrc;
-    info.innerHTML = clueMarkers[clueNumber].info;
+    clueNumber = cluesAvailable[clueCount];
+    numb = parseInt(clueNumber);
+    header.innerHTML = clueMarkers[numb].header;
+    img.src = clueMarkers[numb].imgSrc;
+    info.innerHTML = clueMarkers[numb].info;
   }
