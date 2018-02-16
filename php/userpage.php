@@ -29,8 +29,8 @@ $start = new Start();
         <div class="profile-imgbox">
           <img src="../media/img/userAvatar.png" alt="user avatar">
         </div>
-        <h2><%= UserName %></h2>
-        <h2><%= 9001 %> p</h2>
+        <h2><?php echo $_SESSION['uid']; ?></h2>
+        <h2><?php echo $_SESSION['points']; ?> p</h2>
       </div>
       <div class="start" id="start">
         <div class="instructions">
