@@ -13,13 +13,13 @@ if (isset($_POST['submit'])) {
     // Check for empty field
 
   if (empty($email) || empty($uid) || empty($pwd)) {
-    header("Location: page.html?signup=empty");
+    header("Location: index.php?signup=empty");
     exit();
 
   } else {
       // Check if email is vaild
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: page.html?signup=email");
+        header("Location: index.php?signup=email");
         exit();
       } else {
         $sql = "SELECT * FROM user WHERE uid='$uid'";
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         $resultCheck = mysqli_num_rows($result);
 
         if($resultCheck > 0) {
-          header("Location: page.html");
+          header("Location: index.php");
           exit();
         } else {
           // Hashing the password
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
           //Insert the user into the database
           $sql = "INSERT INTO user (email, uid, pwd) VALUES ('$email', '$uid', '$hashedPwd')";
         mysqli_query($conn, $sql);
-        header("Location: index.html");
+        header("Location: userpage.php");
         exit();
         }
       }

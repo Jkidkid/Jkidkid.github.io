@@ -14,7 +14,7 @@ h1{
 }
 
 h2{
-  font-size: 5em;
+  font-size: 4.5em;
   margin: 0 0 20px 0;
 }
 
@@ -42,8 +42,32 @@ a:hover{
 tr {
   font-size: 1.5em;
 }
+.hojd{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navs{
+  display: flex;
+  justify-content: center;
+}
+#logocenter{
+  width: auto;
+  margin: 1% 0;
+}
+#logocenter img {
+  height: 50px;
+  width: auto;
+}
+.formmid{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+}
 
-header{
+.home{
   height: 100vh;
   background:url('../img/crimeScene.jpeg');
   background-size: cover;
@@ -118,11 +142,6 @@ table tr:nth-child(odd){
   flex-direction: column;
   align-items: center;
 }
-.row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 
 .boximg{
   width: 100%;
@@ -135,9 +154,17 @@ table tr:nth-child(odd){
     width: 80%;
   }
   h1{
-    font-size: 6em;
+    font-size: 5em;
     color: lime;
     margin-top: 50px;
+  }
+  section {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
 }

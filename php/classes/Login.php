@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Login {
     private $db_connection = null;
     public $error_msg;
@@ -37,8 +38,10 @@ class Login {
                     // Log in the user here
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['uid'] = $row['uid'];
-                    header('Location: user.html');
-                    exit();
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['points'] = $row['user_points'];
+                    header('Location: php/userpage.php');
+
                 }
             }
         }
