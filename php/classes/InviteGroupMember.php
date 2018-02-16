@@ -17,11 +17,6 @@ class InviteGroupMember{
         }
     }
 
-    // Denna funktion ska bort sen när vi kopplat in riktiga users i scriptet
-    function get_username(){
-        return "Elin";
-    }
-
     function search(){
 
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
@@ -39,12 +34,10 @@ class InviteGroupMember{
                 array_push($this->username, $username);
               } 
         }
-
     }
 
     function get_search_result(){
         $size = sizeof($this->username);
-
 
         for($i = 0; $i<$size; $i++){
             echo '<tr><td>'.$this->username[$i].'<form method="POST"></td><td class="right-td"><input id="" type="hidden" name="username" value="'.$this->username[$i].'"/><button type="submit" class="send-invite" name="invite">Skicka</button></td></tr></form>';
@@ -64,18 +57,17 @@ class InviteGroupMember{
             $this->msg = "<tr><td style='color:red;'>".$username." är tyvärr redan med i en grupp</td></tr>";
          }else {
 
-        $group_id = $_GET['groupID'];
-        $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES ('".$group_id."', '".$username."', 'inväntar svar')";
-        $result = $this->db_connection->query($sql);
+            $group_id = $_GET['groupID'];
+            $sql = "INSERT INTO group_members (groupID, userName, userRank) VALUES ('".$group_id."', '".$username."', 'inväntar svar')";
+            $result = $this->db_connection->query($sql);
 
-        if($result){
-            $this->msg = "<tr><td style='color:green;'>En inbjudan har skickats till ".$username."</td></tr>";
+            if($result){
+                $this->msg = "<tr><td style='color:green;'>En inbjudan har skickats till ".$username."</td></tr>";
+            }
+            else{
+                $this->msg = "<tr><td style='color:red;'>Något gick fel. ".$username." blev inte inbjuden</td></tr>";
+            }
         }
-        else{
-            $this->msg = "<tr><td style='color:red;'>Något gick fel. ".$username." blev inte inbjuden</td></tr>";
-        }
-
-    }
     }
 }
 

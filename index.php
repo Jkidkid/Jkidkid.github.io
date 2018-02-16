@@ -1,8 +1,9 @@
 <?php
 require_once('php/classes/Login.php');
+require_once('php/classes/Top5Teams.php');
 
 $login = new Login();
-
+$toplist = new Top5Teams();
 ?>
 
 <!DOCTYPE html>
@@ -83,31 +84,7 @@ $login = new Login();
                         <h2 class="text-center">Leaderboard</h2>
                         <table class="table no-border">
                             <tbody>
-                                <tr>
-                                    <th scope="row" class="no-border">1</th>
-                                    <td class="no-border">Gruppnamn</td>
-                                    <td class="no-border">500 poäng</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="no-border">2</th>
-                                    <td class="no-border">Gruppnamn</td>
-                                    <td class="no-border">470 poäng</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="no-border">3</th>
-                                    <td class="no-border">Gruppnamn</td>
-                                    <td class="no-border">400 poäng</td>
-                                </tr>
-                                <tr>
-                                <th scope="row" class="no-border">4</th>
-                                    <td class="no-border">Gruppnamn</td>
-                                    <td class="no-border">380 poäng</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="no-border">5</th>
-                                    <td class="no-border">Mark</td>
-                                    <td class="no-border">350 poäng</td>
-                                </tr>
+                                <?php $toplist->output_top_5(); ?>
                                 </tbody>
                         </table>
                     </div>
