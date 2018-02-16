@@ -15,7 +15,6 @@ class Top5Teams{
 
         $sql = "SELECT * FROM groups ORDER BY group_points DESC LIMIT 5";
         $result = $this->db_connection->query($sql);
-        echo $sql;
 
         while($row = $result->fetch_assoc()){
             $group_name = $row['groupName'];

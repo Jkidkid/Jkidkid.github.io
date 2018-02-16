@@ -78,7 +78,7 @@ $leaderboard = new Leaderboard();
                 </tr>
                 </thead>
                 <tbody>
-                <?php $leaderboard->output_team_leaderboard(); ?>
+                  <?php $leaderboard->output_team_leaderboard(); ?>
                 </tbody>
               </table>
             </div>
@@ -95,7 +95,7 @@ $leaderboard = new Leaderboard();
                 </tr>
                 </thead>
                 <tbody>
-                <?php $leaderboard->output_player_leaderboard(); ?>
+                  <?php $leaderboard->output_player_leaderboard(); ?>
                 </tbody>
               </table>
             </div>
