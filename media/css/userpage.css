@@ -110,6 +110,8 @@ button:focus {
 }
 
 .fa-user, .fa-users, .fa-trophy, .fa-play {
+  margin: 2%;
+  font-size: 1.3em;
   color: lime;
 }
 

@@ -106,9 +106,9 @@ body {
 
 nav button {
   height: 100%;
-  width: 33%;
+  width: 33.1%;
   border: 0;
-  font-size: 1em;
+  font-size: 2em;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -123,7 +123,7 @@ button:focus {
 }
 
 .fa-thumbtack, .fa-question-circle, .fa-user-secret {
-  margin: 3%;
-  font-size: 1.5em;
+  margin: 2%;
+  font-size: 2em;
   color: lime;
 }
