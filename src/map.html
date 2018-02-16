@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Clue|Hunter</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
   </head>
@@ -12,7 +13,7 @@
      </div>
      <!--Create the div to hold the map.-->
     <div id="map"></div>
-    <div id="modal">
+    <div class="modal">
       <div id="clue">
         <button onclick="nextClue('left')"><</button>
         <button onclick="nextClue('right')">></button>
@@ -22,7 +23,13 @@
         <button type="button" id="modal-close-btn">Stäng</button>
       </div>
     </div>
-    <button onclick="nextClue()">clues</button>
+    <nav class="nav">
+      <button onclick="showdiv('profile')" href="/profile"><i class="fas fa-thumbtack"></i>Tips</button>
+      <button onclick="nextClue()"><i class="far fa-question-circle"></i>Ledtrådar</button>
+      <button onclick=""><i class="fas fa-user-secret"></i>Misstänka</button>
+
+    </nav>
+
 
     <script src="geomap.js"></script>
     <script async defer
