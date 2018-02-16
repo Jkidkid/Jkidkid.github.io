@@ -3,10 +3,12 @@ session_start();
 require_once('classes/InviteGroupMember.php');
 require_once('classes/GroupInformation.php');
 require_once('classes/Start.php');
+require_once('classes/Leaderboard.php');
 
 $invite = new InviteGroupMember();
 $group = new GroupInformation();
 $start = new Start();
+$leaderboard = new Leaderboard();
 ?>
 
 <!DOCTYPE html>
@@ -76,16 +78,7 @@ $start = new Start();
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Team Citrus</td>
-                  <td>500</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Team Grape</td>
-                  <td>200</td>
-                </tr>
+                  <?php $leaderboard->output_team_leaderboard(); ?>
                 </tbody>
               </table>
             </div>
@@ -102,16 +95,7 @@ $start = new Start();
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Nisse</td>
-                  <td>500</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Karl Johan</td>
-                  <td>200</td>
-                </tr>
+                  <?php $leaderboard->output_player_leaderboard(); ?>
                 </tbody>
               </table>
             </div>
