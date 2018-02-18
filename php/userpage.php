@@ -24,9 +24,9 @@ $leaderboard = new Leaderboard();
   <link rel="stylesheet" href="../media/css/userpage.css">
 </head>
 <body>
-  <div>
+  <div class="wrapper">
     <div class="content">
-      <div class="profile" id="profile">
+      <div class="black-box" id="profile">
         <h1>Profil</h1>
         <div class="profile-imgbox">
           <img src="../media/img/userAvatar.png" alt="user avatar">
@@ -34,8 +34,51 @@ $leaderboard = new Leaderboard();
         <h2><?php echo $_SESSION['uid']; ?></h2>
         <h2><?php echo $_SESSION['points']; ?> p</h2>
       </div>
-      <div class="start" id="start">
-        <div class="instructions">
+      <div class="navcontent-container" id="groupScore">
+        <nav class="upper-nav">
+          <button id="btn2" onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
+          <button id="btn2" onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
+        </nav>
+        <div class="content-container">
+          <div class="black-box" id="score-group">
+            <h1>Topplista lag</h1>
+            <div class="groupScore-list">
+              <table>
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Team</th>
+                  <th>Poäng</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php $leaderboard->output_team_leaderboard(); ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="black-box" id="score-player">
+            <h1>Topplista spelare</h1>
+            <div class="groupScore-list">
+              <table>
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Spelare</th>
+                  <th>Poäng</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php $leaderboard->output_player_leaderboard(); ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navcontent-container" id="start">
+        <div class="content-container">
+          <div class="black-box" id="instructions">
           <h1>INSTRUKTIONER</h1>
           <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
              får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
@@ -56,51 +99,10 @@ $leaderboard = new Leaderboard();
             </ul>
           </div>
         </div>
+        </div>
         <form method="POST" class="startbtn">
           <button class="btn" type="submit" name="start">START</button>
         </form>
-      </div>
-      <div class="groupScore" id="groupScore">
-        <nav class="upper-nav2">
-          <button onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
-          <button onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
-        </nav>
-        <div class="score-content">
-          <div class="score-group" id="score-group">
-            <h1>Topplista lag</h1>
-            <div class="groupScore-list">
-              <table>
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Team</th>
-                  <th>Poäng</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <?php $leaderboard->output_team_leaderboard(); ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="score-player" id="score-player">
-            <h1>Topplista spelare</h1>
-            <div class="groupScore-list">
-              <table>
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Spelare</th>
-                  <th>Poäng</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <?php $leaderboard->output_player_leaderboard(); ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <nav class="nav">

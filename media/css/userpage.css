@@ -1,3 +1,4 @@
+/*general */
 body, button {
   font-family: 'Lustria', serif;
   margin: 0;
@@ -8,14 +9,118 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
 }
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
-
+ul {
+  list-style: none;
+}
+.wrapper {
+  height: 100vh;
+}
 table {
   width: 100%;
   border-collapse: collapse;
 }
-/* Zebra striping */
+.profile-imgbox,
+.content,
+.black-box,
+.content-container,
+.upper-nav, .startbtn, .nav,
+.upper-nav button, .nav button,
+#holder form{
+  display: flex;
+  align-items: center;
+}
+.profile-imgbox,
+.black-box,
+.navcontent-container,
+.upper-nav button, .nav button,
+.profile-imgbox img,
+#holder form {
+  flex-direction: column;
+}
+.navcontent-container,
+.profile-imgbox img,
+.btn, #holder form{
+  width: 100%;
+  height: 100%;
+}
+/*Containers*/
+.content {
+  height: 90vh;
+  background-color: grey;
+  justify-content: center;
+}
+.black-box{
+  height: 80%;
+  width: 85%;
+  color: white;
+  background-color: #36363a;
+}
+.navcontent-container {
+  display: flex;
+}
+.content-container {
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  overflow: hidden;
+}
+/*Nav*/
+.upper-nav, .startbtn, .nav {
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+  justify-content: space-between;
+}
+.upper-nav button, .nav button {
+  height: 100%;
+  border: 0;
+  font-size: 1em;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #36363a;
+  color: #ccc;
+}
+button:focus {
+  border-bottom: 2px solid red;
+}
+.fa-user, .fa-users, .fa-trophy, .fa-play {
+  color: lime;
+}
+#flow, #instructions, .groupScore-list{
+  overflow-y: scroll;
+}
+
+/*specific */
+/*upper nav 2 and 3items widths*/
+.nav button{
+  width: 24.7%;
+}
+#btn2{
+  width: 49.8%;
+}
+#btn3 {
+  width: 33.06%;
+}
+/*toplist style*/
+.groupScore-list{
+  width: 85%;
+  font-size: 1.4em;
+}
+/*Profile picture box*/
+.profile-imgbox{
+  width: 250px;
+  height: 250px;
+  border: 2px solid black;
+  background-color: #36363a;
+  border-radius: 2%;
+}
+.profile-imgbox img{
+  border-radius: 2%;
+  justify-content: space-between;
+}
+/*Tiger List styles */
 tr:nth-of-type(odd) {
   background: green;
 }
@@ -28,151 +133,12 @@ td, th {
   padding: 6px;
   text-align: left;
 }
-
-.groupScore {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-.groupScore-list {
-  display: block;
-  font-size: 1.4em;
-  padding: 20px;
-}
-
-.groupScore-list p:nth-child(odd) {
-  background-color: #28a745;
-}
-.score-content{
-  height: 90%;
-  width: 100%;
-  justify-content: center;
-  color: white;
-}
-.score-player, .score-group {
-  width: 85%;
-  height: 80%;
-  background-color: #36363a;
-  flex-direction: column;
-}
-.score-player, .groupScore {
-  display: none;
-}
-
-.score-group {
-  display: flex;
-}
-
-.score-player h1 {
-  color: white;
-}
-
-.groupScore-list,
-.score-content,
-.nav,
-nav button,
-.profile-imgbox,
-.content,
-.profile {
-  display: flex;
-  align-items: center;
-}
-
-.groupScore-list,
-.groupScore,
-nav button,
-.profile-imgbox {
-  flex-direction: column;
-}
-
-
-.nav {
-  width: 100%;
-  height: 10%;
-  background-color: grey;
-  justify-content: space-between;
-  position: fixed;
-}
-
-nav button {
-  height: 100%;
-  width: 24.7%;
-  border: 0;
-  font-size: 1em;
-  justify-content: center;
-  box-sizing: border-box;
-  background-color: #36363a;
-  color: #ccc;
-}
-
-button:focus {
-  border-bottom: 2px solid red;
-}
-
-.fa-user, .fa-users, .fa-trophy, .fa-play {
-  color: lime;
-}
-
-.instructions p, li {
+/*Start tab */
+#instructions p, li {
   font-size: 1.2em;
 }
-.content {
-  height: 90vh;
-  background-color: grey;
-  justify-content: center;
-}
-
-.content-create-group {
-  height: 90vh;
-  background-color: grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.profile-imgbox{
-  width: 250px;
-  height: 250px;
-  border: 2px solid black;
-  background-color: #36363a;
-  border-radius: 2%;
-}
-
-.profile{
-  width: 85%;
-  height: 80%;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #36363a;
-  color: white;
-}
-
-.profile-imgbox img{
-  width: 100%;
-  height: 100%;
-  border-radius: 2%;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.start{
-  display: none;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.instructions{
-  width: 85%;
-  color: white;
-  margin: 5% 0;
+#instructions{
   padding: 5%;
-  background-color: #36363a;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
 }
 .grplist{
@@ -181,284 +147,55 @@ button:focus {
   background-color: #232327;
   border: 1px solid black;
 }
-.startbtn{
-  width: 100%;
-  height: 10%;
-}
 .btn {
-  width: 100%;
   border: 0;
   color: white;
   background-color: green;
-  height: 100%;
   align-self: flex-end;
   font-size: 2em;
   letter-spacing: 0.7em;
   text-align: center;
   text-indent: 0.7em;
 }
-
-#content-container, .create-group{
-  height: 100%;
-  width: 100%;
-  background-color:darkgrey;
-  align-self: flex-end;
-  display: flex;
-  justify-content: center;
+/*Hantera grupper*/
+#search-container{
+  margin: 5% 0;
 }
-
-
-
-#group{
-  display: none;
-  height: 100%;
-  width: 100%;
-	flex-direction: column;
-	justify-content: space-between;
+#group-info, #search-users-container{
+  background-color: #232327;
+  text-align: center;
+  width: 85%;
+  margin: 5% 0;
 }
-
-#create-group{
-  display: none;
-}
-
-.upper-nav, .upper-nav2{
-  display: flex;
-  width: 100%;
-  height: 10%;
-  background-color: grey;
-  justify-content: space-between;
-  align-items: center;
-}
-.group-content{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 90%;
-}
-
-.upper-nav button{
-  height: 100%;
-  width: 33.06%;
-  border: 0;
-  font-size: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-.upper-nav2 button {
-  height: 100%;
-  width: 49.8%;
-  border: 0;
-  font-size: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-#holder{
-  width: 89%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-
-
-}
-
-#create-group-button{
-  width: 100%;
-  padding-top: 7px;
-    padding-bottom: 7px;
-    border-radius: 4px;
-    border: 1px solid grey;
-    background-color: #d526d5;
-    color: white;
-    box-sizing: border-box;
-}
-#create-group{
-  width: 89%;
-  height: 100%;
-  justify-content: center;
-}
-
-input{
+#search-input, #group-name-input{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
   border-radius: 4px;
-
+  border: 1px solid #7f6f6f;
 }
-
-#group-name-input{
-  margin-bottom: 5px;
-  width: 100%;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  padding-left: 7px;
-  border: 1px solid grey;
+#search-button, .send-invite, #create-group-button{
+  background-color: #d84141;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#group-name-input, #create-group-button{
+  width: 85%;
   box-sizing: border-box;
 }
-
-/* css för my-groups.php */
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding: 1% 0;
-  display: flex;
-  justify-content: center;
-}
-
-/* css för group.php */
-
-
-.f-dir{
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#group-info{
-  background-color:#e46b6b;
-  width: 100%;
-  display: flex;
-  height: 37vh;
-  margin-bottom: 2px;
-  overflow: hidden;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 9px;
-  overflow-y:scroll;
-}
-
-#search-users-container{
-  background-color:white;
-  width: 100%;
-  display: flex;
-  height: 37vh;
-  flex-direction: column;
-  margin-top: 2px;
-  box-sizing: border-box;
-    padding: 9px;
-}
-
-#holder-group{
-  width: 89%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-#group-table{
-  width: 100%;
-}
-
 .right-td{
   display: flex;
   flex-direction: row-reverse;
 }
-
-#search-container{
+/* Tabs js toggle display none/flex*/
+#score-player, #groupScore, #start{
+  display: none;
+}
+#score-group, #profile{
   display: flex;
-  justify-content: center;
-}
-
-#search-input{
-  padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 3px;
-    border-radius: 4px;
-    width: 82%;
-    border: 1px solid #7f6f6f;
-}
-
-#search-button{
-  background-color: #d84141;
-    color: white;
-    border: 0;
-    border-radius: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#search-list{
-  background-color: #f5e7e7;
-    display: flex;
-    flex-grow: 1;
-    overflow-y: scroll;
-    margin-top: 6px;
-}
-
-form {
-  width: 100%;
-}
-
-h4{
-  margin: 0;
-  align-self: center;
-}
-
-#search-list-table{
-  width: 100%;
-}
-
-#search-list-table tr:nth-child(odd){
-  background-color: #eae0e0;
-}
-
-.send-invite{
-  background-color: #35c835;
-    border-radius: 4px;
-    border: 1px solid #279027;
-}
-.wrapp{
-  width: 100%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.invites {
-  width: 85%;
-  height: 80%;
-  background-color: #36363a;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.Iform{
-  height: auto;
-  width: 80%;
-}
-.row, .row2{
-  height: 35px;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.row2{
-  border-bottom: 1px solid lightgrey;
-}
-button{
-  width: 50%;
-  height: 100%;
-  background-color: white;
-  text-align: center;
-  border: 0;
-}
-.firstp {
-  border-right: 1px solid lightgrey;
 }
