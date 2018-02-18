@@ -44,7 +44,7 @@ $group = new GroupInformation();
                 </form>
               </div>
               <div id="search-list">
-                <form>
+                <form method="POST">
                   <table id="search-list-table">
                     <?php echo $invite->msg; ?>
                     <?php $invite->get_search_result(); ?>
