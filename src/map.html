@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clue|Hunter</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
@@ -13,21 +17,22 @@
      </div>
      <!--Create the div to hold the map.-->
     <div id="map"></div>
-    <div class="modal">
+    <div class="modal" id="modal">
       <div id="clue">
-        <button onclick="nextClue('left')"><</button>
-        <button onclick="nextClue('right')">></button>
+        <button type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
         <h2 id="clue-header"></h2>
         <img src="" id="cluePic"></img>
         <p id="clueInfo"></p>
-        <button type="button" id="modal-close-btn">Stäng</button>
+        <div class="nextprevious" id="nextprevious">
+          <button class="next" onclick="nextClue('left')"><i class="fas fa-chevron-circle-left"></i></button>
+          <button class="previous" onclick="nextClue('right')"><i class="fas fa-chevron-circle-right"></i></button>
+        </div>
       </div>
     </div>
     <nav class="nav">
-      <button onclick="showdiv('profile')" href="/profile"><i class="fas fa-thumbtack"></i>Tips</button>
+      <button><i class="fas fa-thumbtack"></i>Tips</button>
       <button onclick="nextClue()"><i class="far fa-question-circle"></i>Ledtrådar</button>
-      <button onclick=""><i class="fas fa-user-secret"></i>Misstänka</button>
-
+      <button ><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
 
 
