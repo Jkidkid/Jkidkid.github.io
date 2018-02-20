@@ -29,13 +29,25 @@
         </div>
       </div>
     </div>
+    <div class="modalt" id="modalt">
+      <div id="tips">
+        <button onclick="tips()" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <h1>TIPS</h1>
+        <img src="../media/img/tips.png" id="tipsPic"></img>
+        <ul>
+          <li>Att spela i ett lag kan göra det enklare</li>
+          <li>Titta dig omkring, det kan finnas ledtrådar i mijön</li>
+          <li>Tänk på! att du har två gissningar</li>
+          <li>Använd tiden effektivt och fånga många ledtrådar</li>
+          <li>Läs NOGA!</li>
+        </ul>
+      </div>
+    </div>
     <nav class="nav">
-      <button><i class="fas fa-thumbtack"></i>Tips</button>
-      <button onclick="nextClue()"><i class="far fa-question-circle"></i>Ledtrådar</button>
+      <button onclick="tips()"><i class="fas fa-lightbulb"></i>Tips</button>
+      <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
       <button ><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
-
-
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">

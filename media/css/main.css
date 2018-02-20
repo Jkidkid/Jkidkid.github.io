@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   background: linear-gradient(to right, lime , yellow);
 }
 /***********POPUP**************/
-.modal{
+.modal, #modalt{
   display: none;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   background-color: rgba(0,0,0,0.4);
 }
 
-#clue {
+#clue, #tips {
   display: flex;
   width: 90%;
   height: 90%;
@@ -72,7 +72,11 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   width: 90%;
   border: 1px solid black;
 }
-#clue h2 {
+#tips img {
+  height: 30%;
+  width: auto;
+}
+#clue h2, #tips li {
   margin: 0.4em 0;
 }
 
@@ -127,14 +131,11 @@ nav button {
   color: #ccc;
 }
 
-button:focus {
-  border-bottom: 2px solid red;
-}
 
-.fa-thumbtack, .fa-question-circle, .fa-user-secret, .fa-times {
+.fa-thumbtack, .fa-lightbulb, .fa-user-secret, .fa-times {
   margin: 2%;
   font-size: 2em;
-  color: green;
+  color: lime;
 }
 
 .nav {
@@ -190,6 +191,7 @@ nav button {
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  min-height: 35px;
 }
 #modal-close-btn:hover{
   background-color: #d84141;

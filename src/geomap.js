@@ -1,5 +1,6 @@
 var clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
+    tip = document.getElementById('modalt'),
     button = document.getElementById('modal-close-btn'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
@@ -221,4 +222,11 @@ function initMap(myPos) {
     header.innerHTML = clueMarkers[numb].header;
     img.src = clueMarkers[numb].imgSrc;
     info.innerHTML = clueMarkers[numb].info;
+  }
+  function tips(){
+    if(tip.style.display ==='flex'){
+      tip.style.display = 'none';
+    } else {
+      tip.style.display = 'flex';
+    }
   }
