@@ -11,7 +11,7 @@ class Login {
     }
 
     function login(){
-
+        
         // att göra: php-injektion möjlig atm
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -41,7 +41,6 @@ class Login {
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['points'] = $row['user_points'];
                     header('Location: php/userpage.php');
-
                 }
             }
         }
