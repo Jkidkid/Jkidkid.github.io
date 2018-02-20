@@ -5,6 +5,8 @@ var clues = document.getElementById('modal'),
 	  info = document.getElementById('clueInfo'), // clue info
     myLatLong, distanceBetween, watchId, yourMarker, map, player;
 
+
+var api_url = "https://cluehunter.herokuapp.com";
 // Crimeplace and startpoint for the team
 let clueMarkers = [
 	{
@@ -40,7 +42,7 @@ function stopClue(){
 
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
-	fetch(`http://localhost:3000/api/users/${user}`).then(function(res) {
+	fetch(`${api_url}/api/users/${user}`).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
 				player = data;
@@ -55,7 +57,7 @@ function getPlayer(user) {
 
 // Fetch all the clues from db and print them into the game map
 function getClues () {
-  fetch("http://localhost:3000/api/clues").then(function(res) {
+  fetch(api_url + "/api/clues").then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
         data.forEach((coords) => {
@@ -72,7 +74,7 @@ function getClues () {
 }
 
 function availableClues() {
-  fetch("http://localhost:3000/api/availableClues").then(function(res) {
+  fetch(api_url + "/api/availableClues").then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
         cluesAvailable = [];
@@ -91,7 +93,7 @@ function availableClues() {
 
 // test function for updating db
 function updateClueClickable(id) {
-	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
+	fetch(`${api_url}/api/clueClickable/${id}`, {
     method: 'PUT'
   }).then(function(res) {
 		if (res.ok) {
