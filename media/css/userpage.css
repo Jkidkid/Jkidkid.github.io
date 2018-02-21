@@ -157,6 +157,9 @@ td, th {
   text-align: center;
   text-indent: 0.7em;
 }
+.btn[disabled=disabled]{
+  background-color:#d84141;
+}
 /*Hantera grupper*/
 #search-container{
   margin: 5% 0;
