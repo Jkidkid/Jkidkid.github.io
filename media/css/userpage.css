@@ -86,6 +86,8 @@ table {
   color: #ccc;
 }
 .fa-user, .fa-users, .fa-trophy, .fa-play {
+  margin: 2%;
+  font-size: 1.3em;
   color: lime;
   font-size: 1.3em;
   margin: 2%;

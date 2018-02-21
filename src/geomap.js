@@ -1,4 +1,7 @@
 var clues = document.getElementById('modal'),
+    cluearr = document.getElementById('nextprevious'),
+    tip = document.getElementById('modalt'),
+    turnin = document.getElementById('modalm'),
     button = document.getElementById('modal-close-btn'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
@@ -115,7 +118,7 @@ function startMap () {
 function initMap(myPos) {
 	var options = {
 			enableHighAccuracy: true,
-			zoom: 16,
+			zoom: 20,
 			center: new google.maps.LatLng(myPos.coords.latitude, myPos.coords.longitude)
 		}
 	map = new google.maps.Map(document.getElementById('map'), options);
@@ -158,6 +161,7 @@ function initMap(myPos) {
 				if(modalClickable){
 					writeClue(clueMarkers[marker.title]);
 				  clues.style.display = "flex";
+          cluearr.style.display = "none";
             if(parseInt(marker.title) != 0){
               updateClueClickable(parseInt(marker.title));
           }
@@ -198,6 +202,9 @@ function initMap(myPos) {
   // print out the available clues in the modal
   function nextClue(arrow){
     clueLength = (cluesAvailable.length - 1);
+    tip.style.display = 'none';
+    turnin.style.display = 'none';
+    cluearr.style.display = 'flex';
     clues.style.display = "flex";
 
     if(arrow == 'left'){
@@ -218,4 +225,14 @@ function initMap(myPos) {
     header.innerHTML = clueMarkers[numb].header;
     img.src = clueMarkers[numb].imgSrc;
     info.innerHTML = clueMarkers[numb].info;
+  }
+  function tips(id){
+    if(id.style.display === 'flex'){
+      id.style.display = 'none';
+    } else {
+      clues.style.display = 'none';
+      tip.style.display = 'none';
+      turnin.style.display = 'none';
+      id.style.display = "flex";
+    }
   }
