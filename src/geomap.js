@@ -3,10 +3,17 @@ var clues = document.getElementById('modal'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
-    myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid, teamid;
-
+    myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
+    teamid, clueInterval;
 
 var api_url = "http://localhost:3000";
+
+// Stores all available clues when a team-member have clicked a clue
+let cluesAvailable = [];
+
+// Stores all google map markers
+let googleMarkers = [];
+
 // Crimeplace and startpoint for the team
 let clueMarkers = [
 	{
@@ -20,13 +27,6 @@ let clueMarkers = [
   }
 ];
 
-// Stores all available clues when a team-member have clicked a clue
-let cluesAvailable = [];
-
-// call availableClues function to fetch available clues every ten seconds
-let clueInterval = setInterval(()=> {
-  availableClues();
-}, 10000);
 // Fetch player user-id when game starts
   window.onload = function(){
     let params = (new URL(location)).searchParams;
@@ -34,10 +34,25 @@ let clueInterval = setInterval(()=> {
     getPlayer(val);
 }
 
-function stopClue(){
+// When player close crimeplace we start interval and call availableClues
+//function to fetch available clues every ten seconds
+  function startInterval(){
+    clueInterval = setInterval(() => {
+      availableClues();
+  }, 10000);
+}
+
+// When the game is over we stop the fetch interval
+function stopInterval(){
   clearInterval(clueInterval);
 }
 
+// Remove google markers from maps
+function removeMarker(id){
+  if(googleMarkers[id].map != null){
+    googleMarkers[id].setMap(null);
+  }
+}
 
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
@@ -73,19 +88,19 @@ function getClues () {
   });
 }
 
+// Fetch function to get all available team clues every ten seconds
 function availableClues() {
   teamid = player[0].team_id;
-  console.log(teamid);
   fetch(`${api_url}/api/availableClues/${teamid}`).then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
         cluesAvailable = [];
         data.forEach((coords) => {
           cluesAvailable.push(coords.clue_id);
+          removeMarker(coords.clue_id);
         });
         console.log(cluesAvailable);
       });
-      console.log(res.json()); 
   } else {
       console.log("Looks like the response wasn't perfect, got status", res.status);
     }
@@ -94,24 +109,7 @@ function availableClues() {
   });
 }
 
-
-// test function for updating db
-function updateClueClickable(id) {
-	fetch(`${api_url}/api/clueClickable/${id}`, {
-    method: 'PUT'
-  }).then(function(res) {
-		if (res.ok) {
-			res.json().then(function(data) {
-				console.log(data);
-		  });
-	} else {
-			console.log("Looks like the response wasn't perfect, got status", res.status);
-		}
-  }, function(e) {
-	   console.log("Fetch failed!", e);
-	});
-}
-
+// Add new clues to team_clue table
 function newTeamClue(clue_id) {
   teamid = player[0].team_id;
 	fetch(`${api_url}/api/newTeamClue/${teamid}/${clue_id}`, {
@@ -128,26 +126,6 @@ function newTeamClue(clue_id) {
 	   console.log("Fetch failed!", e);
 	});
 }
-
-
-
-function newc(id) {
-	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
-    method: 'PUT'
-  }).then(function(res) {
-		if (res.ok) {
-			res.json().then(function(data) {
-				console.log(data);
-		  });
-	} else {
-			console.log("Looks like the response wasn't perfect, got status", res.status);
-		}
-  }, function(e) {
-	   console.log("Fetch failed!", e);
-	});
-}
-
-
 
 // Start the game
 function startMap () {
@@ -197,8 +175,7 @@ function initMap(myPos) {
 			google.maps.event.addListener(marker, 'click', function() {
 				modalClickable = clueMarkers[marker.title].clickable;
 				open = clueMarkers[marker.title].open;
-        
-        
+
         // prevent user to click if the distance between player and marker is more then 20 meters
 				if(modalClickable){
 					writeClue(clueMarkers[marker.title]);
@@ -207,20 +184,20 @@ function initMap(myPos) {
           if(clueid != 0){
             newTeamClue(clueid);
           }
-            if(parseInt(marker.title) != 0){
-              updateClueClickable(parseInt(marker.title));
-          }
         }
-        
       });
-  			button.addEventListener('click', function() {
+
+      	button.addEventListener('click', function() {
           if(!clueMarkers[0].open){
             getClues();
+            startInterval();
             clueMarkers[0].open = true;
           }
 					clues.style.display = "none";
 			});
+    googleMarkers.push(marker);
   }
+
 	// Checking distance between player and cluemarkers, if distance less or equal to 20 meters
 	// and the clue is not opened before we make the clues clickable
 	function checkDistanceToClues(player){
