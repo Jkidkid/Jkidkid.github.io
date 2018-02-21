@@ -31,7 +31,7 @@
     </div>
     <div class="modalt" id="modalt">
       <div id="tips">
-        <button onclick="tips()" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button onclick="tips(tip)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
         <h1>TIPS</h1>
         <img src="../media/img/tips.png" id="tipsPic"></img>
         <ul>
@@ -43,10 +43,42 @@
         </ul>
       </div>
     </div>
+    <div class="modal" id="modalm">
+      <div id="turnin">
+        <button onclick="tips(turnin)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <div id="turninselect">
+          <div class="turnincontainer">
+            <div class="suspects">
+              <h1>MISSTÄNKTA</h1>
+              <div class="boxrow">
+                <img src="" alt="misstänkt1">
+                <img src="" alt="misstänkt2">
+              </div>
+              <div class="boxrow">
+                <img src="" alt="misstänkt3">
+                <img src="" alt="misstänkt4">
+              </div>
+            </div>
+            <div class="weapons">
+              <h1>VAPEN</h1>
+              <div class="boxrow">
+                <img src="" alt="vapen1">
+                <img src="" alt="vapen2">
+              </div>
+              <div class="boxrow">
+                <img src="" alt="vapen3">
+                <img src="" alt="vapen4">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" name="button" id="done">JAG VET!</button>
+      </div>
+    </div>
     <nav class="nav">
-      <button onclick="tips()"><i class="fas fa-lightbulb"></i>Tips</button>
+      <button onclick="tips(tip)"><i class="fas fa-lightbulb"></i>Tips</button>
       <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
-      <button ><i class="fas fa-user-secret"></i>Misstänka</button>
+      <button onclick="tips(turnin)"><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
     <script src="geomap.js"></script>
     <script async defer

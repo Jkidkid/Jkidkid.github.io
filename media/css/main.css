@@ -12,6 +12,7 @@ body {
   padding: 0;
 }
 
+
 h1, h2, h3, h4, h5, h6, tr, .btn{
   font-family: 'Oswald', sans-serif;
 }
@@ -57,7 +58,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   background-color: rgba(0,0,0,0.4);
 }
 
-#clue, #tips {
+#clue, #tips, #turnin {
   display: flex;
   width: 90%;
   height: 90%;
@@ -65,6 +66,54 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   color: white;
   align-items: center;
   flex-direction: column;
+}
+#done {
+  font-family: 'Oswald', sans-serif;
+  width: 100%;
+  border: 0;
+  height: 10%;
+  margin-top: 2%;
+  color: white;
+  background-color: green;
+  font-size: 1.3em;
+}
+.boxrow{
+  margin-top: 2%;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-around;
+}
+.boxrow img {
+  width: 46%;
+  height: 100px;
+  border: 1px solid black;
+}
+#turninselect{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.turnincontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.suspects, .weapons{
+  width: 90%;
+  height: auto;
+  min-height: fit-content;
+  background-color: #232327;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2%;
+  padding-bottom: 2%;
 }
 
 #clue img {

@@ -1,6 +1,7 @@
 var clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
     tip = document.getElementById('modalt'),
+    turnin = document.getElementById('modalm'),
     button = document.getElementById('modal-close-btn'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
@@ -201,6 +202,8 @@ function initMap(myPos) {
   // print out the available clues in the modal
   function nextClue(arrow){
     clueLength = (cluesAvailable.length - 1);
+    tip.style.display = 'none';
+    turnin.style.display = 'none';
     cluearr.style.display = 'flex';
     clues.style.display = "flex";
 
@@ -223,10 +226,13 @@ function initMap(myPos) {
     img.src = clueMarkers[numb].imgSrc;
     info.innerHTML = clueMarkers[numb].info;
   }
-  function tips(){
-    if(tip.style.display ==='flex'){
-      tip.style.display = 'none';
+  function tips(id){
+    if(id.style.display === 'flex'){
+      id.style.display = 'none';
     } else {
-      tip.style.display = 'flex';
+      clues.style.display = 'none';
+      tip.style.display = 'none';
+      turnin.style.display = 'none';
+      id.style.display = "flex";
     }
   }
