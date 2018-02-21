@@ -39,12 +39,17 @@ class CreateGroup{
 
          if($result){
 
+            $username_of_logged_in_user = $_SESSION['uid'];
+
             $sql = "SELECT * FROM groups WHERE groupName = '".$group_name."'";
             $result = $this->db_connection->query($sql);
             $row = $result->fetch_assoc();
 
             $group_id = $row['groupID'];
-            $username_of_logged_in_user = $_SESSION['uid'];
+
+            $update = "UPDATE user SET team_id = '$group_id' WHERE uid = '$logged_in_user_username' ";
+            $update_resutl = $this->db_connection->query($update);
+
             $sql = "INSERT INTO group_members (userName, userRank, groupID) VALUES ('".$username_of_logged_in_user."', 'Admin', '".$group_id."')";
             $result = $this->db_connection->query($sql);
             $this->msg = "<div style='color: green;'>Din grupp har nu skapats</div>";

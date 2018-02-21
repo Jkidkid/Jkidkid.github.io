@@ -39,7 +39,6 @@ function stopClue(){
 }
 
 
-
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
 	fetch(`${api_url}/api/users/${user}`).then(function(res) {
@@ -107,6 +106,43 @@ function updateClueClickable(id) {
 	   console.log("Fetch failed!", e);
 	});
 }
+
+function newTeamClue() {
+  var id = 500;
+	fetch(`http://localhost:3000/api/newTeamClue/${id}`, {
+    method: 'POST'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
+function newc(id) {
+	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
 
 // Start the game
 function startMap () {

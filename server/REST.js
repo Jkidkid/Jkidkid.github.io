@@ -62,5 +62,19 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
       }
     });
   });
+
+  router.post("/newTeamClue/:id",function(req,res){
+    var query = "INSERT INTO ??(??,??,??,??) VALUES (?,?,?,?)";
+    var table = ["team_clues","team_clues_id","clue_id", "team_id", "match_id", req.params.id,1,1,1];
+    query = mysql.format(query,table);
+    connection.query(query,function(err,rows){
+        if(err) {
+            res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+        } else {
+            res.json({"Error" : false, "Message" : "User Added !"});
+        }
+    });
+});
+ 
 }
 module.exports = REST_ROUTER;

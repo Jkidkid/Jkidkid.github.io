@@ -12,22 +12,26 @@ $invite = new ManageInvites();
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
   <link rel="stylesheet" href="../media/css/userpage.css">
 </head>
 <body>
-  <div>
-    <div class="content f-dir">
+  <div class="wrapper">
+    <div class="content">
+      <div class="navcontent-container">
         <nav class="upper-nav">
-            <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
-            <button><i class="fas fa-user icon"></i>Inbjudningar</button>
-            <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
+            <button id="btn3" onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Min grupp</button>
+            <button id="btn3"><i class="fas fa-user icon"></i>Inbjudningar</button>
+            <button id="btn3" onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
           </nav>
-        <div class="wrapp">
-          <div class="invites">
-            <h2>Inbjudningar</h2>
+        <div class="content-container">
+          <div class="black-box">
+            <h1>Inbjudningar</h1>
             <?php $invite->invites(); ?>
           </div>
         </div>
+      </div>
     </div>
       <nav class="nav">
         <button onclick="window.location.href = 'userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>

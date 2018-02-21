@@ -11,14 +11,17 @@ class MyGroups{
     function my_groups(){
 
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
-        
+        $this->db_connection->set_charset("utf8");
+
         $logged_in_user_username = $_SESSION['uid'];
-        $sql = "SELECT * FROM group_members WHERE userRank = 'Admin' OR userRank = 'medlem' AND userName='".$logged_in_user_username."'";
+        $sql = "SELECT * FROM group_members WHERE userName='".$logged_in_user_username."'";
+        
         $result = $this->db_connection->query($sql);
         $row = $result->fetch_assoc();
         $group_id = $row['groupID'];
-       
-        if($result->num_rows <= 0){
+        $userRank = $row['userRank'];
+
+        if($userRank == "inväntar svar"){
             $this->msg = "Du är inte med i någon grupp";
         }else{
             

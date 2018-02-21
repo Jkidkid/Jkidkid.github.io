@@ -17,31 +17,32 @@ $mygroups = new MyGroups();
   <title>Document</title>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <link rel="stylesheet" href="../media/css/userpage.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
 </head>
 <body>
-  <div>
-    <div class="content f-dir">
+  <div class="wrapper">
+    <div class="content">
+      <div class="navcontent-container">
         <nav class="upper-nav">
-          <button onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
-          <button onclick="window.location.href = 'invite.php'"><i class="fas fa-user icon"></i>Inbjudningar</button>
-          <button onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
-          </nav>
-      <div id="content-container">
-        <div>
-          <h3>mina grupper</h3>
-
-          <?php $mygroups->my_groups(); echo $mygroups->msg; ?>
+          <button id="btn3" onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
+          <button id="btn3" onclick="window.location.href = 'invite.php'"><i class="fas fa-user icon"></i>Inbjudningar</button>
+          <button id="btn3" onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
+        </nav>
+        <div class="content-container">
+          <div class="black-box">
+            <h1>Mina grupper</h1>
+            <?php $mygroups->my_groups(); echo $mygroups->msg; ?>
+          </div>
         </div>
       </div>
     </div>
-
-      <nav class="nav">
-        <button onclick="window.location.href = 'userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
-        <button><i class="fas fa-users"></i>Grupper</button>
-        <button onclick="window.location.href = 'userpage.php?page=groupScore'"><i class="fas fa-trophy"></i>Topplista</button>
-        <button onclick="window.location.href = 'userpage.php?page=start'"><i class="fas fa-play"></i>Start</button>
-      </nav>
-
+    <nav class="nav">
+      <button onclick="window.location.href = 'userpage.php?page=profile'"><i class="fas fa-user icon"></i>Profil</button>
+      <button><i class="fas fa-users"></i>Grupper</button>
+      <button onclick="window.location.href = 'userpage.php?page=groupScore'"><i class="fas fa-trophy"></i>Topplista</button>
+      <button onclick="window.location.href = 'userpage.php?page=start'"><i class="fas fa-play"></i>Start</button>
+    </nav>
   </div>
   <script src="../src/tabs.js"></script>
 </body>

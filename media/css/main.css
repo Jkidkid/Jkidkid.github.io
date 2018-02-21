@@ -11,7 +11,7 @@ body {
 
 /*Adapt the following styling depending on where you want to put your map. If you want a 'full screen' map, then set the width and height to 100 percent and remove the margins.*/
 #map {
-  height: 95%;
+  height: 85%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
