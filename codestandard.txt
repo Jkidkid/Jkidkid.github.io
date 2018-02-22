@@ -1,0 +1,73 @@
+Codestandard TeamCitrus
+
+HTML5:
+  * one tab indent
+  * no whitespace
+  * class/id with one dash to bind multiple words
+  * lowercase names
+  * semantic code
+
+CSS3:
+  * one tab indent on each property-value pair
+  * sort your css code in right order for easier readability
+  * font-family: 'Lustria', serif;
+  * h1-h6 font-family: 'Oswald', sans-serif;
+  * .light-bg = #36363a
+  * .dark-bg = #232327
+  * font-awesome icons: lime
+
+Javascript:
+  * camelCase on all variables and functions
+  * always use semicolons when necessary
+  * always the opening bracket at the end of the first line
+  * and the closing bracket always on a new line
+  * use const and let to avoid hoisting problems
+  * write a comment if the code isn't obvious
+
+Examples: 
+   
+<header>
+  <h1 id="example-id">ClueHunter</h1>
+</header>
+
+#example-id {
+  display: flex;
+  justify-content: center;
+}
+
+function exampleId() {
+  // do something...
+}  
+
+
+
+File structure:
+
+Jkidkid.github.io 
+  >.git
+  >media
+    -css
+    -img 	
+  >node_modules
+  >php
+    >classes
+  -create-group.php
+  -dbh.inc.php
+  -group.php
+  -invite.php
+  -my-groups.php
+  -signup.php
+  -userpage.php
+  >server
+    -REST.js
+    -server.js
+  >src
+    -geomap.js
+    -map.html
+    -page.js
+    -tabs.js
+-index.php
+-package.json
+README.md  
+
+
