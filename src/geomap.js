@@ -3,10 +3,10 @@ var clues = document.getElementById('modal'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
-    myLatLong, distanceBetween, watchId, yourMarker, map, player;
+    myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid, teamid;
 
 
-var api_url = "https://cluehunter.herokuapp.com";
+var api_url = "http://localhost:3000";
 // Crimeplace and startpoint for the team
 let clueMarkers = [
 	{
@@ -39,13 +39,13 @@ function stopClue(){
 }
 
 
-
 // Get player info and save it in "player" variable when the game starts
 function getPlayer(user) {
 	fetch(`${api_url}/api/users/${user}`).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
-				player = data;
+        player = data;
+        console.log(player);
 		  });
 	} else {
 			console.log("Looks like the response wasn't perfect, got status", res.status);
@@ -74,15 +74,18 @@ function getClues () {
 }
 
 function availableClues() {
-  fetch(api_url + "/api/availableClues").then(function(res) {
+  teamid = player[0].team_id;
+  console.log(teamid);
+  fetch(`${api_url}/api/availableClues/${teamid}`).then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
         cluesAvailable = [];
-        data.forEach( (clue) => {
-          cluesAvailable.push(clue.id);
+        data.forEach((coords) => {
+          cluesAvailable.push(coords.clue_id);
         });
-          console.log(cluesAvailable);
+        console.log(cluesAvailable);
       });
+      console.log(res.json()); 
   } else {
       console.log("Looks like the response wasn't perfect, got status", res.status);
     }
@@ -90,6 +93,7 @@ function availableClues() {
        console.log("Fetch failed!", e);
   });
 }
+
 
 // test function for updating db
 function updateClueClickable(id) {
@@ -107,6 +111,43 @@ function updateClueClickable(id) {
 	   console.log("Fetch failed!", e);
 	});
 }
+
+function newTeamClue(clue_id) {
+  teamid = player[0].team_id;
+	fetch(`${api_url}/api/newTeamClue/${teamid}/${clue_id}`, {
+    method: 'POST'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
+function newc(id) {
+	fetch(`http://localhost:3000/api/clueClickable/${id}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
 
 // Start the game
 function startMap () {
@@ -156,14 +197,21 @@ function initMap(myPos) {
 			google.maps.event.addListener(marker, 'click', function() {
 				modalClickable = clueMarkers[marker.title].clickable;
 				open = clueMarkers[marker.title].open;
-				// prevent user to click if the distance between player and marker is more then 20 meters
+        
+        
+        // prevent user to click if the distance between player and marker is more then 20 meters
 				if(modalClickable){
 					writeClue(clueMarkers[marker.title]);
-				  clues.style.display = "flex";
+          clues.style.display = "flex";
+          clueid = clueMarkers[marker.title].id;
+          if(clueid != 0){
+            newTeamClue(clueid);
+          }
             if(parseInt(marker.title) != 0){
               updateClueClickable(parseInt(marker.title));
           }
-				}
+        }
+        
       });
   			button.addEventListener('click', function() {
           if(!clueMarkers[0].open){

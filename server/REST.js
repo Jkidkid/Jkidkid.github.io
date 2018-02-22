@@ -9,8 +9,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
 
   // Get player-info when connecting
   router.get("/users/:id",function(req,res){
-    var query = "SELECT ?? FROM ?? WHERE ??=?";
-    var table = ["uid", "user","id",req.params.id];
+    var query = "SELECT * FROM ?? WHERE ??=?";
+    var table = ["user","id",req.params.id];
     query = mysql.format(query,table);
     connection.query(query,function(err,rows){
       if(err) {
@@ -36,9 +36,9 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
   });
 
   // fetch clickable clues
-  router.get("/availableClues",function(req,res){
-    var query = "SELECT ?? FROM ?? WHERE ??=?";
-    var table = ["id","clues","clickable", true];
+  router.get("/availableClues/:team_id",function(req,res){
+    var query = "SELECT * FROM ?? WHERE ??=?";
+    var table = ["team_clues","team_id", req.params.team_id];
     query = mysql.format(query,table);
     connection.query(query,function(err,rows){
       if(err) {
@@ -62,5 +62,21 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
       }
     });
   });
+
+  router.post("/newTeamClue/:id/:clue_id",function(req,res){
+    var query = "INSERT INTO ??(??,??) VALUES (?,?)";
+    var table = ["team_clues","clue_id", "team_id", req.params.clue_id,req.params.id];
+    query = mysql.format(query,table);
+    connection.query(query,function(err,rows){
+        if(err) {
+            res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+        } else {
+            res.json({"Error" : false, "Message" : "User Added !"});
+        }
+    });
+});
+
+
+ 
 }
 module.exports = REST_ROUTER;

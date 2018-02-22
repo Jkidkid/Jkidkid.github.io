@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clue|Hunter</title>
     <link rel="stylesheet" href="../media/css/main.css">
+    <link rel="stylesheet" href="../media/css/userpage.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
   </head>
   <body>
@@ -14,18 +15,22 @@
      </div>
      <!--Create the div to hold the map.-->
     <div id="map"></div>
-    <div id="modal">
-      <div id="clue">
-        <button onclick="nextClue('left')"><</button>
-        <button onclick="nextClue('right')">></button>
-        <h2 id="clue-header"></h2>
-        <img src="" id="cluePic"></img>
-        <p id="clueInfo"></p>
-        <button type="button" id="modal-close-btn">Stäng</button>
-      </div>
-    </div>
-    <button onclick="nextClue()">clues</button>
 
+    <nav class="nav">
+        <button id="btn3" onclick="nextClue()">clues</button>
+        <button id="btn3">Grupper</button>
+        <button id="btn3">Topplista</button>
+    </nav>
+    <div id="modal">
+        <div id="clue">
+          <button onclick="nextClue('left')"><</button>
+          <button onclick="nextClue('right')">></button>
+          <h2 id="clue-header"></h2>
+          <img src="" id="cluePic"></img>
+          <p id="clueInfo"></p>
+          <button type="button" id="modal-close-btn">Stäng</button>
+        </div>
+    </div>
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">
