@@ -229,7 +229,7 @@ nav button {
 .nextprevious{
   display: none;
   width: 100%;
-  height: 5%;
+  height: 10%;
 }
 #modal-close-btn{
   background-color: #36363a;
