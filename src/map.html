@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
+    <link rel="stylesheet" href="../media/css/userpage.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
   </head>
   <body>
@@ -17,6 +18,7 @@
      </div>
      <!--Create the div to hold the map.-->
     <div id="map"></div>
+<<<<<<< HEAD
     <div class="modal" id="modal">
       <div id="clue">
         <button type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
@@ -80,6 +82,24 @@
       <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
       <button onclick="tips(turnin)"><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
+=======
+
+    <nav class="nav">
+        <button id="btn3" onclick="nextClue()">clues</button>
+        <button id="btn3">Grupper</button>
+        <button id="btn3">Topplista</button>
+    </nav>
+    <div id="modal">
+        <div id="clue">
+          <button onclick="nextClue('left')"><</button>
+          <button onclick="nextClue('right')">></button>
+          <h2 id="clue-header"></h2>
+          <img src="" id="cluePic"></img>
+          <p id="clueInfo"></p>
+          <button type="button" id="modal-close-btn">Stäng</button>
+        </div>
+    </div>
+>>>>>>> testing2
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">

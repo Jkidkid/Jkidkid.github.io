@@ -44,10 +44,23 @@ class ManageInvites{
     }
 
     function accept_invite(){
+        
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        
+
         $test = "userName=".$this->logged_in_user_username." AND ".$this->group_id;
         $sql = "UPDATE group_members SET userRank = 'medlem' WHERE userName = '$this->logged_in_user_username'";
         $this->db_connection->query($sql);  
+
+        $sql1 = "SELECT * FROM group_members WHERE userName = '$this->logged_in_user_username'";
+        $result = $this->db_connection->query($sql1);
+    
+        $row = $result->fetch_assoc();
+        
+        $group_id = $row['groupID'];
+
+        $update = "UPDATE user SET team_id = '$group_id' WHERE uid = '$this->logged_in_user_username' ";
+        $this->db_connection->query($update);
     }
         
     function deny_invite(){

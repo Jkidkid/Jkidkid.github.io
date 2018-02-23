@@ -95,13 +95,13 @@ $leaderboard = new Leaderboard();
            </p>
           <div class="grplist">
             <ul>
-              <li>Du har ingen grupp</li>
+              <li><?php $start->output_players_group(); ?></li>
             </ul>
           </div>
         </div>
         </div>
         <form method="POST" class="startbtn">
-          <button class="btn" type="submit" name="start">START</button>
+          <button class="btn" type="submit" name="start" <?php if($start->player_has_a_group() === false){echo "disabled=disabled";} ?>>START</button>
         </form>
       </div>
     </div>
