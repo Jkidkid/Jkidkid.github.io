@@ -7,6 +7,14 @@ body {
   margin: 0;
   padding: 0;
   background-color: #CCC;
+  font-family: 'Lustria', serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+h1, h2, h3, h4, h5, h6, tr, .btn{
+  font-family: 'Oswald', sans-serif;
 }
 
 /*Adapt the following styling depending on where you want to put your map. If you want a 'full screen' map, then set the width and height to 100 percent and remove the margins.*/
@@ -39,31 +47,86 @@ body {
   background: linear-gradient(to right, lime , yellow);
 }
 /***********POPUP**************/
-#modal{
+.modal, #modalt{
   display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 90%;
   position: absolute;
   top: 0;
   background-color: rgba(0,0,0,0.4);
 }
 
-#clue {
+#clue, #tips, #turnin {
   display: flex;
-  width: 95%;
-  height: 85%;
-  background-color: #ccff66;
+  width: 90%;
+  height: 90%;
+  background-color: #36363a;
+  color: white;
   align-items: center;
   flex-direction: column;
+}
+#done {
+  font-family: 'Oswald', sans-serif;
+  width: 100%;
+  border: 0;
+  height: 10%;
+  margin-top: 2%;
+  color: white;
+  background-color: green;
+  font-size: 1.3em;
+}
+.boxrow{
+  margin-top: 2%;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-around;
+}
+.boxrow img {
+  width: 85.7px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 2%;
+}
+#turninselect{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.turnincontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.suspects, .weapons{
+  width: 90%;
+  height: auto;
+  min-height: fit-content;
+  background-color: #232327;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2%;
+  padding-bottom: 2%;
 }
 
 #clue img {
   height: 37%;
   width: 90%;
+  border: 1px solid black;
 }
-#clue h2 {
+#tips img {
+  height: 30%;
+  width: auto;
+}
+#clue h2, #tips li {
   margin: 0.4em 0;
 }
 
@@ -90,4 +153,96 @@ body {
   width: 100%;
   height: 400px;
 
+}
+
+/**************NAVBAR******/
+
+.nav {
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+}
+
+nav button {
+  height: 100%;
+  width: 33.1%;
+  border: 0;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #36363a;
+  color: #ccc;
+}
+
+
+.fa-thumbtack, .fa-lightbulb, .fa-user-secret, .fa-times {
+  margin: 2%;
+  font-size: 2em;
+  color: lime;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+  justify-content: space-between;
+  position: fixed;
+}
+
+nav button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 33.06%;
+  border: 0;
+  font-size: 1em;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #36363a;
+  color: #ccc;
+}
+.next, .previous{
+  background-color: #d84141;
+  width:50%;
+  height: 100%;
+  color: white;
+  border: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.previous {
+  border-left: 1px solid #36363a;
+}
+.nextprevious{
+  display: none;
+  width: 100%;
+  height: 5%;
+}
+#modal-close-btn{
+  background-color: #36363a;
+  align-self: flex-end;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 35px;
+}
+#modal-close-btn:hover{
+  background-color: #d84141;
 }

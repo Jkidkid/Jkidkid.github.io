@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clue|Hunter</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
     <link rel="stylesheet" href="../media/css/userpage.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
@@ -15,22 +18,69 @@
      </div>
      <!--Create the div to hold the map.-->
     <div id="map"></div>
-
-    <nav class="nav">
-        <button id="btn3" onclick="nextClue()">clues</button>
-        <button id="btn3">Grupper</button>
-        <button id="btn3">Topplista</button>
-    </nav>
-    <div id="modal">
-        <div id="clue">
-          <button onclick="nextClue('left')"><</button>
-          <button onclick="nextClue('right')">></button>
-          <h2 id="clue-header"></h2>
-          <img src="" id="cluePic"></img>
-          <p id="clueInfo"></p>
-          <button type="button" id="modal-close-btn">Stäng</button>
+    <div class="modal" id="modal">
+      <div id="clue">
+        <button type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <h2 id="clue-header"></h2>
+        <img src="" id="cluePic"></img>
+        <p id="clueInfo"></p>
+        <div class="nextprevious" id="nextprevious">
+          <button class="next" onclick="nextClue('left')"><i class="fas fa-chevron-circle-left"></i></button>
+          <button class="previous" onclick="nextClue('right')"><i class="fas fa-chevron-circle-right"></i></button>
         </div>
+      </div>
     </div>
+    <div class="modalt" id="modalt">
+      <div id="tips">
+        <button onclick="tips(tip)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <h1>TIPS</h1>
+        <img src="../media/img/tips.png" id="tipsPic"></img>
+        <ul>
+          <li>Att spela i ett lag kan göra det enklare</li>
+          <li>Titta dig omkring, det kan finnas ledtrådar i mijön</li>
+          <li>Tänk på! att du har två gissningar</li>
+          <li>Använd tiden effektivt och fånga många ledtrådar</li>
+          <li>Läs NOGA!</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal" id="modalm">
+      <div id="turnin">
+        <button onclick="tips(turnin)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <div id="turninselect">
+          <div class="turnincontainer">
+            <div class="suspects">
+              <h1>MISSTÄNKTA</h1>
+              <div class="boxrow">
+                <img src="../media/img/male1.png" alt="misstänkt1">
+                <img src="../media/img/female2.png" alt="misstänkt2">
+              </div>
+              <div class="boxrow">
+                <img src="../media/img/female.png" alt="misstänkt3">
+                <img src="../media/img/male2.png" alt="misstänkt4">
+              </div>
+            </div>
+            <div class="weapons">
+              <h1>VAPEN</h1>
+              <div class="boxrow">
+                <img src="../media/img/ak.png" alt="vapen1">
+                <img src="../media/img/iron.png" alt="vapen2">
+              </div>
+              <div class="boxrow">
+                <img src="../media/img/knife.png" alt="vapen3">
+                <img src="../media/img/rope.png" alt="vapen4">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" name="button" id="done">JAG VET!</button>
+      </div>
+    </div>
+    <nav class="nav">
+      <button onclick="tips(tip)"><i class="fas fa-lightbulb"></i>Tips</button>
+      <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
+      <button onclick="tips(turnin)"><i class="fas fa-user-secret"></i>Misstänka</button>
+    </nav>
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">
