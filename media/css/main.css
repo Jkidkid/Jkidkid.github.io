@@ -84,12 +84,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   display: flex;
   justify-content: space-around;
 }
-.boxrow img {
-  width: 85.7px;
-  height: 100px;
-  border: 1px solid black;
-  margin: 2%;
-}
+
 #turninselect{
   height: 90%;
   width: 100%;
@@ -245,4 +240,18 @@ nav button {
 }
 #modal-close-btn:hover{
   background-color: #d84141;
+}
+
+.weapon, .suspect{
+  width: 85.7px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 2%;
+}
+
+.guessActive {
+  width: 85.7px;
+  height: 100px;
+  border: 1px solid lime;
+  margin: 2%;
 }
