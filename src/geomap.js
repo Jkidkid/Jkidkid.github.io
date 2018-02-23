@@ -6,7 +6,7 @@ var clues = document.getElementById('modal'),
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
     teamid, clueInterval;
 
-var api_url = "http://localhost:3000";
+var api_url = "https://cluehunter.herokuapp.com";
 
 // Stores all available clues when a team-member have clicked a clue
 let cluesAvailable = [];
