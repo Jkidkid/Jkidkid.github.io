@@ -9,7 +9,7 @@ var clues = document.getElementById('modal'),
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
     teamid, clueInterval, timerEndsAt, timerTime;
 
-var api_url = "https://cluehunter.herokuapp.com";
+var api_url = "http://localhost:3000";
 
 // Stores all available clues when a team-member have clicked a clue
 let cluesAvailable = [];
@@ -81,16 +81,18 @@ function getTimerTime() {
 			res.json().then(function(data) {
         if(data[0].timer_ends_at == ""){
           var d = new Date();
-    let hours = d.getHours();
-    let minutes = d.getMinutes() + 1;
-    let seconds = d.getSeconds();
+          let hours = d.getHours();
+          let minutes = d.getMinutes() + 1;
+          let seconds = d.getSeconds();
 
-    timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
-    updateDbTimer();
-    timer();
-        }else if(data[0].timer_ends_at != ""){
+          timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
+          updateDbTimer();
+          timer();
+        }else if(data[0].timer_ends_at != "" && data[0].timer_ends_at != "Sep 5, 2018 00:00:00"){
           timerTime = data[0].timer_ends_at;
           timer();
+        }else if(data[0].timer_ends_at == "Sep 5, 2018 00:00:00"){
+          document.getElementById("prog-bar").innerHTML = "0:0";
         }
 		  });
 	} else {
@@ -138,6 +140,8 @@ function timer(){
 
       if (minutes == 0 && seconds == 0) {
         clearInterval(x);
+        timerTime = "Sep 5, 2018 00:00:00";
+        updateDbTimer();
         // Times up. Remove all markers
         for(let i=0; i<10; i++){
           removeMarker(i);
