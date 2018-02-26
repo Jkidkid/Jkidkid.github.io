@@ -13,7 +13,7 @@ let clues = document.getElementById('modal'),
     cluesAvailable = [], // Stores all available clues when a team-member have clicked a clue
     choices = { misstänkt: '', vapen: '' }, // save selected answers from player
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
-    teamid, clueInterval, guessCount,
+    teamid, clueInterval, guessCount, teamPoints, playerPoints, gameActive,
     // Crimeplace and startpoint for the team
     clueMarkers = [
     	{
@@ -42,6 +42,12 @@ var api_url = "http://localhost:3000";
   function startInterval(){
     clueInterval = setInterval(() => {
       availableClues();
+      getCounter();
+      console.log(gameActive);
+      if(guessCount === 0 || gameActive === 1){
+        console.log('gameover');
+        gameOver();
+      }
   }, 10000);
 }
 
@@ -63,6 +69,8 @@ function getPlayer(user) {
 		if (res.ok) {
 			res.json().then(function(data) {
         player = data;
+        teamid = player[0].team_id;
+        playerPoints = player[0].user_points;
         console.log(player);
 		  });
 	} else {
@@ -93,7 +101,6 @@ function getClues () {
 
 // Fetch function to get all available team clues every ten seconds
 function availableClues() {
-  teamid = player[0].team_id;
   fetch(`${api_url}/api/availableClues/${teamid}`).then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
@@ -114,7 +121,6 @@ function availableClues() {
 
 // Add new clues to team_clue table
 function newTeamClue(clue_id) {
-  teamid = player[0].team_id;
 	fetch(`${api_url}/api/newTeamClue/${teamid}/${clue_id}`, {
     method: 'POST'
   }).then(function(res) {
@@ -138,12 +144,16 @@ function getAnswers(answers) {
              weapon = data[0].weapon;
           if(answers.misstänkt === murder && answers.vapen === weapon){
             console.log('Congratulations');
+            teamPoints += 100;
+            playerPoints += 100;
+            gameOver();
           } else {
             guessCount--;
             updateGuessCount(guessCount);
 
             if(guessCount == 0){
               console.log('Game Over!');
+              gameOver();
             }
           }
 		  });
@@ -158,11 +168,13 @@ function getAnswers(answers) {
 
 
 function getCounter() {
-	fetch(`${api_url}/api/guessCounter/${9}`).then(function(res) {
+	fetch(`${api_url}/api/guessCounter/${teamid}`).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
+        console.log(data);
         guessCount = data[0].group_guesses;
-        getAnswers(choices);
+        teamPoints = data[0].group_points;
+        gameActive = data[0].gameover;
 		  });
 	} else {
 			console.log("Looks like the response wasn't perfect, got status", res.status);
@@ -174,7 +186,7 @@ function getCounter() {
 
 // Add new clues to team_clue table
 function updateGuessCount(counter) {
-  fetch(`${api_url}/api/updateCounter/${9}/${counter}`, {
+  fetch(`${api_url}/api/updateCounter/${teamid}/${counter}`, {
     method: 'PUT'
   }).then(function(res) {
 		if (res.ok) {
@@ -190,12 +202,44 @@ function updateGuessCount(counter) {
 }
 
 
+function updateGroupPoints() {
+  fetch(`${api_url}/api/awardPoints/${teamid}/${teamPoints}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log('group_guesses got updated');
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
 
 
-
-
-
-
+function updatePlayerPoints() {
+  fetch(`${api_url}/api/awardPlayerPoints/${player[0].id}/${playerPoints}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log('group_guesses got updated');
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+function gameOver(){
+    updateGroupPoints();
+    updatePlayerPoints();
+    stopInterval();
+    window.location = "http://localhost:81/TeamC/Jkidkid.github.io/";
+}
 // Start the game
 function startMap () {
     var myPos = navigator.geolocation.getCurrentPosition(initMap);
@@ -352,8 +396,7 @@ function initMap(myPos) {
     }
 
     turnInBtn.addEventListener('click', function(event){
-      //getAnswers(choices);
-      getCounter();
+      getAnswers(choices);
     });
   }
 

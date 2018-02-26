@@ -81,8 +81,8 @@ router.get("/answers",function(req,res){
 
 // fetch all available clues for the team
 router.get("/guessCounter/:team_id",function(req,res){
-  var query = "SELECT ?? FROM ?? WHERE ??=?";
-  var table = ["group_guesses","groups", "groupID", req.params.team_id];
+  var query = "SELECT ??,??,?? FROM ?? WHERE ??=?";
+  var table = ["group_guesses","group_points","gameover","groups", "groupID", req.params.team_id];
   query = mysql.format(query,table);
   connection.query(query,function(err,rows){
     if(err) {
@@ -108,7 +108,30 @@ router.put("/updateCounter/:teamid/:counter",function(req,res){
         });
     });
 
-
+    router.put("/awardPoints/:teamid/:groupPoints",function(req,res){
+            var query = "UPDATE ?? SET ?? = ?, ?? = ? WHERE ?? = ?";
+            var table = ["groups","group_points",req.params.groupPoints,"gameover",true,"groupID",req.params.teamid];
+            query = mysql.format(query,table);
+            connection.query(query,function(err,rows){
+                if(err) {
+                    res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+                } else {
+                    res.json({"Error" : false, "Message" : "Updated the password for email "+req.body.email});
+                }
+            });
+        });
+        router.put("/awardPlayerPoints/:id/:points",function(req,res){
+                var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+                var table = ["user","user_points",req.params.points,"id",req.params.id];
+                query = mysql.format(query,table);
+                connection.query(query,function(err,rows){
+                    if(err) {
+                        res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+                    } else {
+                        res.json({"Error" : false, "Message" : "Updated the password for email "+req.body.email});
+                    }
+                });
+            });
 
 }
 
