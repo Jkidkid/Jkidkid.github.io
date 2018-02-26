@@ -1,4 +1,4 @@
-var clues = document.getElementById('modal'),
+let clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
     tip = document.getElementById('modalt'),
     turnin = document.getElementById('modalm'),
@@ -6,34 +6,34 @@ var clues = document.getElementById('modal'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
+    suspect = document.getElementsByClassName('suspect'), // get selected suspect
+    weapon = document.getElementsByClassName('weapon'), // get selected weapon
+    turnInBtn = document.getElementById('done'), // answer button, fetch for right answers on db
+    googleMarkers = [], // Stores all google map markers
+    cluesAvailable = [], // Stores all available clues when a team-member have clicked a clue
+    choices = { misstänkt: '', vapen: '' }, // save selected answers from player
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
-    teamid, clueInterval;
+    teamid, clueInterval, guessCount,
+    // Crimeplace and startpoint for the team
+    clueMarkers = [
+    	{
+        id: '0',
+        clue_lat: 59.313627, clue_lng: 18.110746,
+        icon: '../media/img/pins/blue_MarkerB.png',
+        header: 'Mordplats',
+        imgSrc: '../media/img/karlsson.png',
+        info: 'Ett mord har skett i Nacka',
+        clickable: false, open: false
+      }
+    ];
 
-var api_url = "https://cluehunter.herokuapp.com";
-
-// Stores all available clues when a team-member have clicked a clue
-let cluesAvailable = [];
-
-// Stores all google map markers
-let googleMarkers = [];
-
-// Crimeplace and startpoint for the team
-let clueMarkers = [
-	{
-    id: '0',
-    clue_lat: 59.313627, clue_lng: 18.110746,
-    icon: '../media/img/pins/blue_MarkerB.png',
-    header: 'Mordplats',
-    imgSrc: '../media/img/karlsson.png',
-    info: 'Ett mord har skett i Nacka',
-    clickable: false, open: false
-  }
-];
+//var api_url = "https://cluehunter.herokuapp.com";
+var api_url = "http://localhost:3000";
 
 // Fetch player user-id when game starts
   window.onload = function(){
-    let params = (new URL(location)).searchParams;
-    let val = params.get('userID');
+    const params = (new URL(location)).searchParams;
+    const val = params.get('userID');
     getPlayer(val);
 }
 
@@ -130,6 +130,72 @@ function newTeamClue(clue_id) {
 	});
 }
 
+function getAnswers(answers) {
+	fetch(`${api_url}/api/answers`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        let  murder = data[0].murder,
+             weapon = data[0].weapon;
+          if(answers.misstänkt === murder && answers.vapen === weapon){
+            console.log('Congratulations');
+          } else {
+            guessCount--;
+            updateGuessCount(guessCount);
+
+            if(guessCount == 0){
+              console.log('Game Over!');
+            }
+          }
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
+function getCounter() {
+	fetch(`${api_url}/api/guessCounter/${9}`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        guessCount = data[0].group_guesses;
+        getAnswers(choices);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+// Add new clues to team_clue table
+function updateGuessCount(counter) {
+  fetch(`${api_url}/api/updateCounter/${9}/${counter}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log('group_guesses got updated');
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
+
+
+
+
+
 // Start the game
 function startMap () {
     var myPos = navigator.geolocation.getCurrentPosition(initMap);
@@ -195,6 +261,7 @@ function initMap(myPos) {
           if(!clueMarkers[0].open){
             getClues();
             startInterval();
+            addClickListeners();
             clueMarkers[0].open = true;
           }
 					clues.style.display = "none";
@@ -261,5 +328,37 @@ function initMap(myPos) {
       tip.style.display = 'none';
       turnin.style.display = 'none';
       id.style.display = "flex";
+    }
+  }
+
+
+  function addClickListeners(){
+    for(let i = 0, x = suspect.length; i < x; i++){
+      suspect[i].addEventListener('click', function(event){
+        clearEv(suspect);
+        choice = event.target;
+        choice.classList.add('guessActive');
+        choices.misstänkt = choice.id;
+      });
+    }
+
+    for(let i = 0, x = weapon.length; i < x; i++){
+      weapon[i].addEventListener('click', function(event){
+        clearEv(weapon);
+        choice = event.target;
+        choice.classList.add('guessActive');
+        choices.vapen = choice.id;
+      });
+    }
+
+    turnInBtn.addEventListener('click', function(event){
+      //getAnswers(choices);
+      getCounter();
+    });
+  }
+
+  function clearEv(target){
+    for(let i = 0, x = target.length; i < x; i++){
+      target[i].classList.remove('guessActive');
     }
   }
