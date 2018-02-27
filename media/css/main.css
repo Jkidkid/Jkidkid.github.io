@@ -255,3 +255,7 @@ nav button {
   border: 1px solid lime;
   margin: 2%;
 }
+
+#totalguesses {
+  color: red;
+}

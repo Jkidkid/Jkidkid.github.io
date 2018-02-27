@@ -3,6 +3,7 @@ let clues = document.getElementById('modal'),
     tip = document.getElementById('modalt'),
     turnin = document.getElementById('modalm'),
     button = document.getElementById('modal-close-btn'),
+    totalguesses = document.getElementById('totalguesses'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
@@ -149,6 +150,7 @@ function getAnswers(answers) {
             gameOver();
           } else {
             guessCount--;
+            totalguesses.innerHTML = `Antal gissningar: ${guessCount}`;
             updateGuessCount(guessCount);
             if(guessCount == 0){
               console.log('Game Over!');
