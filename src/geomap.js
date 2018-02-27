@@ -1,4 +1,4 @@
-var clues = document.getElementById('modal'),
+    var clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
     tip = document.getElementById('modalt'),
     turnin = document.getElementById('modalm'),
@@ -103,24 +103,6 @@ function getTimerTime() {
 	});
 }
 
-/*function setTimerDissapearTime(){
-console.log(timerTime);
-  if(timerTime != undefined){
-    timer();
-  }else if(timerTime === undefined){
-    var d = new Date();
-    let hours = d.getHours();
-    let minutes = d.getMinutes() + 2;
-    let seconds = d.getSeconds();
-
-    timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
-    updateDbTimer();
-    timer();
-    //insert into DB
-  }
-}
-
-*/
 function timer(){
 
     let countDownDate =  new Date(timerTime).getTime();
@@ -296,14 +278,7 @@ function initMap(myPos) {
             getClues();
             startInterval();
             getTimerTime();
-            
-            // Times up. Dont show any clues
-            if(timerTime == "Sep 5, 2018 00:00:00"){
-              console.log("Times up. No clues will be showed");
-              for(let i=0; i<10; i++){
-                removeMarker(i);
-              }
-            }
+
             //setTimerDissapearTime();
             clueMarkers[0].open = true;
           }
