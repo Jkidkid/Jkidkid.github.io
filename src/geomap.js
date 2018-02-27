@@ -296,6 +296,14 @@ function initMap(myPos) {
             getClues();
             startInterval();
             getTimerTime();
+            
+            // Times up. Dont show any clues
+            if(timerTime == "Sep 5, 2018 00:00:00"){
+              console.log("Times up. No clues will be showed");
+              for(let i=0; i<10; i++){
+                removeMarker(i);
+              }
+            }
             //setTimerDissapearTime();
             clueMarkers[0].open = true;
           }
