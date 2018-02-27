@@ -1,39 +1,40 @@
-var clues = document.getElementById('modal'),
+let clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
     tip = document.getElementById('modalt'),
     turnin = document.getElementById('modalm'),
     button = document.getElementById('modal-close-btn'),
+    totalguesses = document.getElementById('totalguesses'),
     header = document.getElementById('clue-header'), // modal header text
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
+    suspect = document.getElementsByClassName('suspect'), // get selected suspect
+    weapon = document.getElementsByClassName('weapon'), // get selected weapon
+    turnInBtn = document.getElementById('done'), // answer button, fetch for right answers on db
+    googleMarkers = [], // Stores all google map markers
+    cluesAvailable = [], // Stores all available clues when a team-member have clicked a clue
+    choices = { misstänkt: '', vapen: '' }, // save selected answers from player
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
-    teamid, clueInterval;
+    teamid, clueInterval, guessCount, teamPoints, playerPoints, gameActive, timerEndsAt, timerTime,
+    // Crimeplace and startpoint for the team
+    clueMarkers = [
+    	{
+        id: '0',
+        clue_lat: 59.313627, clue_lng: 18.110746,
+        icon: '../media/img/pins/blue_MarkerB.png',
+        header: 'Mordplats',
+        imgSrc: '../media/img/karlsson.png',
+        info: 'Ett mord har skett i Nacka',
+        clickable: false, open: false
+      }
+    ];
 
-var api_url = "https://cluehunter.herokuapp.com";
-
-// Stores all available clues when a team-member have clicked a clue
-let cluesAvailable = [];
-
-// Stores all google map markers
-let googleMarkers = [];
-
-// Crimeplace and startpoint for the team
-let clueMarkers = [
-	{
-    id: '0',
-    clue_lat: 59.313627, clue_lng: 18.110746,
-    icon: '../media/img/pins/blue_MarkerB.png',
-    header: 'Mordplats',
-    imgSrc: '../media/img/karlsson.png',
-    info: 'Ett mord har skett i Nacka',
-    clickable: false, open: false
-  }
-];
+//var api_url = "https://cluehunter.herokuapp.com";
+var api_url = "http://localhost:3000";
 
 // Fetch player user-id when game starts
   window.onload = function(){
-    let params = (new URL(location)).searchParams;
-    let val = params.get('userID');
+    const params = (new URL(location)).searchParams;
+    const val = params.get('userID');
     getPlayer(val);
 }
 
@@ -42,6 +43,12 @@ let clueMarkers = [
   function startInterval(){
     clueInterval = setInterval(() => {
       availableClues();
+      getCounter();
+      console.log(gameActive);
+      if(guessCount === 0 || gameActive === 1){
+        console.log('gameover');
+        gameOver();
+      }
   }, 10000);
 }
 
@@ -63,6 +70,8 @@ function getPlayer(user) {
 		if (res.ok) {
 			res.json().then(function(data) {
         player = data;
+        teamid = player[0].team_id;
+        playerPoints = player[0].user_points;
         console.log(player);
 		  });
 	} else {
@@ -72,6 +81,87 @@ function getPlayer(user) {
 	   console.log("Fetch failed!", e);
 	});
 }
+
+// Get the timer end time
+function getTimerTime() {
+  teamid = player[0].team_id;
+	fetch(`${api_url}/api/timerTime/${teamid}`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        if(data[0].timer_ends_at == ""){
+          var d = new Date();
+          let hours = d.getHours();
+          let minutes = d.getMinutes() + 1;
+          let seconds = d.getSeconds();
+
+          timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
+          updateDbTimer();
+          timer();
+        }else if(data[0].timer_ends_at != "" && data[0].timer_ends_at != "Sep 5, 2018 00:00:00"){
+          timerTime = data[0].timer_ends_at;
+          timer();
+        }else if(data[0].timer_ends_at == "Sep 5, 2018 00:00:00"){
+          document.getElementById("prog-bar").innerHTML = "0:0";
+        }
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+function timer(){
+
+    let countDownDate =  new Date(timerTime).getTime();
+    let now_ = new Date().getTime();
+
+    var x = setInterval(function() {
+
+      var now = new Date().getTime();
+
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("prog-bar").innerHTML = minutes + ":" + seconds;
+
+      if (minutes == 0 && seconds == 0) {
+        clearInterval(x);
+        timerTime = "Sep 5, 2018 00:00:00";
+        updateDbTimer();
+        gameOver();
+        // Times up. Remove all markers
+        for(let i=0; i<10; i++){
+          removeMarker(i);
+        }
+      }
+    }, 1000);
+}
+
+// Add new clues to team_clue table
+function updateDbTimer() {
+  teamid = player[0].team_id;
+  let time = timerTime;
+	fetch(`${api_url}/api/updateDbTimer/${teamid}/${time}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
 
 // Fetch all the clues from db and print them into the game map
 function getClues () {
@@ -93,7 +183,6 @@ function getClues () {
 
 // Fetch function to get all available team clues every ten seconds
 function availableClues() {
-  teamid = player[0].team_id;
   fetch(`${api_url}/api/availableClues/${teamid}`).then(function(res) {
     if (res.ok) {
       res.json().then(function(data) {
@@ -114,7 +203,6 @@ function availableClues() {
 
 // Add new clues to team_clue table
 function newTeamClue(clue_id) {
-  teamid = player[0].team_id;
 	fetch(`${api_url}/api/newTeamClue/${teamid}/${clue_id}`, {
     method: 'POST'
   }).then(function(res) {
@@ -130,6 +218,118 @@ function newTeamClue(clue_id) {
 	});
 }
 
+function getAnswers(answers) {
+	fetch(`${api_url}/api/answers`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        let  murder = data[0].murder,
+             weapon = data[0].weapon;
+          if(answers.misstänkt === murder && answers.vapen === weapon){
+            console.log('Congratulations');
+            teamPoints += 100;
+            turnInBtn.innerHTML = 'Grattis ni vann';
+            updatePlayerPoints();
+            gameOver();
+          } else {
+            guessCount--;
+            turnInBtn.style.backgroundColor = 'red';
+            setTimeout(()=> {
+              turnInBtn.style.backgroundColor = 'green';
+            }, 3000);
+            updateGuessCount(guessCount);
+            if(guessCount == 0){
+              console.log('Game Over!');
+              gameOver();
+            }
+          }
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+
+function getCounter() {
+	fetch(`${api_url}/api/guessCounter/${teamid}`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        console.log(data);
+        guessCount = data[0].group_guesses;
+        teamPoints = data[0].group_points;
+        gameActive = data[0].gameover;
+        totalguesses.innerHTML = `Antal gissningar: ${guessCount}`;
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+// Add new clues to team_clue table
+function updateGuessCount(counter) {
+  fetch(`${api_url}/api/updateCounter/${teamid}/${counter}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+function updateGroupPoints() {
+  fetch(`${api_url}/api/awardPoints/${teamid}/${teamPoints}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log('group_guesses got updated');
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
+function updatePlayerPoints() {
+  fetch(`${api_url}/api/awardPlayerPoints/${teamid}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log('group_guesses got updated');
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+function gameOver(){
+    updateGroupPoints();
+    stopInterval();
+    console.log('slut');
+    setTimeout(()=>{
+      console.log('redirected');
+      window.location = "https://en.wikipedia.org/wiki/Gender_bender";
+    }, 3000);
+}
 // Start the game
 function startMap () {
     var myPos = navigator.geolocation.getCurrentPosition(initMap);
@@ -187,6 +387,8 @@ function initMap(myPos) {
           clueid = clueMarkers[marker.title].id;
           if(clueid != 0){
             newTeamClue(clueid);
+          }else if(clueid == 0){
+
           }
         }
       });
@@ -195,6 +397,9 @@ function initMap(myPos) {
           if(!clueMarkers[0].open){
             getClues();
             startInterval();
+            getTimerTime();
+            addClickListeners();
+            getCounter();
             clueMarkers[0].open = true;
           }
 					clues.style.display = "none";
@@ -261,5 +466,36 @@ function initMap(myPos) {
       tip.style.display = 'none';
       turnin.style.display = 'none';
       id.style.display = "flex";
+    }
+  }
+
+
+  function addClickListeners(){
+    for(let i = 0, x = suspect.length; i < x; i++){
+      suspect[i].addEventListener('click', function(event){
+        clearEv(suspect);
+        choice = event.target;
+        choice.classList.add('guessActive');
+        choices.misstänkt = choice.id;
+      });
+    }
+
+    for(let i = 0, x = weapon.length; i < x; i++){
+      weapon[i].addEventListener('click', function(event){
+        clearEv(weapon);
+        choice = event.target;
+        choice.classList.add('guessActive');
+        choices.vapen = choice.id;
+      });
+    }
+
+    turnInBtn.addEventListener('click', function(event){
+      getAnswers(choices);
+    });
+  }
+
+  function clearEv(target){
+    for(let i = 0, x = target.length; i < x; i++){
+      target[i].classList.remove('guessActive');
     }
   }
