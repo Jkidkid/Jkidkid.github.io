@@ -133,6 +133,7 @@ function timer(){
         clearInterval(x);
         timerTime = "Sep 5, 2018 00:00:00";
         updateDbTimer();
+        gameOver();
         // Times up. Remove all markers
         for(let i=0; i<10; i++){
           removeMarker(i);
