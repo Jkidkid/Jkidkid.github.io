@@ -1,4 +1,4 @@
-var clues = document.getElementById('modal'),
+    var clues = document.getElementById('modal'),
     cluearr = document.getElementById('nextprevious'),
     tip = document.getElementById('modalt'),
     turnin = document.getElementById('modalm'),
@@ -7,9 +7,9 @@ var clues = document.getElementById('modal'),
 	  img = document.getElementById('cluePic'), // clue picture
 	  info = document.getElementById('clueInfo'), // clue info
     myLatLong, distanceBetween, watchId, yourMarker, map, player, clueid,
-    teamid, clueInterval;
+    teamid, clueInterval, timerEndsAt, timerTime;
 
-var api_url = "https://cluehunter.herokuapp.com";
+var api_url = "http://localhost:3000";
 
 // Stores all available clues when a team-member have clicked a clue
 let cluesAvailable = [];
@@ -72,6 +72,86 @@ function getPlayer(user) {
 	   console.log("Fetch failed!", e);
 	});
 }
+
+// Get the timer end time
+function getTimerTime() {
+  teamid = player[0].team_id;
+	fetch(`${api_url}/api/timerTime/${teamid}`).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+        if(data[0].timer_ends_at == ""){
+          var d = new Date();
+          let hours = d.getHours();
+          let minutes = d.getMinutes() + 1;
+          let seconds = d.getSeconds();
+
+          timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
+          updateDbTimer();
+          timer();
+        }else if(data[0].timer_ends_at != "" && data[0].timer_ends_at != "Sep 5, 2018 00:00:00"){
+          timerTime = data[0].timer_ends_at;
+          timer();
+        }else if(data[0].timer_ends_at == "Sep 5, 2018 00:00:00"){
+          document.getElementById("prog-bar").innerHTML = "0:0";
+        }
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+function timer(){
+
+    let countDownDate =  new Date(timerTime).getTime();
+    let now_ = new Date().getTime();
+
+    var x = setInterval(function() {
+
+      var now = new Date().getTime();
+
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("prog-bar").innerHTML = minutes + ":" + seconds;
+
+      if (minutes == 0 && seconds == 0) {
+        clearInterval(x);
+        timerTime = "Sep 5, 2018 00:00:00";
+        updateDbTimer();
+        // Times up. Remove all markers
+        for(let i=0; i<10; i++){
+          removeMarker(i);
+        }
+      }
+    }, 1000);
+}
+
+// Add new clues to team_clue table
+function updateDbTimer() {
+  teamid = player[0].team_id;
+  let time = timerTime;
+	fetch(`${api_url}/api/updateDbTimer/${teamid}/${time}`, {
+    method: 'PUT'
+  }).then(function(res) {
+		if (res.ok) {
+			res.json().then(function(data) {
+				console.log(data);
+		  });
+	} else {
+			console.log("Looks like the response wasn't perfect, got status", res.status);
+		}
+  }, function(e) {
+	   console.log("Fetch failed!", e);
+	});
+}
+
+
 
 // Fetch all the clues from db and print them into the game map
 function getClues () {
@@ -187,6 +267,8 @@ function initMap(myPos) {
           clueid = clueMarkers[marker.title].id;
           if(clueid != 0){
             newTeamClue(clueid);
+          }else if(clueid == 0){
+
           }
         }
       });
@@ -195,6 +277,9 @@ function initMap(myPos) {
           if(!clueMarkers[0].open){
             getClues();
             startInterval();
+            getTimerTime();
+
+            //setTimerDissapearTime();
             clueMarkers[0].open = true;
           }
 					clues.style.display = "none";

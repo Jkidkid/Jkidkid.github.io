@@ -57,11 +57,38 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         if(err) {
             res.json({"Error" : true, "Message" : "Error executing MySQL query"});
         } else {
-            res.json({"Error" : false, "Message" : "User Added !"});
+            res.json({"Error" : false, "Message" : "Clue added to the team !"});
         }
     });
 });
 
+  // fetch the teams timer_ends_at
+  router.get("/timerTime/:team_id",function(req,res){
+    var query = "SELECT timer_ends_at FROM ?? WHERE ??=?";
+    var table = ["groups","groupID", req.params.team_id];
+    query = mysql.format(query,table);
+    connection.query(query,function(err,rows){
+      if(err) {
+        res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+    } else {
+        res.json(rows);
+      }
+    });
+  });
+
+
+  router.put("/updateDbTimer/:team_id/:time",function(req,res){
+    var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+    var table = ["groups","timer_ends_at", req.params.time, "groupID",req.params.team_id];
+    query = mysql.format(query,table);
+    connection.query(query,function(err,rows){
+        if(err) {
+            res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+        } else {
+            res.json({"Error" : false, "Message" : "Updated the DB timer_ends_at to " + req.params.time});
+        }
+    });
+});
 }
 
 module.exports = REST_ROUTER;
