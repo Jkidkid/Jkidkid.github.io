@@ -146,11 +146,15 @@ function getAnswers(answers) {
           if(answers.misstänkt === murder && answers.vapen === weapon){
             console.log('Congratulations');
             teamPoints += 100;
+            turnInBtn.innerHTML = 'Grattis ni vann';
             updatePlayerPoints();
             gameOver();
           } else {
             guessCount--;
-            totalguesses.innerHTML = `Antal gissningar: ${guessCount}`;
+            turnInBtn.style.backgroundColor = 'red';
+            setTimeout(()=> {
+              turnInBtn.style.backgroundColor = 'green';
+            }, 3000);
             updateGuessCount(guessCount);
             if(guessCount == 0){
               console.log('Game Over!');
@@ -176,6 +180,7 @@ function getCounter() {
         guessCount = data[0].group_guesses;
         teamPoints = data[0].group_points;
         gameActive = data[0].gameover;
+        totalguesses.innerHTML = `Antal gissningar: ${guessCount}`;
 		  });
 	} else {
 			console.log("Looks like the response wasn't perfect, got status", res.status);
@@ -192,7 +197,7 @@ function updateGuessCount(counter) {
   }).then(function(res) {
 		if (res.ok) {
 			res.json().then(function(data) {
-				console.log('group_guesses got updated');
+
 		  });
 	} else {
 			console.log("Looks like the response wasn't perfect, got status", res.status);
@@ -241,7 +246,7 @@ function gameOver(){
     console.log('slut');
     setTimeout(()=>{
       console.log('redirected');
-      window.location = "http://localhost:81/TeamC/Jkidkid.github.io/";
+      window.location = "https://en.wikipedia.org/wiki/Gender_bender";
     }, 3000);
 }
 // Start the game
