@@ -145,12 +145,11 @@ function getAnswers(answers) {
           if(answers.misstänkt === murder && answers.vapen === weapon){
             console.log('Congratulations');
             teamPoints += 100;
-            playerPoints += 100;
+            updatePlayerPoints();
             gameOver();
           } else {
             guessCount--;
             updateGuessCount(guessCount);
-
             if(guessCount == 0){
               console.log('Game Over!');
               gameOver();
@@ -220,7 +219,7 @@ function updateGroupPoints() {
 
 
 function updatePlayerPoints() {
-  fetch(`${api_url}/api/awardPlayerPoints/${player[0].id}/${playerPoints}`, {
+  fetch(`${api_url}/api/awardPlayerPoints/${teamid}`, {
     method: 'PUT'
   }).then(function(res) {
 		if (res.ok) {
@@ -236,9 +235,12 @@ function updatePlayerPoints() {
 }
 function gameOver(){
     updateGroupPoints();
-    updatePlayerPoints();
     stopInterval();
-    window.location = "http://localhost:81/TeamC/Jkidkid.github.io/";
+    console.log('slut');
+    setTimeout(()=>{
+      console.log('redirected');
+      window.location = "http://localhost:81/TeamC/Jkidkid.github.io/";
+    }, 3000);
 }
 // Start the game
 function startMap () {
@@ -306,6 +308,7 @@ function initMap(myPos) {
             getClues();
             startInterval();
             addClickListeners();
+            getCounter();
             clueMarkers[0].open = true;
           }
 					clues.style.display = "none";

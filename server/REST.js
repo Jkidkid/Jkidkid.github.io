@@ -120,9 +120,9 @@ router.put("/updateCounter/:teamid/:counter",function(req,res){
                 }
             });
         });
-        router.put("/awardPlayerPoints/:id/:points",function(req,res){
-                var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
-                var table = ["user","user_points",req.params.points,"id",req.params.id];
+        router.put("/awardPlayerPoints/:teamid",function(req,res){
+                var query = "UPDATE ?? SET user_points = user_points + 100 WHERE ?? = ?";
+                var table = ["user","team_id",req.params.teamid];
                 query = mysql.format(query,table);
                 connection.query(query,function(err,rows){
                     if(err) {
