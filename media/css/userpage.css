@@ -52,8 +52,8 @@ table {
 .upper-nav{
   justify-content: space-between;
 }
-.upper-nav button{
-  width: 49.8%; 
+.btn2{
+  width: 49.8%;
 }
 /*Containers*/
 .content {
