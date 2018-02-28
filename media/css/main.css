@@ -17,14 +17,14 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   font-family: 'Oswald', sans-serif;
 }
 
-h2{
+.final-greeting h2{
   font-size: 4.5em;
   margin: 0 0 20px 0;
   color: orange;
   text-shadow: 3px 3px #36363a;
 }
 
-h3{
+.final-greeting h3{
   color: orange;
   font-size: 2em;
   text-shadow: 3px 3px #36363a;
