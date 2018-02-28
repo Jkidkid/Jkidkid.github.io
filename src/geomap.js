@@ -10,6 +10,8 @@ let clues = document.getElementById('modal'),
     suspect = document.getElementsByClassName('suspect'), // get selected suspect
     weapon = document.getElementsByClassName('weapon'), // get selected weapon
     turnInBtn = document.getElementById('done'), // answer button, fetch for right answers on db
+    teamWin = document.getElementById('team-win'),
+    teamLose = document.getElementById('team-lose'),
     googleMarkers = [], // Stores all google map markers
     cluesAvailable = [], // Stores all available clues when a team-member have clicked a clue
     choices = { misstänkt: '', vapen: '' }, // save selected answers from player
@@ -45,9 +47,10 @@ var api_url = "http://localhost:3000";
       availableClues();
       getCounter();
       console.log(gameActive);
-      if(guessCount === 0 || gameActive === 1){
-        console.log('gameover');
-        gameOver();
+      if(guessCount === 0 && gameActive === 1){
+        gameOver('lose');
+      } else if(guessCount > 0 && gameActive === 1){
+        gameOver('win');
       }
   }, 10000);
 }
@@ -133,7 +136,7 @@ function timer(){
         clearInterval(x);
         timerTime = "Sep 5, 2018 00:00:00";
         updateDbTimer();
-        gameOver();
+        gameOver('lose');
         // Times up. Remove all markers
         for(let i=0; i<10; i++){
           removeMarker(i);
@@ -229,7 +232,7 @@ function getAnswers(answers) {
             teamPoints += 100;
             turnInBtn.innerHTML = 'Grattis ni vann';
             updatePlayerPoints();
-            gameOver();
+            gameOver('win');
           } else {
             guessCount--;
             turnInBtn.style.backgroundColor = 'red';
@@ -239,7 +242,7 @@ function getAnswers(answers) {
             updateGuessCount(guessCount);
             if(guessCount == 0){
               console.log('Game Over!');
-              gameOver();
+              gameOver('lose');
             }
           }
 		  });
@@ -321,15 +324,19 @@ function updatePlayerPoints() {
 	   console.log("Fetch failed!", e);
 	});
 }
-function gameOver(){
+
+
+function gameOver(result){
+  if(result == 'win'){
+    showWinGreeting();
+  } else if(result == 'lose'){
+    showLoseGreeting();
+  }
     updateGroupPoints();
     stopInterval();
-    console.log('slut');
-    setTimeout(()=>{
-      console.log('redirected');
-      window.location = "https://en.wikipedia.org/wiki/Gender_bender";
-    }, 3000);
+
 }
+
 // Start the game
 function startMap () {
     var myPos = navigator.geolocation.getCurrentPosition(initMap);
@@ -458,6 +465,8 @@ function initMap(myPos) {
     img.src = clueMarkers[numb].imgSrc;
     info.innerHTML = clueMarkers[numb].info;
   }
+
+  // open up the tip modal to achieve some useful tips
   function tips(id){
     if(id.style.display === 'flex'){
       id.style.display = 'none';
@@ -469,7 +478,8 @@ function initMap(myPos) {
     }
   }
 
-
+  // add clickListener for each suspect and weapon in turnin modal
+  // className guessActive makes the clicked item highlighted in green
   function addClickListeners(){
     for(let i = 0, x = suspect.length; i < x; i++){
       suspect[i].addEventListener('click', function(event){
@@ -494,8 +504,25 @@ function initMap(myPos) {
     });
   }
 
+  // reset the guessActive className to highlight a new clicked item
   function clearEv(target){
     for(let i = 0, x = target.length; i < x; i++){
       target[i].classList.remove('guessActive');
     }
   }
+
+function showWinGreeting(){
+  teamWin.style.display = 'flex';
+  setTimeout(()=>{
+    teamWin.style.display = 'none';
+    window.location = "https://en.wikipedia.org/wiki/Gender_bender";
+  }, 5000);
+}
+
+function showLoseGreeting(){
+  teamLose.style.display = 'flex';
+  setTimeout(()=>{
+    teamLose.style.display = 'none';
+    window.location = "https://en.wikipedia.org/wiki/Gender_bender";
+  }, 5000);
+}

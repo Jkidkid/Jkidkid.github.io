@@ -17,6 +17,19 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   font-family: 'Oswald', sans-serif;
 }
 
+h2{
+  font-size: 4.5em;
+  margin: 0 0 20px 0;
+  color: orange;
+  text-shadow: 3px 3px #36363a;
+}
+
+h3{
+  color: orange;
+  font-size: 2em;
+  text-shadow: 3px 3px #36363a;
+}
+
 /*Adapt the following styling depending on where you want to put your map. If you want a 'full screen' map, then set the width and height to 100 percent and remove the margins.*/
 #map {
   height: 85%;
@@ -258,4 +271,42 @@ nav button {
 
 #totalguesses {
   color: red;
+}
+
+.final-greeting {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: #232327;
+}
+
+.greeting-box {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  padding: 20px;
+}
+
+#team-win {
+  display: none;
+}
+
+#win-box {
+  background:url('../img/balloons.png');
+}
+
+#team-lose {
+  display: none;
+}
+
+#lose-box {
+  background:url('../img/airplane.png');
 }
