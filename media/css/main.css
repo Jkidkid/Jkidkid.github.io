@@ -226,7 +226,7 @@ nav button {
   width: 100%;
   height: 10%;
 }
-#modal-close-btn{
+.modal-close-btn{
   background-color: #36363a;
   align-self: flex-end;
   color: white;
@@ -238,7 +238,7 @@ nav button {
   padding-right: 10px;
   min-height: 35px;
 }
-#modal-close-btn:hover{
+.modal-close-btn:hover{
   background-color: #d84141;
 }
 

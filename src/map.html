@@ -1,5 +1,5 @@
-<!doctype>
-<html>
+<!doctype html>
+<html lang="sv">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,9 +20,9 @@
     <div id="map"></div>
     <div class="modal" id="modal">
       <div id="clue">
-        <button type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
         <h2 id="clue-header"></h2>
-        <img src="" id="cluePic"></img>
+        <img src="" id="cluePic" alt="ledtråd-bild">
         <p id="clueInfo"></p>
         <div class="nextprevious" id="nextprevious">
           <button class="next" onclick="nextClue('left')"><i class="fas fa-chevron-circle-left"></i></button>
@@ -32,9 +32,9 @@
     </div>
     <div class="modalt" id="modalt">
       <div id="tips">
-        <button onclick="tips(tip)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button onclick="tips(tip)" type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
         <h1>TIPS</h1>
-        <img src="../media/img/tips.png" id="tipsPic"></img>
+        <img src="../media/img/tips.png" id="tipsPic" alt="lampa">
         <ul>
           <li>Att spela i ett lag kan göra det enklare</li>
           <li>Titta dig omkring, det kan finnas ledtrådar i mijön</li>
@@ -46,7 +46,7 @@
     </div>
     <div class="modal" id="modalm">
       <div id="turnin">
-        <button onclick="tips(turnin)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button onclick="tips(turnin)" type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
         <div id="turninselect">
           <div class="turnincontainer">
             <div class="suspects">
