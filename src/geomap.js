@@ -514,7 +514,7 @@ function initMap(myPos) {
 function showWinGreeting(){
   teamWin.style.display = 'flex';
   setTimeout(()=>{
-    teamWin.style.display = 'none';
+    //teamWin.style.display = 'none';
     window.location = "https://en.wikipedia.org/wiki/Gender_bender";
   }, 5000);
 }
@@ -522,7 +522,7 @@ function showWinGreeting(){
 function showLoseGreeting(){
   teamLose.style.display = 'flex';
   setTimeout(()=>{
-    teamLose.style.display = 'none';
+  //  teamLose.style.display = 'none';
     window.location = "https://en.wikipedia.org/wiki/Gender_bender";
   }, 5000);
 }
