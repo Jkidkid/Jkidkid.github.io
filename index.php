@@ -70,7 +70,7 @@ $toplist = new Top5Teams();
                     </div>
                     <div class="img col-md-12 col-lg-6 align-middle">
                       <figure>
-                        <img src="media/img/img-placeholder.gif" class="img-fluid" alt="-">
+                        <img src="media/img/gameplay.png" alt="-">
                       </figure>
                     </div>
                 </div>

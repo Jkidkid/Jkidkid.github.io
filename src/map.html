@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
-    <link rel="stylesheet" href="../media/css/userpage.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
   </head>
   <body>
@@ -82,6 +81,18 @@
       <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
       <button onclick="tips(turnin)"><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
+    <div class="final-greeting" id="team-win">
+      <div class="greeting-box" id="win-box">
+        <h2>Gratulerar</h2>
+        <h3>Bra jobbat teamet ni har lyckats lösa mordfallet och har samlat in 100 poäng</h3>
+      </div>
+    </div>
+    <div class="final-greeting" id="team-lose">
+      <div class="greeting-box" id="lose-box">
+        <h2>Spelet över</h2>
+        <h3>Tyvärr har ni inte kommit fram till rätt svar och mördaren har lyckats fly landet</h3>
+      </div>
+    </div>
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">
