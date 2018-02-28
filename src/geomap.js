@@ -22,7 +22,7 @@ let clues = document.getElementById('modal'),
         clue_lat: 59.313627, clue_lng: 18.110746,
         icon: '../media/img/mordplats_pin.png',
         header: 'Mordplats',
-        imgSrc: '../media/img/karlsson.png',
+        imgSrc: '../media/img/brottsplats.jpg',
         info: 'Ett mord har skett i Nacka',
         clickable: false, open: false
       }
