@@ -7,7 +7,7 @@ $toplist = new Top5Teams();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="sv">
   <head>
     <title>Clue | Hunter</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -43,7 +43,6 @@ $toplist = new Top5Teams();
                 </form>
               </div>
             </div>
-          </div>
         </header>
         <div class="container-fluid home" id="home">
             <div class="row">
@@ -71,7 +70,7 @@ $toplist = new Top5Teams();
                     </div>
                     <div class="img col-md-12 col-lg-6 align-middle">
                       <figure>
-                        <img src="media/img/img-placeholder.gif" class="img-fluid" alt="-">
+                        <img src="media/img/gameplay.png" alt="-">
                       </figure>
                     </div>
                 </div>

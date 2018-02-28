@@ -1,5 +1,5 @@
-<!doctype>
-<html>
+<!doctype html>
+<html lang="sv">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
-    <link rel="stylesheet" href="../media/css/userpage.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
   </head>
   <body>
@@ -20,21 +19,21 @@
     <div id="map"></div>
     <div class="modal" id="modal">
       <div id="clue">
-        <button type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button type="button" class="modal-close-btn" id="modal-close-btn"><i class="fas fa-times"></i></button>
         <h2 id="clue-header"></h2>
-        <img src="" id="cluePic"></img>
+        <img src="" id="cluePic" alt="ledtråd-bild">
         <p id="clueInfo"></p>
         <div class="nextprevious" id="nextprevious">
-          <button class="next" onclick="nextClue('left')"><i class="fas fa-chevron-circle-left"></i></button>
-          <button class="previous" onclick="nextClue('right')"><i class="fas fa-chevron-circle-right"></i></button>
+          <button class="previous" onclick="nextClue('right')"><i class="fas fa-chevron-circle-left"></i></button>
+          <button class="next" onclick="nextClue('left')"><i class="fas fa-chevron-circle-right"></i></button>
         </div>
       </div>
     </div>
     <div class="modalt" id="modalt">
       <div id="tips">
-        <button onclick="tips(tip)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button onclick="tips(tip)" type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
         <h1>TIPS</h1>
-        <img src="../media/img/tips.png" id="tipsPic"></img>
+        <img src="../media/img/tips.png" id="tipsPic" alt="lampa">
         <ul>
           <li>Att spela i ett lag kan göra det enklare</li>
           <li>Titta dig omkring, det kan finnas ledtrådar i mijön</li>
@@ -46,7 +45,7 @@
     </div>
     <div class="modal" id="modalm">
       <div id="turnin">
-        <button onclick="tips(turnin)" type="button" id="modal-close-btn"><i class="fas fa-times"></i></button>
+        <button onclick="tips(turnin)" type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
         <div id="turninselect">
           <div class="turnincontainer">
             <div class="suspects">
@@ -82,6 +81,18 @@
       <button onclick="nextClue()"><i class="fas fa-thumbtack"></i>Ledtrådar</button>
       <button onclick="tips(turnin)"><i class="fas fa-user-secret"></i>Misstänka</button>
     </nav>
+    <div class="final-greeting" id="team-win">
+      <div class="greeting-box" id="win-box">
+        <h2>Gratulerar</h2>
+        <h3>Bra jobbat teamet ni har lyckats lösa mordfallet och har samlat in 100 poäng</h3>
+      </div>
+    </div>
+    <div class="final-greeting" id="team-lose">
+      <div class="greeting-box" id="lose-box">
+        <h2>Spelet över</h2>
+        <h3>Tyvärr har ni inte kommit fram till rätt svar och mördaren har lyckats fly landet</h3>
+      </div>
+    </div>
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">

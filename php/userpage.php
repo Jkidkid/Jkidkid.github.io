@@ -12,7 +12,7 @@ $leaderboard = new Leaderboard();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,8 +36,8 @@ $leaderboard = new Leaderboard();
       </div>
       <div class="navcontent-container" id="groupScore">
         <nav class="upper-nav">
-          <button id="btn2" onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
-          <button id="btn2" onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
+          <button class="btn2" onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
+          <button class="btn2" onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
         </nav>
         <div class="content-container">
           <div class="black-box" id="score-group">

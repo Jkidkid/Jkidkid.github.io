@@ -7,7 +7,7 @@ $group = new GroupInformation();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@ $group = new GroupInformation();
     <div class="content">
       <div class="navcontent-container">
         <nav class="upper-nav">
-          <button id="btn3" onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
-          <button id="btn3" onclick="window.location.href = 'invite.php'"><i class="fas fa-user icon"></i>Inbjudningar</button>
-          <button id="btn3" onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
+          <button class="btn3" onclick="window.location.href = 'my-groups.php'"><i class="fas fa-users"></i>Mina grupper</button>
+          <button class="btn3" onclick="window.location.href = 'invite.php'"><i class="fas fa-user icon"></i>Inbjudningar</button>
+          <button class="btn3" onclick="window.location.href = 'create-group.php'"><i class="fas fa-users"></i>Skapa grupp</button>
         </nav>
         <div class="content-container">
           <div class="black-box" id="flow">
