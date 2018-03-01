@@ -53,15 +53,6 @@ h1, h2, h3, h4, h5, h6, tr,
   display: inline;
 }
 
-#loader {
-  background-color: black;
-  z-index: 100;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  color: white;
-}
-
 #progbar {
   width: 100%;
   height: 5%;
@@ -338,4 +329,48 @@ nav button {
 
 #lose-box {
   background:url('../img/airplane.png');
+}
+
+/******** Loader ************/
+
+#loader{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 1s ease-out;
+  height: 40%;
+  margin: 0 auto;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #222;
+  height: 100%;
+  width: 100%;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.App-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+}
+
+@keyframes App-logo-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

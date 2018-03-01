@@ -10,6 +10,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="../media/css/main.css">
     <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png"/>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
   </head>
   <body>
     <div id="progbar">
@@ -93,9 +96,11 @@
         <h3>Tyvärr har ni inte kommit fram till rätt svar och mördaren har lyckats fly landet</h3>
       </div>
     </div>
+    <div id="loader"></div>
     <script src="geomap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANlfUy4tXlMdRwaa4wng5XP9482L---LU&&libraries=geometry&callback=startMap">
     </script>
+    <script src="./Loader.js" type="text/babel"></script>
   </body>
 </html>
