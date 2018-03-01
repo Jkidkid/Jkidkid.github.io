@@ -248,6 +248,7 @@ td, th {
   width: 85%;
   box-sizing: border-box;
 }
+
 .right-td {
   display: flex;
   flex-direction: row-reverse;
