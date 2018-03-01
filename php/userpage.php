@@ -12,7 +12,7 @@ $leaderboard = new Leaderboard();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,8 +36,8 @@ $leaderboard = new Leaderboard();
       </div>
       <div class="navcontent-container" id="groupScore">
         <nav class="upper-nav">
-          <button id="btn2" onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
-          <button id="btn2" onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
+          <button class="btn2" onclick="showdivv('score-group')"><i class="fas fa-users"></i>Topplista lag</button>
+          <button class="btn2" onclick="showdivv('score-player')"><i class="fas fa-user icon"></i>Topplista spelare</button>
         </nav>
         <div class="content-container">
           <div class="black-box" id="score-group">
@@ -82,15 +82,14 @@ $leaderboard = new Leaderboard();
           <h1>INSTRUKTIONER</h1>
           <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
              får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
-             börjar en timer att ticka ner. <br><br>Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
+             börjar en timer att ticka ner när första spelaren stänger mordplatsen.<br><br>
+             Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
              tickat ner till 0 har bevisen förstörts och går ej att ta del av. För att kunna öppna en ledtråd krävs det att en spelare
-             befinner sig inom 20 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
+             befinner sig inom 40 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
              befinna sig i närheten.<br /><br />
              Med hjälp av ledtrådarna ska ni samla in information för att kunna avgöra vem som är mördaren och vilket vapen som har använts.
-             Lagets admin är den enda som kan ange mördare och vapen, och varje lag har 2 chansningar på sig.
-             Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över. <br /><br />
-             Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt på första försöket ger det 100p och andra
-             försöket ger 50p.
+             Alla i laget kan ange mördare och vapen, och varje lag har 2 chansningar på sig.Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över. <br /><br />
+             Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt får laget och varje spelare 100p.
              Leaderboarden kan ni följa i eran spelarlobby och uppdateras frekvent. Lycka till.
            </p>
           <div class="grplist">

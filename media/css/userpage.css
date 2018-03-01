@@ -2,81 +2,112 @@
 html, body {
   height: 100%;
 }
+
 body, button {
   font-family: 'Lustria', serif;
   margin: 0;
   padding: 0;
 }
-h1, h2, h3, h4, h5, h6, tr, .btn{
+
+h1, h2, h3, h4, h5, h6, tr, .btn {
   font-family: 'Oswald', sans-serif;
 }
+
 a {
   text-decoration: none;
   color: white;
 }
+
 ul {
   list-style: none;
 }
+
 .wrapper {
   height: 100%;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
 }
+
 .profile-imgbox,
 .content,
 .black-box,
 .content-container,
-.upper-nav, .startbtn, .nav,
-.upper-nav button, .nav button,
-#holder form{
+.upper-nav, 
+.startbtn, 
+.nav,
+.upper-nav button,
+ .nav button,
+#holder form {
   display: flex;
   align-items: center;
 }
+
 .profile-imgbox,
 .black-box,
 .navcontent-container,
-.upper-nav button, .nav button,
+.upper-nav button, 
+.nav button,
 .profile-imgbox img,
 #holder form {
   flex-direction: column;
 }
+
 .navcontent-container,
 .profile-imgbox img,
-.btn, #holder form{
+.btn, 
+#holder form {
   width: 100%;
   height: 100%;
 }
+
+.upper-nav {
+  justify-content: space-between;
+}
+
+.btn2{
+  width: 49.8%;
+}
+
 /*Containers*/
 .content {
   height: 90%;
   background-color: grey;
   justify-content: center;
 }
-.black-box{
+
+.black-box {
   height: 80%;
   width: 85%;
   color: white;
   background-color: #36363a;
 }
+
 .navcontent-container {
   display: flex;
 }
+
 .content-container {
   width: 100%;
   height: 90%;
   justify-content: center;
   overflow: hidden;
 }
+
 /*Nav*/
-.upper-nav, .startbtn, .nav {
+.upper-nav, 
+.startbtn, 
+.nav {
   width: 100%;
   height: 10%;
   background-color: grey;
   justify-content: space-between;
 }
-.upper-nav button, .nav button {
+
+.upper-nav button, 
+.nav button {
   height: 100%;
   border: 0;
   font-size: 1em;
@@ -85,73 +116,88 @@ table {
   background-color: #36363a;
   color: #ccc;
 }
-.fa-user, .fa-users, .fa-trophy, .fa-play {
+
+.fa-user, 
+.fa-users, 
+.fa-trophy, 
+.fa-play {
   margin: 2%;
   font-size: 1.3em;
   color: lime;
   font-size: 1.3em;
   margin: 2%;
 }
-#flow, #instructions, .groupScore-list{
+
+#flow, 
+#instructions, 
+.groupScore-list{
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 /*specific */
 /*upper nav 2 and 3items widths*/
-.nav button{
+.nav button {
   width: 24.7%;
 }
-#btn2{
-  width: 49.8%;
-}
-#btn3 {
+
+.btn3 {
   width: 33.06%;
 }
+
 /*toplist style*/
-.groupScore-list{
+.groupScore-list {
   width: 85%;
   font-size: 1.4em;
 }
+
 /*Profile picture box*/
-.profile-imgbox{
+.profile-imgbox {
   width: 250px;
   height: 250px;
   border: 2px solid black;
   background-color: #36363a;
   border-radius: 2%;
 }
-.profile-imgbox img{
+
+.profile-imgbox img {
   border-radius: 2%;
   justify-content: space-between;
 }
+
 /*Tiger List styles */
 tr:nth-of-type(odd) {
   background: green;
 }
+
 th {
   background: #333;
   color: white;
   font-weight: bold;
 }
+
 td, th {
   padding: 6px;
   text-align: left;
 }
+
 /*Start tab */
 #instructions p, li {
   font-size: 1.2em;
 }
-#instructions{
+
+#instructions {
   padding: 5%;
   box-sizing: border-box;
 }
-.grplist{
+
+.grplist {
   margin: 2% 0;
   width: 100%;
   background-color: #232327;
   border: 1px solid black;
 }
+
 .btn {
   border: 0;
   color: white;
@@ -162,48 +208,60 @@ td, th {
   text-align: center;
   text-indent: 0.7em;
 }
-.btn[disabled=disabled]{
+
+.btn[disabled=disabled] {
   background-color:#d84141;
 }
+
 /*Hantera grupper*/
-#search-container{
+#search-container {
   margin: 5% 0;
 }
-#group-info, #search-users-container{
+
+#group-info, 
+#search-users-container {
   background-color: #232327;
   text-align: center;
   width: 85%;
   margin: 5% 0;
 }
-#search-input, #group-name-input{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 3px;
+
+#search-input, 
+#group-name-input {
+  padding: 5px 0px 5px 3px;
   border-radius: 4px;
   border: 1px solid #7f6f6f;
 }
-#search-button, .send-invite, #create-group-button{
+
+#search-button, 
+.send-invite, 
+#create-group-button {
   background-color: #d84141;
   color: white;
   border: 0;
   border-radius: 4px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px 10px 5px 10px;
 }
-#group-name-input, #create-group-button{
+
+#group-name-input, 
+#create-group-button {
   width: 85%;
   box-sizing: border-box;
 }
-.right-td{
+
+.right-td {
   display: flex;
   flex-direction: row-reverse;
 }
+
 /* Tabs js toggle display none/flex*/
-#score-player, #groupScore, #start{
+#score-player, 
+#groupScore, 
+#start {
   display: none;
 }
-#score-group, #profile{
+
+#score-group, 
+#profile {
   display: flex;
 }

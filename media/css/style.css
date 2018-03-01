@@ -39,7 +39,7 @@ body {
   background: linear-gradient(to right, lime , yellow);
 }
 /***********POPUP**************/
-#modal{
+#modal {
   display: none;
   justify-content: center;
   align-items: center;
@@ -63,6 +63,7 @@ body {
   height: 37%;
   width: 90%;
 }
+
 #clue h2 {
   margin: 0.4em 0;
 }
@@ -74,6 +75,7 @@ body {
   overflow: scroll;
   margin: 0.5em 0;
 }
+
 #b {
   margin-bottom: 0.4em;
 }

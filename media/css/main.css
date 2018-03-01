@@ -13,8 +13,22 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6, tr, .btn{
+h1, h2, h3, h4, h5, h6, tr, 
+.btn {
   font-family: 'Oswald', sans-serif;
+}
+
+.final-greeting h2 {
+  font-size: 4.5em;
+  margin: 0 0 20px 0;
+  color: orange;
+  text-shadow: 3px 3px #36363a;
+}
+
+.final-greeting h3 {
+  color: orange;
+  font-size: 2em;
+  text-shadow: 3px 3px #36363a;
 }
 
 /*Adapt the following styling depending on where you want to put your map. If you want a 'full screen' map, then set the width and height to 100 percent and remove the margins.*/
@@ -38,6 +52,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   color: #ffffff;
   display: inline;
 }
+
 #progbar {
   width: 100%;
   height: 5%;
@@ -46,8 +61,9 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   align-items: center;
   background: linear-gradient(to right, lime , yellow);
 }
+
 /***********POPUP**************/
-.modal, #modalt{
+.modal, #modalt {
   display: none;
   justify-content: center;
   align-items: center;
@@ -67,6 +83,7 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   align-items: center;
   flex-direction: column;
 }
+
 #done {
   font-family: 'Oswald', sans-serif;
   width: 100%;
@@ -77,27 +94,24 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   background-color: green;
   font-size: 1.3em;
 }
-.boxrow{
+
+.boxrow {
   margin-top: 2%;
   width: 100%;
   height: 110px;
   display: flex;
   justify-content: space-around;
 }
-.boxrow img {
-  width: 85.7px;
-  height: 100px;
-  border: 1px solid black;
-  margin: 2%;
-}
-#turninselect{
+
+#turninselect {
   height: 90%;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.turnincontainer{
+
+.turnincontainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +119,9 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.suspects, .weapons{
+
+.suspects, 
+.weapons {
   width: 90%;
   height: auto;
   min-height: fit-content;
@@ -122,11 +138,14 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   width: 90%;
   border: 1px solid black;
 }
+
 #tips img {
   height: 30%;
   width: auto;
 }
-#clue h2, #tips li {
+
+#clue h2, 
+#tips li {
   margin: 0.4em 0;
 }
 
@@ -137,9 +156,11 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   overflow-y: scroll;
   margin: 0.5em 0;
 }
+
 #b {
   margin-bottom: 0.4em;
 }
+
 /**************MEDIA******/
 @media (min-width:641px) {
   #clue {
@@ -148,11 +169,9 @@ h1, h2, h3, h4, h5, h6, tr, .btn{
   }
 }
 
-
-#inputfield{
+#inputfield {
   width: 100%;
   height: 400px;
-
 }
 
 /**************NAVBAR******/
@@ -182,7 +201,10 @@ nav button {
 }
 
 
-.fa-thumbtack, .fa-lightbulb, .fa-user-secret, .fa-times {
+.fa-thumbtack, 
+.fa-lightbulb, 
+.fa-user-secret, 
+.fa-times {
   margin: 2%;
   font-size: 2em;
   color: lime;
@@ -211,38 +233,142 @@ nav button {
   background-color: #36363a;
   color: #ccc;
 }
-.next, .previous{
+
+.next, 
+.previous {
   background-color: #d84141;
   width:50%;
   height: 100%;
   color: white;
   border: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
   box-sizing: border-box;
 }
-.previous {
+
+.next {
   border-left: 1px solid #36363a;
 }
-.nextprevious{
+
+.nextprevious {
   display: none;
   width: 100%;
-  height: 5%;
+  height: 10%;
 }
-#modal-close-btn{
+
+.modal-close-btn,
+.next, 
+.previous {
+  padding: 5px 10px 5px 10px;
+}
+
+
+.modal-close-btn {
   background-color: #36363a;
   align-self: flex-end;
   color: white;
   border: 0;
   border-radius: 4px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
   min-height: 35px;
 }
-#modal-close-btn:hover{
+
+.modal-close-btn:hover {
   background-color: #d84141;
+}
+
+.weapon, 
+.suspect {
+  width: 85.7px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 2%;
+}
+
+.guessActive {
+  width: 85.7px;
+  height: 100px;
+  border: 1px solid lime;
+  margin: 2%;
+}
+
+#totalguesses {
+  color: red;
+}
+
+.final-greeting {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: #232327;
+}
+
+.greeting-box {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  padding: 20px;
+}
+
+#team-win {
+  display: none;
+}
+
+#win-box {
+  background:url('../img/balloons.png');
+}
+
+#team-lose {
+  display: none;
+}
+
+#lose-box {
+  background:url('../img/airplane.png');
+}
+
+/******** Loader ************/
+
+#loader{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 1s ease-out;
+  height: 40%;
+  margin: 0 auto;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #222;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.App-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+}
+
+@keyframes App-logo-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
