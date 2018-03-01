@@ -99,7 +99,7 @@ function getTimerTime() {
         if(data[0].timer_ends_at == ""){
           var d = new Date();
           let hours = d.getHours();
-          let minutes = d.getMinutes() + 1;
+          let minutes = d.getMinutes() + 15;
           let seconds = d.getSeconds();
 
           timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
@@ -448,9 +448,11 @@ function initMap(myPos) {
     clueLength = (cluesAvailable.length - 1);
     tip.style.display = 'none';
     turnin.style.display = 'none';
-    cluearr.style.display = 'flex';
-    clues.style.display = "flex";
-
+    if(cluesAvailable.length > 0) {
+      cluearr.style.display = 'flex';
+      clues.style.display = "flex";
+    }
+  
     if(arrow == 'left'){
       if(clueCount == 0){
         clueCount = clueLength;
@@ -519,13 +521,13 @@ function initMap(myPos) {
 function showWinGreeting(){
   teamWin.style.display = 'flex';
   setTimeout(()=>{
-    window.location = "https://en.wikipedia.org/wiki/Gender_bender";
+    window.location = "http://localhost/citrus/Jkidkid.github.io/php/userpage.php?page=groupScore";
   }, 5000);
 }
 
 function showLoseGreeting(){
   teamLose.style.display = 'flex';
   setTimeout(()=>{
-    window.location = "https://en.wikipedia.org/wiki/Gender_bender";
+    window.location = "http://localhost/citrus/Jkidkid.github.io/php/userpage.php?page=profile";
   }, 5000);
 }
