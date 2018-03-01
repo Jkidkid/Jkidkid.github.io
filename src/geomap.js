@@ -12,6 +12,7 @@ let clues = document.getElementById('modal'),
     turnInBtn = document.getElementById('done'), // answer button, fetch for right answers on db
     teamWin = document.getElementById('team-win'),
     teamLose = document.getElementById('team-lose'),
+    loader = document.getElementById("loader"),
     googleMarkers = [], // Stores all google map markers
     cluesAvailable = [], // Stores all available clues when a team-member have clicked a clue
     choices = { misstänkt: '', vapen: '' }, // save selected answers from player
@@ -38,6 +39,10 @@ var api_url = "http://localhost:3000";
     const params = (new URL(location)).searchParams;
     const val = params.get('userID');
     getPlayer(val);
+    
+    setTimeout(function() {
+      loader.style.display = "none";
+    }, 5000);
 }
 
 // When player close crimeplace we start interval and call availableClues
