@@ -1,16 +1,17 @@
 <?php
 
-class Profile{
+class Profile {
 
     private $db_connection = null;
     public $points;
 
-    function __construct(){
+    function __construct() {
         $this->profile_info();
     }
 
-    function profile_info(){
-        //$$this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+    // fetches the logged in user's points to be shown on their profile page
+    function profile_info() {
+        //$this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
 

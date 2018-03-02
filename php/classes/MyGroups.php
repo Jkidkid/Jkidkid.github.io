@@ -5,10 +5,8 @@ class MyGroups{
     public $msg;
     private $db_connection = null;
 
-    function __construct(){
-    }
-
-    function my_groups(){
+    // outputs the logged in user's all groups with a link linking to the group
+    function my_groups() {
 
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
@@ -21,10 +19,9 @@ class MyGroups{
         $group_id = $row['groupID'];
         $userRank = $row['userRank'];
 
-        if($userRank == "inväntar svar"){
+        if($userRank == "inväntar svar") {
             $this->msg = "Du är inte med i någon grupp";
-        }else{
-            
+        } else { 
             $sql = "SELECT * FROM groups WHERE groupID='".$group_id."'";
             $result = $this->db_connection->query($sql);
             $row = $result->fetch_assoc();
@@ -32,7 +29,6 @@ class MyGroups{
             $group_name = $row['groupName'];
 
             echo '<a style="text-decoration:underline; margin-top:10px; display:block;" href="group.php?groupID='.$group_id.'">'.$group_name.'</a>';
-         
         }
     }
 }
