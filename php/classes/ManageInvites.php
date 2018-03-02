@@ -20,7 +20,6 @@ class ManageInvites {
 
     // checks if the logged in user has any group invites and outputs if they do
     function invites() {
- 
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
     
@@ -45,7 +44,6 @@ class ManageInvites {
 
     // handles an accepted group invite
     function accept_invite() {
-        
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         
         $test = "userName=".$this->logged_in_user_username." AND ".$this->group_id;

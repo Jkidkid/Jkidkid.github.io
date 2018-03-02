@@ -16,7 +16,6 @@ class GroupInformation {
 
     // fetches group information of the logged in user's group (member usernames and user ranks)
     function get_group_information() {
-
         if(isset($_GET['groupID'])) {
             $group_id = $_GET['groupID'];
             
@@ -42,7 +41,6 @@ class GroupInformation {
 
     // outputs the group's information of the logged in user's group
     function output_group_information() {
-
         $size = sizeof($this->usernames);
 
         for($i = 0; $i<$size; $i++) {

@@ -12,7 +12,6 @@ class Login {
 
     // user login with wrong information handling
     function login() {
-        
         // att göra: php-injektion möjlig atm
         $username = $_POST['username'];
         $password = $_POST['password'];

@@ -19,7 +19,6 @@ class InviteGroupMember {
 
     // makes a db fetch based on the users search word(s) and saves the result to an array
     function search() {
-
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
         $search_string = $_POST['search-word'];

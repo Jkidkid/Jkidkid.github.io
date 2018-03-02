@@ -14,7 +14,6 @@ class Leaderboard {
 
     // fetches all groups points and groupnames for the leaderboard
     function team_leaderboard() {
-
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
         $sql = "SELECT * FROM groups ORDER BY group_points DESC";
@@ -41,7 +40,6 @@ class Leaderboard {
 
     // fetches all players points and names for the leaderboard
     function player_leaderboard() {
-
         $sql = "SELECT * FROM user ORDER BY user_points DESC";
         $result = $this->db_connection->query($sql);
 

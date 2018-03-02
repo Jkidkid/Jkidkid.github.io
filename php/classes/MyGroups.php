@@ -7,7 +7,6 @@ class MyGroups{
 
     // outputs the logged in user's all groups with a link linking to the group
     function my_groups() {
-
         $this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
 
