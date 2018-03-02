@@ -30,7 +30,7 @@ h4 {
 }
 
 p {
-  
+
   font-size: 1.1em;
 }
 
@@ -155,6 +155,10 @@ table tr:nth-child(odd) {
   width: 100%;
 }
 
+#error-msg {
+  color: red;
+}
+
 @media only screen and (max-width: 993px) {
   .img-fluid {
     width: 80%;
@@ -165,7 +169,7 @@ table tr:nth-child(odd) {
     color: lime;
     margin-top: 50px;
   }
-  
+
   section {
     height: auto;
     min-height: 100vh;
@@ -174,5 +178,4 @@ table tr:nth-child(odd) {
     flex-direction: column;
     align-items: center;
   }
-
 }

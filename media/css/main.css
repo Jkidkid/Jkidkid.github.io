@@ -12,8 +12,7 @@ body {
   padding: 0;
 }
 
-
-h1, h2, h3, h4, h5, h6, tr, 
+h1, h2, h3, h4, h5, h6, tr,
 .btn {
   font-family: 'Oswald', sans-serif;
 }
@@ -84,6 +83,10 @@ h1, h2, h3, h4, h5, h6, tr,
   flex-direction: column;
 }
 
+#tips {
+  overflow-y: scroll;
+}
+
 #done {
   font-family: 'Oswald', sans-serif;
   width: 100%;
@@ -120,7 +123,7 @@ h1, h2, h3, h4, h5, h6, tr,
   overflow-x: hidden;
 }
 
-.suspects, 
+.suspects,
 .weapons {
   width: 90%;
   height: auto;
@@ -144,7 +147,7 @@ h1, h2, h3, h4, h5, h6, tr,
   width: auto;
 }
 
-#clue h2, 
+#clue h2,
 #tips li {
   margin: 0.4em 0;
 }
@@ -161,61 +164,18 @@ h1, h2, h3, h4, h5, h6, tr,
   margin-bottom: 0.4em;
 }
 
-/**************MEDIA******/
-@media (min-width:641px) {
-  #clue {
-    width: 27%;
-    height: 70%;
-  }
-}
-
 #inputfield {
   width: 100%;
   height: 400px;
 }
 
 /**************NAVBAR******/
-
 .nav {
   width: 100%;
   height: 10%;
   background-color: grey;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: fixed;
-}
-
-nav button {
-  height: 100%;
-  width: 33.1%;
-  border: 0;
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  background-color: #36363a;
-  color: #ccc;
-}
-
-
-.fa-thumbtack, 
-.fa-lightbulb, 
-.fa-user-secret, 
-.fa-times {
-  margin: 2%;
-  font-size: 2em;
-  color: lime;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 10%;
-  background-color: grey;
   justify-content: space-between;
   position: fixed;
 }
@@ -234,7 +194,26 @@ nav button {
   color: #ccc;
 }
 
-.next, 
+.fa-thumbtack,
+.fa-lightbulb,
+.fa-user-secret,
+.fa-times {
+  margin: 2%;
+  font-size: 2em;
+  color: lime;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+  justify-content: space-between;
+  position: fixed;
+}
+
+.next,
 .previous {
   background-color: #d84141;
   width:50%;
@@ -255,11 +234,10 @@ nav button {
 }
 
 .modal-close-btn,
-.next, 
+.next,
 .previous {
   padding: 5px 10px 5px 10px;
 }
-
 
 .modal-close-btn {
   background-color: #36363a;
@@ -274,7 +252,7 @@ nav button {
   background-color: #d84141;
 }
 
-.weapon, 
+.weapon,
 .suspect {
   width: 85.7px;
   height: 100px;
@@ -332,7 +310,6 @@ nav button {
 }
 
 /******** Loader ************/
-
 #loader{
   width: 100%;
   height: 100%;
@@ -371,4 +348,12 @@ nav button {
 @keyframes App-logo-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/**************MEDIA******/
+@media (min-width:641px) {
+  #clue {
+    width: 27%;
+    height: 70%;
+  }
 }
