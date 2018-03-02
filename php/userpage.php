@@ -19,7 +19,8 @@ $profile = new Profile();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Clue|Hunter</title>
+  <title>Clue | Hunter</title>
+  <link rel="shortcut icon" type="image/png" href="../media/img/citrusgames_icon.png" />
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -47,11 +48,11 @@ $profile = new Profile();
             <div class="groupScore-list">
               <table>
                 <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Team</th>
-                  <th>Poäng</th>
-                </tr>
+                  <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>Poäng</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <?php $leaderboard->output_team_leaderboard(); ?>
@@ -64,11 +65,11 @@ $profile = new Profile();
             <div class="groupScore-list">
               <table>
                 <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Spelare</th>
-                  <th>Poäng</th>
-                </tr>
+                  <tr>
+                    <th>#</th>
+                    <th>Spelare</th>
+                    <th>Poäng</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <?php $leaderboard->output_player_leaderboard(); ?>
@@ -81,25 +82,25 @@ $profile = new Profile();
       <div class="navcontent-container" id="start">
         <div class="content-container">
           <div class="black-box" id="instructions">
-          <h1>INSTRUKTIONER</h1>
-          <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
-             får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
-             börjar en timer att ticka ner när första spelaren stänger mordplatsen.<br><br>
-             Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
-             tickat ner till 0 har bevisen förstörts och går ej att ta del av. För att kunna öppna en ledtråd krävs det att en spelare
-             befinner sig inom 40 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
-             befinna sig i närheten.<br /><br />
-             Med hjälp av ledtrådarna ska ni samla in information för att kunna avgöra vem som är mördaren och vilket vapen som har använts.
-             Alla i laget kan ange mördare och vapen, och varje lag har 2 chansningar på sig.Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över. <br /><br />
-             Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt får laget och varje spelare 100p.
-             Leaderboarden kan ni följa i eran spelarlobby och uppdateras frekvent. Lycka till.
-           </p>
-          <div class="grplist">
-            <ul>
-              <li><?php $start->output_players_group(); ?></li>
-            </ul>
+            <h1>INSTRUKTIONER</h1>
+            <p>Clue|Hunter är ett lagbaserat geolocation spel där ni som utredarteam ( minst 3 personer )
+               får samlas vid en startplats/mordplatsen. När alla i teamet är samlat och har tagit del av informationen från mordplatsen
+               börjar en timer att ticka ner när första spelaren stänger mordplatsen.<br><br>
+               Ni som lag har då 15 minuter på er att samla så många ledtrådar som möjligt, om timern
+               tickat ner till 0 har bevisen förstörts och går ej att ta del av. För att kunna öppna en ledtråd krävs det att en spelare
+               befinner sig inom 40 meter från ledtråden. Då kommer även resten av teamet att kunna läsa informationen utan att behöva
+               befinna sig i närheten.<br /><br />
+               Med hjälp av ledtrådarna ska ni samla in information för att kunna avgöra vem som är mördaren och vilket vapen som har använts.
+               Alla i laget kan ange mördare och vapen, och varje lag har 2 chansningar på sig.Skulle även andra försöket vara fel har ni som lag förlorat och spelet är över. <br /><br />
+               Samlar poäng gör ni genom att ange rätt mördare och vapen. Gissar ni rätt får laget och varje spelare 100p.
+               Leaderboarden kan ni följa i eran spelarlobby och uppdateras frekvent. Lycka till.
+             </p>
+             <div class="grplist">
+               <ul>
+                 <li><?php $start->output_players_group(); ?></li>
+               </ul>
+             </div>
           </div>
-        </div>
         </div>
         <form method="POST" class="startbtn">
           <button class="btn" type="submit" name="start" <?php if($start->player_has_a_group() === false){echo "disabled=disabled";} ?>>START</button>
@@ -118,9 +119,9 @@ $profile = new Profile();
   window.onload = function(){
     let params = (new URL(location)).searchParams;
     let val = params.get('page');
-    if(val === null){
+    if(val === null) {
       showdiv('profile');
-    } else {
+  } else {
       showdiv(val);
     }
   }

@@ -9,10 +9,10 @@ $toplist = new Top5Teams();
 <html lang="sv">
   <head>
     <title>Clue | Hunter</title>
+    <link rel="shortcut icon" type="image/png" href="media/img/citrusgames_icon.png" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="media/img/citrusgames_icon.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="media/css/page.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
