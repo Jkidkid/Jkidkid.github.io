@@ -17,7 +17,8 @@ class Start{
 
     function player_has_a_group(){
         $logged_in_user_username = $_SESSION['uid'];
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
         $sql = "SELECT groupID FROM group_members WHERE userName = '$logged_in_user_username'";
         $result = $this->db_connection->query($sql);
@@ -33,7 +34,8 @@ class Start{
     }
 
     function get_players_group_name(){
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $sql = "SELECT groupName FROM groups WHERE groupID = '$this->group_id'";
         $result = $this->db_connection->query($sql);
         $row = $result->fetch_assoc();

@@ -10,7 +10,8 @@ class MyGroups{
 
     function my_groups(){
 
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
 
         $logged_in_user_username = $_SESSION['uid'];

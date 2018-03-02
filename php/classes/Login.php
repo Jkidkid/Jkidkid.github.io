@@ -20,7 +20,8 @@ class Login {
             $this->error_msg = "Tomma fält";
         }else{
             // Skapa databas connection
-            $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+            $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+            //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
             $sql = "SELECT * FROM user WHERE uid='".$username."'";
             $result = $this->db_connection->query($sql);
@@ -39,7 +40,6 @@ class Login {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['uid'] = $row['uid'];
                     $_SESSION['id'] = $row['id'];
-                    $_SESSION['points'] = $row['user_points'];
                     header('Location: php/userpage.php');
                 }
             }

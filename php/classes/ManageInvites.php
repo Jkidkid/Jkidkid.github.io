@@ -21,7 +21,8 @@ class ManageInvites{
 
     function invites(){
  
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
         $this->db_connection->set_charset("utf8");
     
         $sql = "SELECT * FROM group_members WHERE userRank = 'inväntar svar' AND userName = '".$this->logged_in_user_username."'";
@@ -45,7 +46,8 @@ class ManageInvites{
 
     function accept_invite(){
         
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
         
 
         $test = "userName=".$this->logged_in_user_username." AND ".$this->group_id;

@@ -11,7 +11,8 @@ class Top5Teams{
     }
 
     function top_5(){
-        $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
 
         $sql = "SELECT * FROM groups ORDER BY group_points DESC LIMIT 5";
         $result = $this->db_connection->query($sql);
