@@ -11,12 +11,12 @@ class Profile {
 
     // fetches the logged in user's points to be shown on their profile page
     function profile_info() {
-        $$this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
+        $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
         $this->db_connection->set_charset("utf8");
 
-        $username = $_SESSION['uid'];
+        $user_id = $_SESSION['id'];
 
-        $sql = "SELECT * FROM user WHERE uid = '$username'";
+        $sql = "SELECT * FROM user WHERE id = '$user_id'";
         $result = $this->db_connection->query($sql);
 
         $row = $result->fetch_assoc();

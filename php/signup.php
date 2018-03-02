@@ -25,7 +25,11 @@ if(isset($_POST['submit'])) {
       $resultCheck = mysqli_num_rows($result);
 
       if($resultCheck > 0) {
-        header("Location: index.php");
+        ?>
+            <script type="text/javascript">
+            window.location.href = '../index.php';
+            </script>
+        <?php
         exit();
       } else {
         // Hashing the password
@@ -33,7 +37,11 @@ if(isset($_POST['submit'])) {
         //Insert the user into the database
         $sql = "INSERT INTO user (email, uid, pwd) VALUES ('$email', '$uid', '$hashedPwd')";
         mysqli_query($conn, $sql);
-        header("Location: index.php");
+        ?>
+            <script type="text/javascript">
+            window.location.href = '../index.php';
+            </script>
+        <?php
         exit();
       }
     }

@@ -24,7 +24,8 @@ class CreateGroup {
         if(empty($group_name)) {
             $this->msg = "<div style='color: red;'>Du måste ge gruppen ett namn</div>";
         }else {
-            $this->db_connection = new mysqli("localhost", "root", "", "citrus");
+            //$this->db_connection = new mysqli("localhost", "root", "", "citrus");
+             $this->db_connection = new mysqli("localhost", "u3543633_test", "qwerty1234567", "u3543633_citrus");
             $this->db_connection->set_charset("utf8");
 
             $sql = "SELECT * FROM group_members WHERE userName = '".$logged_in_user_username."'";

@@ -97,8 +97,14 @@ function getTimerTime() {
         if(data[0].timer_ends_at == "") {
           var d = new Date();
           let hours = d.getHours();
-          let minutes = d.getMinutes() + 15;
+          let minutes = d.getMinutes();
           let seconds = d.getSeconds();
+          if(minutes > 45) {
+              hours++;
+              minutes = (minutes + 15) - 60;
+          } else {
+              minutes += 15;
+          }
           timerTime = "Sep 5, 2018 "+hours+":"+minutes+":"+seconds;
           updateDbTimer();
           timer();
