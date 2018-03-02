@@ -4,11 +4,13 @@ require_once('classes/InviteGroupMember.php');
 require_once('classes/GroupInformation.php');
 require_once('classes/Start.php');
 require_once('classes/Leaderboard.php');
+require_once('classes/Profile.php');
 
 $invite = new InviteGroupMember();
 $group = new GroupInformation();
 $start = new Start();
 $leaderboard = new Leaderboard();
+$profile = new Profile();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,7 @@ $leaderboard = new Leaderboard();
           <img src="../media/img/userAvatar.png" alt="user avatar">
         </div>
         <h2><?php echo $_SESSION['uid']; ?></h2>
-        <h2><?php echo $_SESSION['points']; ?> p</h2>
+        <h2><?php echo $profile->points; ?> p</h2>
       </div>
       <div class="navcontent-container" id="groupScore">
         <nav class="upper-nav">

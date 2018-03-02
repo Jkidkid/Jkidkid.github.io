@@ -16,10 +16,10 @@ class Profile{
 
         $username = $_SESSION['uid'];
         
-        $sql = "SELECT * FROM user WHERE userName = '".$username."'";
+        $sql = "SELECT * FROM user WHERE uid = '$username'";
         $result = $this->db_connection->query($sql);
 
-        $row = $resutl->fetch_assoc();
+        $row = $result->fetch_assoc();
 
         $this->points = $row['user_points'];
     }
