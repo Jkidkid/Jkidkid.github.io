@@ -39,7 +39,6 @@ class Login {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['uid'] = $row['uid'];
                     $_SESSION['id'] = $row['id'];
-                    $_SESSION['points'] = $row['user_points'];
                     header('Location: php/userpage.php');
                 }
             }
