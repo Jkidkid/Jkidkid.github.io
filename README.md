@@ -4,6 +4,8 @@ Geolocation based murder mystery-game. Where you play in teams to
 collect clues to solve the crime. This project was done in a school
 setting in order to learn google map api, nodejs, php, mysql database.
 
+(Production of this game has been in educational purposes only)
+
 ## Getting Started
 
 Clone the develop branch into your htdocs folder in xampp.
